@@ -1,0 +1,2 @@
+1.主流常青浏览器里 JavaScript 引擎总共也才 4 个：FireFox 的 SpiderMonkey，IE/Edge 的 Chakra，Chrome/Opera 的 V8，Safari 的 JavaScriptCore
+

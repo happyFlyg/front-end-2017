@@ -1,0 +1,882 @@
+1.HTTP状态码知道哪些？
+100  Continue  继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息
+200  OK   正常返回信息
+201  Created  请求成功并且服务器创建了新的资源
+202  Accepted  服务器已接受请求，但尚未处理
+301  Moved Permanently  请求的网页已永久移动到新位置。
+302 Found  临时性重定向。
+303 See Other  临时性重定向，且总是使用 GET 请求新的 URI。
+304  Not Modified  自从上次请求后，请求的网页未修改过。
+400 Bad Request  服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。
+401 Unauthorized  请求未授权。
+403 Forbidden  禁止访问。
+404 Not Found  找不到如何与 URI 相匹配的资源。
+500 Internal Server Error  最常见的服务器端错误。
+503 Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）。
+2.你有哪些性能优化的方法？
+（1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。
+（2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
+（3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
+（4） 当需要设置的样式很多时设置className而不是直接操作style。
+（5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
+（6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
+（7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
+
+
+一、html+css部分、
+
+（1）css盒模型，可能会要求手写一个布局，这个布局基本上用到的css是margin的负值，boxing-sizing：border-box，布局尽量往这方面想。浏览器布局的基本元素是盒，在w3c的标准模式下，width=width，但是在怪异模式下，width=border*2+padding*2+width;其中后代元素的width：100%；参照的是右边的那个width，
+
+（2）html5的新特性
+
+1、标签语义化，比如header，footer，nav，aside，article，section等，新增了很多表单元素，入email，url等，除去了center等样式标签，还有除去了有性能问题的frame，frameset等标签
+
+2、音视频元素，video，audio的增加使得我们不需要在依赖外部的插件就可以往网页中加入音视频元素。
+
+3、新增很多api，比如获取用户地理位置的window.navigator.geoloaction，
+
+4、websocket
+
+websocket是一种协议，可以让我们建立客户端到服务器端的全双工通信，这就意味着服务器端可以主动推送数据到客户端，
+
+5、webstorage，webstorage是本地存储，存储在客户端，包括localeStorage和sessionStorage，localeStorage是持久化存储在客户端，只要用户不主动删除，就不会消失，sessionStorage也是存储在客户端，但是他的存在时间是一个回话，一旦浏览器的关于该回话的页面关闭了，sessionStorage就消失了，
+
+6、缓存
+
+html5允许我们自己控制哪些文件需要缓存，哪些不需要，具体的做法如下：
+
+
+1、首先给html添加manifest属性，并赋值为cache.manifest
+2、cache.manifest的内容为: 
+         CACHE MANIFEST
+         #v1.2
+         CACHE :           //表示需要缓存的文件
+           a.js
+           b.js
+       NETWORK:    //表示只在用户在线的时候才需要的文件，不会缓存
+         c.js
+       FALLBACK
+       /        /index.html     //表示如果找不到第一个资源就用第二个资源代替
+7、web worker，web worker是运行在浏览器后台的js程序，他不影响主程序的运行，是另开的一个js线程，可以用这个线程执行复杂的数据操作，然后把操作结果通过postMessage传递给主线程，这样在进行复杂且耗时的操作时就不会阻塞主线程了。
+
+（3）对html5的语义话的理解
+
+html5的语义化指的是用正确的标签包含正确的内容，比如nav标签，里面就应该包含导航条的内容，而不是用做其他的用途，标签语义化的好处就是结构良好，便于阅读，方便威化，也有利于爬虫的查找，提高搜索率。
+
+
+（4）cookie，sessionStorage，localeStorage的区别
+
+cookie是存储在浏览器端，并且随浏览器的请求一起发送到服务器端的，它有一定的过期时间，到了过期时间自动会消失。sessionStorage和localeStorage也是存储在客户端的，同属于web Storage，比cookie的存储大小要大有8m，cookie只有4kb，localeStorage是持久化的存储在客户端，如果用户不手动清除的话，不会自动消失，会一直存在，sessionStorage也是存储在客户端，但是它的存活时间是在一个回话期间，只要浏览器的回话关闭了就会自动消失。
+
+（5）多个页面之间如何进行通信
+
+使用cookie，使用web worker，使用localeStorage和sessionStorage
+
+（6）浏览器的渲染过程
+
+1、首先获取html，然后构建dom树
+
+2、其次根据css构建render树，render树中不包含定位和几何信息
+
+3、最后构建布局数，布局是含有元素的定位和几何信息
+
+（7）重构、回流
+
+浏览器的重构指的是改变每个元素外观时所触发的浏览器行为，比如颜色，背景等样式发生了改变而进行的重新构造新外观的过程。重构不会引发页面的重新布局，不一定伴随着回流，
+
+回流指的是浏览器为了重新渲染页面的需要而进行的重新计算元素的几何大小和位置的，他的开销是非常大的，回流可以理解为渲染树需要重新进行计算，一般最好触发元素的重构，避免元素的回流；比如通过通过添加类来添加css样式，而不是直接在DOM上设置，当需要操作某一块元素时候，最好使其脱离文档流，这样就不会引起回流了，比如设置position：absolute或者fixed，或者display：none，等操作结束后在显示。
+
+二、JavaScript部分
+
+（1）JavaScript的数据类型
+
+基本数据类型：Number，String，Boolean，Undefined，Null
+
+复杂数据类型：Object，Array，Function，RegExp，Date，Error
+
+全局数据类型：Math
+
+（2）JavaScript的闭包
+
+闭包简单的说就是一个函数能访问外部函数的变量，这就是闭包，比如说：
+
+
+function a(x){
+       var tem=3;
+      function b(y){
+          console.log(x+y+(++tem));
+     }
+}
+a函数中的b函数就是闭包了，b函数可以使用a函数的局部变量，参数，最典型的闭包应该是下面这样，将定义在函数中的函数作为返回值
+
+
+function a(x){
+       var tem=3;
+      function b(y){
+          console.log(x+y+(++tem));
+     }
+return b;
+}
+闭包的另一种作用是隔离作用域，请看下面这段代码
+
+
+for(var i=0;i<2;i++){
+      setTimeout(function(){
+              console.log(i);
+        },0);
+}
+上面这段代码的执行结果是2,2而不是0,1，因为等for循环出来后，执行setTimeout中的函数时，i的值已经变成了2，这就是没有隔离作用域所造成的，请看下面代码
+
+
+for(var i=0;i<2;i++){
+      (function(i){
+             setTimeout(function(){
+              console.log(i);
+        },0)
+    })(i);
+}
+这样就会输出0,1，我们的立即执行函数创建了一个作用域，隔离了外界的作用域，闭包的缺点是，因为内部闭包函数可以访问外部函数的变量，所以外部函数的变量不能被释放，如果闭包嵌套过多，会导致内存占用大，要合理使用闭包。
+
+（3）new 操作符到底做了什么
+
+  首先，new操作符为我们创建一个新的空对象，然后this变量指向该对象，
+
+
+  其次，空对象的原型执行函数的原型，
+
+  最后，改变构造函数内部的this的指向
+
+代码如下：
+
+
+var obj={};
+obj.__proto__=fn.prototype;
+fn.call(obj);
+（4）改变函数内部this指针的指向函数
+
+call和apply，假设要改变fn函数内部的this的指向，指向obj，那么可以fn.call(obj);或者fn.apply(obj);那么问题来了，call和apply的区别是什么，其是call和apply的区别在于参数，他们两个的第一个参数都是一样的，表示调用该函数的对象，apply的第二个参数是数组，是[arg1,arg2,arg3]这种形式，而call是arg1,arg2,arg3这样的形式。还有一个bind函数，
+
+var bar=fn.bind(obj);那么fn中的this就指向obj对象了，bind函数返回新的函数，这个函数内的this指针指向obj对象。
+
+（5）JavaScript的作用域和作用域链
+
+JavaScript的作用域指的是变量的作用范围，内部作用域由函数的形参，实参，局部变量，函数构成，内部作用域和外部的作用域一层层的链接起来形成作用域链，当在在函数内部要访问一个变量的时候，首先查找自己的内部作用域有没有这个变量，如果没有就到这个对象的原型对象中去查找，还是没有的话，就到该作用域所在的作用域中找，直到到window所在的作用域，每个函数在声明的时候就默认有一个外部作用域的存在了，比如：
+
+
+var t=4;
+function foo(){
+       var tem=12;
+      funciton bar(){
+       var temo=34;
+       console.log(t+" "+tem+" "+temo);
+      }
+}
+bar找t变量的过程就是，先到自己的内部作用域中找，发现没有找到，然后到bar所在的最近的外部变量中找，也就是foo的内部作用域，还是没有找到，再到window的作用域中找，结果找到了
+
+（6）JavaScript的继承
+
+
+function A(name){  this.name=name; }
+A.prototype.sayName=function(){ console.log(this.name); }
+function B(age){ this.age=age; }
+原型继承
+
+
+B.prototype=new A("mbj");  //被B的实例共享
+var foo=new B(18);
+foo.age;    //18,age是本身携带的属性
+foo.name;   //mbj，等价于foo.__proto__.name
+foo.sayName(); //mbj,等价于foo.__proto__.proto__.sayName()
+foo.toString();  //"[object Object]",等价于foo.__proto__.__proto__.__proto__.toString();
+这样B通过原型继承了A，在new B的时候，foo中有个隐藏的属性__proto__指向构造函数的prototype对象，在这里是A对象实例，A对象里面也有一个隐藏的属性__proto__,指向A构造函数的prototype对象，这个对象里面又有一个__proto__指向Object的prototype
+
+这种方式的缺第一个缺点是所有子类共享父类实例，如果某一个子类修改了父类，其他的子类在继承的时候，会造成意想不到的后果。第二个缺点是在构造子类实例的时候，不能给父类传递参数。
+
+构造函数继承
+function B(age,name){  this.age=age;A.call(this,name); }
+var foo=new B(18,"wmy");
+foo.name;     //wmy
+foo.age;      //18
+foo.sayName();   //undefined
+采用这种方式继承是把A中的属性加到this上面，这样name相当于就是B的属性，sayName不在A的构造函数中，所以访问不到sayName。这种方法的缺点是父类的prototype中的函数不能复用。
+
+原型继承+构造函数继承
+
+
+function B(age,name){  this.age=age;A.call(this,name); }
+B.prototype=new A("mbj");
+var foo=new B(18,"wmy");
+foo.name;     //wmy
+foo.age;      //18
+foo.sayName();   //wmy
+这样就可以成功访问sayName函数了，结合了上述两种方式的优点，但是这种方式也有缺点，那就是占用的空间更大了。
+
+（7）JavaScript变量提升
+
+请看下面代码
+
+
+var bar=1;
+function test(){
+  console.log(bar);     //undeifned
+  var bar=2; 
+  console.log(bar);  //2
+}
+test();
+为什么在test函数中会出现上述结果呢，这就是JavaScript的变量提升了，虽然变量bar的定义在后面，不过浏览器在解析的时候，会把变量的定义放到最前面，上面的test函数相当于
+
+
+function test(){
+  var bar;
+  console.log(bar);   //undefined
+  bar=2; 
+  console.log(bar);   //2
+}
+再看
+
+
+var foo=function(){  console.log(1); }
+function foo(){  console.log(2); }
+foo();  //结果为1
+同样的，函数的定义也会到提升到最前面，上面的代码相当于
+function foo(){  console.log(2); }
+var foo;
+foo=funciton(){ console.log(1); }
+foo();   //1
+（8）JavaScript事件模型
+
+原始事件模型，捕获型事件模型，冒泡事件模型，
+
+原始事件模型就是ele.onclick=function(){}这种类型的事件模型
+
+冒泡事件模型是指事件从事件的发生地（目标元素），一直向上传递，直到document，
+
+捕获型则恰好相反，事件是从document向下传递，直到事件的发生地（目标元素）
+
+IE是只支持冒泡事件模型的，下面是兼容各个浏览器的事件监听代码
+
+
+EventUtil={
+  addListener:function(target,type,handler){
+    if(target.addEventListener){
+        target.addEventListener(type,handler);
+    }else if(target.attachEvent){
+        target.attach("on"+type,function(){
+              handler.call(target);  //让handler中的this指向目标元素
+        });
+    }else{
+        target["on"+type]=handler;
+    }
+  },
+ removeListener:function(target,type,handler){   
+      if(target.removeEventListener){    
+        target.removeEventListener(type,handler);          
+     }else if(target.detachEvent){
+        target.detachEvent("on"+type,handler);
+     }else{
+        target["on"+type]=null;
+     }
+  },
+ getEvent:function(e){      //获取事件对象
+     var evt=window.event||e;
+     return evt;
+ },
+ getTarget:function(e){      //获得目标对象
+     var evt=EventUtil.getEvent(e);
+     var target;
+     if(evt.target){ target=evt.target;}
+     else {target=evt.srcElement;}
+     return target;
+ },
+ stopPropagation:function(e){  //停止冒泡
+     var evt=EventUtil.getEvent(e);
+     if(evt.stopPropagation) {evt.stopPropagation();}
+     else {evt.cancelBubble=true;}
+ },
+ preventDefault:function(e){   //阻值默认行为的发生
+     var evt=EventUtil.getEvent(e);
+     if(evt.preventDefault){ evt.preventDefault(); }
+     else {e.returnValue=false;}
+ }
+}
+（9）内存泄漏
+
+内存泄漏指的是浏览器不能正常的回收内存的现象
+
+（10）浏览器的垃圾回收机制
+
+
+垃圾收集器必须跟踪哪个变量有用哪个变量没用，对于不再有用的变量打上标记，以备将来收回其占用的内存，内存泄露和浏览器实现的垃圾回收机制息息相关， 而浏览器实现标识无用变量的策略主要有下两个方法：
+
+第一，引用计数法
+
+跟踪记录每个值被引用的次数。当声明一个变量并将引用类型的值赋给该变量时，则这个值的引用次数就是1。如果同一个值又被赋给另一个变量，则该值的引用次 数加1.相反，如果包含对这个值引用的变量又取得另外一个值，则这个值的引用次数减1.当这个值的引用次数变成0时，则说明没有办法访问这个值了，因此就 可以将其占用的内存空间回收回来。
+
+
+如： var a = {};     //对象{}的引用计数为1
+     b = a;          //对象{}的引用计数为 1+1 
+     a = null;       //对象{}的引用计数为2-1
+所以这时对象{}不会被回收;
+
+IE 6, 7 对DOM对象进行引用计数回收， 这样简单的垃圾回收机制，非常容易出现循环引用问题导致内存不能被回收， 进行导致内存泄露等问题，一般不用引用计数法。
+
+第二，标记清除法
+
+到2008年为止，IE,Firefox,Opera,Chrome和Safari的javascript实现使用的都是标记清除式的垃圾收集策略（或类似的策略），只不过垃圾收集的时间间隔互有不同。
+
+标记清除的算法分为两个阶段，标记(mark)和清除(sweep). 第一阶段从引用根节点开始标记所有被引用的对象，第二阶段遍历整个堆，把未标记的对象清除。
+
+（11）同源策略
+
+同源策略是浏览器有一个很重要的概念。所谓同源是指，域名，协议，端口相同。不同源的客户端脚本(javascript、ActionScript)在没明确授权的情况下，不能读写对方的资源。简单的来说，浏览器允许包含在页面A的脚本访问第二个页面B的数据资源，这一切是建立在A和B页面是同源的基础上。
+
+
+（12）跨域的几种方式
+
+jsonp（利用script标签的跨域能力）跨域、websocket（html5的新特性，是一种新协议）跨域、设置代理服务器（由服务器替我们向不同源的服务器请求数据）、CORS（跨源资源共享，cross origin resource sharing）、iframe跨域、postMessage(包含iframe的页面向iframe传递消息)
+
+（13）异步和同步
+
+同步指下一个程序的执行需要等到上一个程序执行完毕，也就是得出结果后下一个才能执行，
+
+异步指的是上一个程序指向后，下一个程序不用等到上一个程序出结果就能执行，等上一个出结果了调用回调函数处理结果就好。
+
+（14）JavaScript的值类型和引用类型
+
+JavaScript有两种类型的数据，值类型和引用类型，一般的数字，字符串，布尔值都是值类型，存放在栈中，而对象，函数，数组等是引用类型，存放在堆中，对引用类型的复制其实是引用复制，相当于复制着地址，对象并没有真正的复制。
+
+
+var a=5;var b=a;a=null;    //那么b是5
+var a={},var b=a;b.name="mbj";
+console.log(a.name);   //mbj，因为a，b指向同一个对象
+a=null;console.log(typeof b);  //object，a=null，只是a不再指向该对象，但是这个对象还是在堆中确确实实的存在，b依然指向它。
+（15）优化下面代码
+
+
+var str="我喜欢我可爱的女朋友，"；
+str=str+"她叫喵喵，";
+str=str+"她时而可爱，时而认真，";
+str=str+"她那天真的笑声可以让人忘掉一切烦恼。";
+console.log(str);
+这里的优化主要是对加号操作符的优化，因为加号在JavaScript中非常耗时和耗内存，需要经过以下六步：
+
+
+1、首先开辟一块临时空间，存储字符串，
+2、然后在开辟一块空间
+3、把str中的字符串复制到刚刚开辟的空间
+4、在把需要连接的字符串复制到str后面
+5、str指向这块空间
+6、回收str原来的空间和临时空间
+优化的方法是使用数组的push方法，数组是连续的存储空间，可以省下很多步
+
+
+var res=[];
+var str="我喜欢我可爱的女朋友，"；
+res.push(str);
+res.push("她叫喵喵，");
+res.push("她时而可爱，时而认真，");
+res.push("她那天真的笑声可以让人忘掉一切烦恼。");
+console.log(res.join(""));    
+（16）封装cookie的添加，删除，查询方法
+
+cookie是存储在浏览器端的，可以用于存储sessionID，也可以用于自动登陆，记住密码等，但是在浏览器端并没有官方的操作cookie的方法，下面我们来封装一下：
+
+
+CookieUtil=｛
+    addCookie:function(key,value,options){
+        var str=key+"="+escape(value);
+        if(options.expires){
+           var curr=new Date();   //options.expires的单位是小时
+           curr.setTime(curr.getTime()+options.expires*3600*1000);
+           options.expires=curr.toGMTString();
+        }
+        for(var k in options){   //有可能指定了cookie的path，cookie的domain
+           str+=";"+k+"="+options[k];
+        }
+        document.cookie=str;
+    },
+    queryCookie:function(key){
+      var cookies=document.cookie;
+     //获得浏览器端存储的cookie,格式是key=value;key=value;key=value
+      cookies+=";";
+      var start=cookies.indexOf(key);
+      if(start<=-1){ return null; }  //说明不存在该cookie
+      var end=cookies.indexOf(";",start);
+      var value=cookies.slice(start+key.length+1,end);
+      return unescape(value);
+    },
+    deleteCookie:function(key){
+      var value=CookieUtil.queryCookie(key);
+      if(value===null){return false;}
+      CookieUtil.addCookie(key,value,{expires:0});//把过期时间设置为0，浏览器会马上自动帮我们删除cookie
+    }
+｝
+（17）事件委托机制
+
+事件委托指的是，不再事件的发生地设立监听函数，而是在事件发生地的父元素或者祖先元素设置监听器函数，这样可以大大提高性能，因为可以减少绑定事件的元素，比如：
+
+
+<ul>
+ <li></li>
+ <li></li>
+ <li></li>
+</ul>
+要给li元素绑定click事件，使用事件委托机制的话，就只需要给ul绑定click事件就行了，这样就不需要给每个li'绑定click事件，减小内存占用，提高效率，有兴趣的童鞋可以去看看jQuery的live，bind，on，delegate函数的区别，这几个函数就采用了事件委托机制。
+
+三、其他部分
+
+（1）http状态码
+
+http状态码是表示服务器对请求的响应状态，主要分为以下几个部分
+
+1**：这类响应是临时响应，只包含状态行和某些可选的响应头信息，并以空行结束
+
+2**：表示请求成功，
+
+3**：表示重定向
+
+4**：表示客户端错误
+
+5**：表示服务器端错误
+
+100（continue），客户端应当继续发送请求。这个临时响应是用来通知客户端它的部分请求已经被服务器接收
+
+200（OK），表示请求成功，请求所希望的响应头或数据体将随此响应返回。
+
+202（Accepted），服务器已接受请求，但尚未处理。
+
+204（No-Content），服务器成功处理了请求，但不需要返回任何实体内容
+
+205（Reset-Content），服务器成功处理了请求，且没有返回任何内容。但是与204响应不同，返回此状态码的响应要求请求者重置文档视图。该响应主要是被用于接受用户输入后，立即重置表单，以便用户能够轻松地开始另一次输入。
+
+206（Partial-Content），服务器已经成功处理了部分 GET 请求。
+
+301（Moved-Permanently），永久性重定向
+
+302（Moved-Temporarily），暂时性重定向
+
+304（Not-Modified），浏览器端缓存的资源依然有效
+
+400（Bad-Reques），请求有误，当前请求无法被服务器理解。
+
+401（Unauthorized），当前请求需要用户验证。
+
+403（Forbidden），服务器已经理解请求，但是拒绝执行它。
+
+404（Not-Found），请求的资源没有被找到
+
+500（Interval Server Error），服务器内部错误
+
+502（Bad GateWay），网关出错
+
+503（Service Unavailable），由于临时的服务器维护或者过载，服务器当前无法处理请求。
+
+504（Gateway Timeout），作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应。
+
+（2）xss，csrf的概念以及防范方法
+
+大公司如bat在面试的时候，web安全问题是必问的问题，所以一定要懂，要彻底理解xss和csrf的概念和防范方式，最好在项目中有用到对这两种攻击的防范，这样会给你的面试加很多分。由xss和csrf涉及的东西比较多，我就不具体给出了，详情请看XSS攻击及防御，CSRF攻击
+
+（3）CommonJs，AMD，CMD规范
+
+对于前端模块化来说，这三个规范是必须要了解的，详情请看我的这篇文章CommonJS，AMD，CMD
+
+（4）谈谈对前端模块化的理解
+
+前端模块话就是把复杂的文件分成一个个独立的模块，比如js文件，分成独立的模块之后有利于代码的重用和维护，但是这样又会引来模块与模块之间的依赖问题，所以就有了CommonJS、AMD、CMD规范，最后出现了webpack，webpack就是前端模块话的一种解决方案，基本上大公司都会使用webpack，想要详细的学习webpack的话请看webpack简明使用教程
+
+（5）优雅降级和渐进增强
+
+优雅降级指的是一开始就构建功能完好的网站，然后在慢慢兼容低版本的浏览器，使得各个浏览器之间的差异不要太大。
+
+渐进增强是指在基本功能得到满足的情况下，对支持新特性的浏览器使用新特性，带给用户更换的体验。
+
+优雅降级和渐进增强的出发点不同，前者是慢慢向下兼容，是向后看，后着是慢慢向上，增强功能，是向前看。
+
+（6）前端优化（提高网页的加载速度）
+
+    1、使用css sprites，可以有效的减少http请求数
+
+    2、使用缓存
+
+    3、压缩js，css文件，减小文件体积
+
+    4、使用cdn，减小服务器负担
+
+    5、懒加载图片
+
+    6、预加载css，js文件
+
+    7、避免dom结构的深层次嵌套
+
+    8、给DOM元素添加样式时，把样式放到类中，直接给元素添加类，减少重构，回流
+
+更多详细的前端优化请看前端优化：雅虎35条或者前端性能优化----yahoo前端性能团队总结的35条黄金定律
+
+
+四、前端学习文章推荐
+
+知乎上面有人推荐了很多前端学习网站，具体信息请看
+
+关于 Javascript 学习，有哪些好的博客或者网站推荐？
+
+发布于 2016-11-22
+175
+37 条评论
+分享
+收藏
+收起
+
+程序源
+二次元程序员，各种活动，五行缺女贫友
+89 人赞同了该回答
+HTML+CSS
+
+1.对WEB标准以及W3C的理解与认识
+
+标签闭合、标签小写、不乱嵌套、提高搜索机器人搜索几率、使用外 
+链css和js脚本、结构行为表现的分离、文件下载与页面速度更快、内容能被更多的用户所访问、内容能被更广泛的设备所访问、更少的代码和组件，容易维 
+护、改版方便，不需要变动页面内容、提供打印版本而不需要复制内容、提高网站易用性；
+
+
+2.xhtml和html有什么区别
+
+HTML是一种基本的WEB网页设计语言，XHTML是一个基于XML的置标语言
+
+最主要的不同：
+
+XHTML 元素必须被正确地嵌套。
+
+XHTML 元素必须被关闭。
+
+标签名必须用小写字母。
+
+XHTML 文档必须拥有根元素。
+
+
+3.Doctype? 严格模式与混杂模式-如何触发这两种模式，区分它们有何意义? 
+
+用于声明文档使用那种规范（html/Xhtml）一般为 严格 过度 基于框架的html文档
+
+加入XMl声明可触发，解析方式更改为IE5.5 拥有IE5.5的bug
+
+
+4.行内元素有哪些?块级元素有哪些?CSS的盒模型?
+
+块级元素：div p h1 h2 h3 h4 form ul
+
+行内元素: a b br i span input select
+
+Css盒模型:内容，border ,margin，padding
+
+
+5.CSS引入的方式有哪些? link和@import的区别是?
+
+内联 内嵌 外链 导入
+
+区别 ：同时加载
+
+前者无兼容性，后者CSS2.1以下浏览器不支持
+
+Link 支持使用javascript改变样式，后者不可
+
+
+6.CSS选择符有哪些?哪些属性可以继承?优先级算法如何计算?内联和important哪个优先级高?
+
+标签选择符 类选择符 id选择符
+
+继承不如指定 Id>class>标签选择
+
+后者优先级高
+
+
+7.前端页面有哪三层构成，分别是什么?作用是什么?
+
+结构层 Html 表示层 CSS 行为层 js
+
+
+8.css的基本语句构成是?
+
+选择器{属性1:值1;属性2:值2;……}
+
+
+9.你做的页面在哪些流览器测试过?这些浏览器的内核分别是什么?
+
+Ie(Ie内核) 火狐（Gecko） 谷歌（webkit） opear(Presto)
+
+
+10.写出几种IE6 BUG的解决方法
+
+1.双边距BUG float引起的 使用display
+
+2.3像素问题 使用float引起的 使用dislpay:inline -3px
+
+3.超链接hover 点击后失效 使用正确的书写顺序 link visited hover active
+
+4.Ie z-index问题 给父级添加position:relative
+
+5.Png 透明 使用js代码 改
+
+6.Min-height 最小高度 ！Important 解决’
+
+7.select 在ie6下遮盖 使用iframe嵌套
+
+8.为什么没有办法定义1px左右的宽度容器（IE6默认的行高造成的，使用over:hidden,zoom:0.08 line-height:1px）
+
+
+11.标签上title与alt属性的区别是什么?
+
+Alt 当图片不显示是 用文字代表。
+
+Title 为该属性提供信息
+
+
+12.描述css reset的作用和用途。
+
+Reset重置浏览器的css默认属性 浏览器的品种不同，样式不同，然后重置，让他们统一
+
+
+13.解释css sprites，如何使用。
+
+Css 精灵 把一堆小的图片整合到一张大的图片上，减轻服务器对图片的请求数量
+
+
+14.浏览器标准模式和怪异模式之间的区别是什么?
+
+盒子模型 渲染模式的不同
+
+使用 window.top.document.compatMode 可显示为什么模式
+
+
+15.你如何对网站的文件和资源进行优化?期待的解决方案包括：
+
+文件合并
+
+文件最小化/文件压缩
+
+使用CDN托管
+
+缓存的使用
+
+
+16.什么是语义化的HTML?
+
+直观的认识标签 对于搜索引擎的抓取有好处
+
+
+17.清除浮动的几种方式，各自的优缺点
+
+1.使用空标签清除浮动 clear:both（理论上能清楚任何标签，，，增加无意义的标签）
+
+2.使用overflow:auto（空标签元素清除浮动而不得不增加无意代码的弊端,,使用zoom:1用于兼容IE）
+
+3.是用afert伪元素清除浮动(用于非IE浏览器)
+
+
+Javascript
+
+1.javascript的typeof返回哪些数据类型
+
+Object number function boolean underfind
+
+
+2.例举3种强制类型转换和2种隐式类型转换?
+
+强制（parseInt,parseFloat,number）
+
+隐式（== – ===）
+
+
+3.split() join() 的区别
+
+前者是切割成数组的形式，后者是将数组转换成字符串
+
+
+4.数组方法pop() push() unshift() shift()
+
+Push()尾部添加 pop()尾部删除
+
+Unshift()头部添加 shift()头部删除
+
+
+5.事件绑定和普通事件有什么区别
+
+
+6.IE和DOM事件流的区别
+
+1.执行顺序不一样、
+
+2.参数不一样
+
+3.事件加不加on
+
+4.this指向问题
+
+
+7.IE和标准下有哪些兼容性的写法
+
+Var ev = ev || window.event
+
+document.documentElement.clientWidth || document.body.clientWidth
+
+Var target = ev.srcElement||ev.target
+
+
+8.ajax请求的时候get 和post方式的区别
+
+一个在url后面 一个放在虚拟载体里面
+
+有大小限制
+
+安全问题
+
+应用不同 一个是论坛等只需要请求的，一个是类似修改密码的
+
+
+9.call和apply的区别
+
+Object.call(this,obj1,obj2,obj3)
+
+Object.apply(this,arguments)
+
+
+10.ajax请求时，如何解释json数据
+
+使用eval parse 鉴于安全性考虑 使用parse更靠谱
+
+11.b继承a的方法
+
+
+12.写一个获取非行间样式的函数
+
+
+function getStyle(obj,attr,value)
+
+{
+
+if(!value)
+
+{
+
+if(obj.currentStyle)
+
+{
+
+return obj.currentStyle(attr)
+
+}
+
+else
+
+{
+
+obj.getComputedStyle(attr,false)
+
+}
+
+}
+
+else
+
+{
+
+obj.style[attr]=value
+
+}
+
+}
+
+
+13.事件委托是什么
+
+让利用事件冒泡的原理，让自己的所触发的事件，让他的父元素代替执行！
+http://www.webasily.com/?p=78 例子可见此链接
+
+
+14.闭包是什么，有什么特性，对页面有什么影响
+
+闭包就是能够读取其他函数内部变量的函数。
+深入理解JavaScript的闭包特性 如何给循环中的对象添加事件 此链接可查看（问这个问题的不是一个公司）
+
+
+15.如何阻止事件冒泡和默认事件
+
+canceBubble return false
+
+
+16.添加 删除 替换 插入到某个接点的方法
+
+obj.appendChidl()
+
+obj.innersetBefore
+
+obj.replaceChild
+
+obj.removeChild
+
+
+17.解释jsonp的原理，以及为什么不是真正的ajax
+
+动态创建script标签，回调函数
+
+Ajax是页面无刷新请求数据操作
+
+
+18.javascript的本地对象，内置对象和宿主对象
+
+本地对象为array obj regexp等可以new实例化
+
+内置对象为gload Math 等不可以实例化的
+
+宿主为浏览器自带的document,window 等
+
+
+19.document load 和document ready的区别
+
+Document.onload 是在结构和样式加载完才执行js
+
+Document.ready原生种没有这个方法，jquery中有 $().ready(function)
+
+
+20.”==”和“===”的不同
+
+前者会自动转换类型
+
+后者不会
+
+
+21.javascript的同源策略
+
+一段脚本只能读取来自于同一来源的窗口和文档的属性，这里的同一来源指的是主机名、协议和端口号的组合
+
+
+22.编写一个数组去重的方法
+
+function oSort(arr)
+
+{
+
+var result ={};
+
+var newArr=[];
+
+for(var i=0;i<arr.length;i++)
+
+{
+
+if(!result[arr])
+
+{
+
+newArr.push(arr)
+
+result[arr]=1
+
+}
+
+}
+
+return newArr
+
+}
+简历   http://www.fenav.com/jianli/src/chenguangda_jianli.doc

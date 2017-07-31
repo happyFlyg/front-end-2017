@@ -1,0 +1,80 @@
+..............................................知乎，慕课，稀土掘金，推酷网，齐舞周刊，众诚翻译，segment..............................................
+前端资源库  https://www.awesomes.cn/
+
+奇舞周刊   https://weekly.75team.coml    前端网站
+
+http://c7sky.com/    好东西
+
+学习网站
+麦子学院              https://www.zhihu.com/question/46939006                   https://www.zhihu.com/question/46939006
+https://www.npmjs.com/      npm
+Stack Overlow  CSSlint
+
+https://weekly.75team.com/
+https://gold.xitu.io/
+http://www.zcfy.cc/
+https://segmentfault.com/
+http://www.tuicool.com/
+
+百度统计：
+http://tongji.baidu.com/data/browser
+
+
+插件：
+http://www.ijquery.cn/?cat=2
+
+https://github.com/facebook/react  2016-12-16   555830
+
+https://github.com/vuejs/vue        2016-12-16   36764
+新浪UED：http://ued.sina.com/
+
+支付宝PED：http://ped.alipay.com/
+
+支付宝UED官方网站：http://ued.alipay.com/
+
+百度MUX：http://mux.baidu.com/
+
+百度泛用户体验：http://www.baiduux.com/
+
+腾讯CDC：http://cdc.tencent.com/
+
+网易用户体验设计中心：http://uedc.163.com/
+
+阿里巴巴（中国站）用户体验设计部博客：http://www.aliued.cn/
+
+淘宝网用户体验团队博客：http://ued.taobao.com/blog/
+
+迅雷用户体验设计中心：http://cued.xunlei.com/
+
+携程UED：http://ued.ctrip.com/blog/
+
+UED大社区：http://ucdchina.com/
+
+W3Cfuns，与w3ctech，不会让你失望的
+
+http://f2er.club/
+
+http://imweb.io/
+
+http://www.alloyteam.com/
+
+http://www.haorooms.com/
+
+http://www.daqianduan.com/  大前端
+http://www.w3cplus.com
+
+博客阅读，经验分享：
+
+css3的属性常见http://www.cnblogs.com/libin-1/p/5903350.html
+
+移动端的click延迟问题  https://segmentfault.com/a/1190000005791890 
+对于需要同时绑定点击事件和滑动事件的元素，用tap事件，其他情况都用click事件即可。需要结合我的tap.js与fastclick.js来完美解决这个问题。
+http://www.360doc.com/content/16/0301/21/16915_538654460.shtml
+
+weinre 调试手机页面工具，Mac上的抓包工具Charles
+
+fiddler   是一个http协议调试代理工具，它能够记录并检查所有你的电脑和互联网之间的http通讯，设置断点，查看所有的“进出”Fiddler的数据
+ 
+ wos https://github.com/flykeying/regex 正则表达式
+
+动画  https://daneden.github.io/animate.css/

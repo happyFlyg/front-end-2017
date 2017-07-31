@@ -1,0 +1,22 @@
+1.cd/返回根目录
+2.exit 退出终端
+3.cd..返回上一目录
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vue
+1.vue -V 查看版本
+2.安装dependencies：cnpm install --production
+3.安装devDependencies：cnpm install
+4.vue list 查看官网的webpack

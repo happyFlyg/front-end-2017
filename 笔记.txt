@@ -1,0 +1,260 @@
+前端网址导航  备注：各种工具导航      http://www.fenav.com/#/p11
+
+sass   
+http://www.sasschina.com/
+less
+
+A.window.location.href="",与window.location.replace(url)区别，前者history.go(-1)会返回，后者不会返回，返回history.go(-2)。window.location.assign(url)
+
+http://hw1287789687.iteye.com/blog/2311604
+
+http://www.css88.com/webkit/-webkit-tap-highlight-color/
+
+http://www.cnblogs.com/libin-1/p/5903350.html
+
+
+B.slideToggle 闪烁  stop()或者stop（true,false）
+
+C.zoom:1。Zoom属性是IE浏览器的专有属性， 它可以设置或检索对象的缩放比例。
+
+在平常的css编写过程中，zoom:1能够比较神奇地解决ie下比较奇葩的bug。
+
+譬如外边距（margin）的重叠，譬如浮动的清除，譬如触发ie的 haslayout属性等等。
+
+
+
+
+D.display:table,display:table-cell 
+http://www.zhangxinxu.com/wordpress/2010/10/%E6%88%91%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E7%A7%8Ddisplaytable-cell%E7%9A%84%E5%BA%94%E7%94%A8/
+
+
+多行文本溢出显示省略号
+http://www.daqianduan.com/6179.html
+
+@import url()与link区别  @import只针对css的引用，而且不能用于dom操作，link是加载页面前把css加载完毕，@import读取文件后加载，出现闪烁效果
+  1，@import url（）机制是不同于link的，link是在加载页面前把css加载完毕，而@import url（）则是读取完文件后在加载，所以会出现一开始没有css样式，闪烁一下出现样式后的页面(网速慢的情况下)。
+2，@import 是css2里面的，所以古老的ie5不支持。
+3，当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。
+4，link除了能加载css外还能定义RSS，定义rel连接属性，@import只能加载css
+所以我认为结合来使用就最好，比如：<link href="css/main.css" rel="stylesheet" type="text/css">
+引用了一个main.css文件，在main.css里面再引用@import url(footer.css);@import url(head.css);
+这样达到一个清晰明了的作用.
+http://www.qdfuns.com/notes/17462/758c65e48b6791d8d3e81e3fa6a12751.html
+
+
+
+对于点击某些元素后出现的边框，去除的办法是：
+button:focus { 
+    outline: none；
+}
+
+用一个Firefox的私有伪元素
+
+button::-moz-focus-inner {
+    border: 0;
+}
+特别注意的是，-moz-focus-inner并不是reset outline，而是设置border。
+
+ 第一，RemoteObject整体效率要高于HttpService。             
+ 第二，关于查询时的效率比较，还要结合比较两者解析结果的时间。可以看到RemoteObject方式在解析时基本上不花时间的，如果花费了时间，也远比HttpService方式少。                
+ 第三，RemoteObject在查询大量数据时优势更明显。
+
+但是国人的一款在线工具 BeJson 、SoJson在线工具让众多程序员、新接触JSON格式的程序员更快的了解JSON的结构，更快的精确定位JSON格式错误。
+
+rem
+https://github.com/hbxeagle/rem/blob/master/README.md
+
+webpack
+http://www.jianshu.com/p/42e11515c10f#
+
+
+- node , 是javascript语言的环境和平台，
+- npm , bower 是一类，包管理，
+- webpack , browserify , 是一类，javascript预编译模块的方案，
+- requirejs , seajs , 是一类, 基于commonjs，amd，cmd，umd 之类的模块类包加载方案的框架，
+- grunt , gulp ,前端工具，合并、压缩、编译 sass/less，browser 自动载入资源，
+- react , angular , vue , backbone , 是一类，mvc , mvvm , mvp 之类的前端框架，
+- jquery , zepto , prototype , 是一类，前端 DOM , BOM 类库 ，
+- ext , yui , kissy , dojo , 是一类，前端应用组件，
+- underscore , 函数式编程库。
+WeFlow 微信构建工具
+
+
+npm bower区别
+https://www.zhihu.com/question/24414899
+
+event.stopPropagation()；event.preventDefault() 
+http://caibaojian.com/javascript-stoppropagation-preventdefault.html
+
+阻止事件冒泡
+window.event.cancelBubble = true;
+window.event.returnValue = false;
+			
+			
+jQuery点击区域外消失
+http://caibaojian.com/1087.html
+
+window.parent.contentFrame.location.replace(url);
+
+css3新特性的兼容性
+http://www.cnblogs.com/jesse131/p/5441199.html
+
+min-height  min-width 兼容问题
+http://www.cnblogs.com/pigtail/archive/2012/06/28/2568646.html
+http://www.jianshu.com/p/6bdabdf0c005  webpack+sass+vue教程
+
+
+pie.htc
+http://www.360doc.com/content/12/1214/09/11181348_253939277.shtml
+
+flex----------------------------------------ie10中必须写display:-ms-flexbox 子元素写-ms-flex
+div
+{
+	display:-moz-box; /* Firefox */
+	display:-webkit-box; /* Safari and Chrome */
+	display:-ms-flexbox; /* Internet Explorer 10 */
+	display:box;
+	width:300px;
+	border:1px solid black;
+}
+
+#p1
+{
+	-moz-box-flex:1.0; /* Firefox */
+	-webkit-box-flex:1.0; /* Safari and Chrome */
+	-ms-flex:1.0; /* Internet Explorer 10 */
+	box-flex:1.0;
+	border:1px solid red;
+}
+
+#p2
+{
+	-moz-box-flex:2.0; /* Firefox */
+	-webkit-box-flex:2.0; /* Safari and Chrome */
+	-ms-flex:2.0; /* Internet Explorer 10 */
+	box-flex:2.0;
+	border:1px solid blue;
+}
+
+
+去掉ie input 框的x
+::-ms-clear, ::-ms-reveal{display: none;}
+
+js内置对象只有两个：global对象和math对象，两者都是本地对象
+es5只有函数作用域和全局作用域，没有块级作用域（while,for）
+
+去除input的光标：focus 事件添加blur()
+
+css预处理器的分析
+http://efe.baidu.com/blog/revisiting-css-preprocessors/
+
+基于vue  js的移动端组件库
+http://mint-ui.github.io/#!/zh-cn mint_ui
+
+前端构建工具  cooking  http://elemefe.github.io/cooking/                 https://github.com/elemefe/cooking/
+each()return false 跳出循环
+
+字符串切割变成数组，数组join 变成字符串，reverse（）数组倒序
+var a="dadsad";
+a.split()
+["dadsad"]
+a.split('')
+["d", "a", "d", "s", "a", "d"]
+
+var b=['adasd'];
+b.join('')
+"adasd"
+
+var c=['a','b','c'];
+c.reverse()
+["c", "b", "a"]
+其中join  split 里面只写引号时，默认以逗号分隔
+
+浮动和margin 浮动和absolute
+
+array,num,date,string,boolean .toString()方法，其中num  toString(2)代表二进制转换。parseInt(string,8)代表以8进制转换字符串，parseFloat()没有进制可言
+
+屏蔽鼠标右键
+function listenRightDown(){
+	$(window).contextmenu(function(e){
+		if(e.button == 2){
+			return false;
+		}
+	});
+	document.oncontextmenu = function(){
+	    return false;
+	}
+}
+只用下面这句就好
+/**
+ * 屏蔽鼠标右键
+ */
+document.oncontextmenu = function(){
+	    return false;
+ }
+ setTimeout()
+ setTimeout(code,millisec)  code 是js代码串
+ 
+ js监听回车键
+ document.onkeypress=function(){
+        btnDomClick();
+     }
+     
+前端面试题  http://www.qdfuns.com/notes/23515/c9163ddd620baac5dd23141d41982bb8.html
+http://www.qdfuns.com/notes/32387/a945480347eecb5e7f34541b1237d3d2.html
+http://www.jobui.com/mianshiti/it/web/5066/
+https://www.zhihu.com/question/41466747?sort=created
+
+jquery 绑定事件的方法bind  on   live   delegate 但推荐的是on     http://caibaojian.com/jquery-on.html
+
+css技巧  http://caibaojian.com/css-protips.html  
+
+line-height 深入理解  http://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/
+
+浏览器的quick和standard模式的区别：
+浏览器判断文档类型：doctype类型和meta里面的x-ua-compatible,当这两者不存在的时候浏览器以quick模式解析 模式和standard模式的区别：1.quick模式:box-sizing:border-box;standard模式：box-sizing:content-box；2.quick模式可以给inline元素设置宽高，而standard不可以。3.溢出时，quick自动调整高度，和最高的一致，而standard不能调整大小。4.table字体大小继承，quick模式：不继承，sandard模式：继承。5.vertical-align，quick模式：bottom，standard模式：baseline。
+http://www.ibm.com/developerworks/cn/web/1310_shatao_quirks/
+
+calc() http://www.w3cplus.com/css3/how-to-use-css3-calc-function.html 很好的解决宽度100%，有margin的情况下溢出问题width:calc（100%-20px）,在less中这么写width:~"calc(100%-20px)"
+
+margin负值在ie6下必须写position:relative;  在ie7下写*zoom：1；
+当同一元素有float和absolute 时float不起作用；
+当浮动和负margin一起使用时，左浮动只能设置margin-left负值。右浮动只能设置margin-right负值
+
+nodejs安装在默认c盘下面  之后npm install -g cnpm --registry=https://registry.npm.taobao.org  再要使用到npm时输入cnpm即可
+
+function stopDefault(e) {
+	if (e && e.preventDefault) e.preventDefault();
+	//IE中阻止函数器默认动作的方式
+	else window.event.returnValue = false;
+	return false;
+}
+
+前端性能优化  https://www.zhihu.com/question/33032042
+性能查看插件WebPageTest、Google Page Speed、YSlow
+
+requestAnimationFrame
+http://www.ghugo.com/requestanimationframe-best-practice/
+
+鼠标滚轮事件  jQuery mousewhere插件（任务7百度作业）
+
+before 添加内容 div
+
+cookies劣势：1.大小只有4kb  2.cookies随http一起发送，会浪费发送cookies使用的宽带。3.cookies使用起来比较复杂
+
+注：
+1、onselectstart事件不被input和textarea标签支持，而onselect事件只被input和textarea支持。
+2、Firefox/Opera不支持onselectstart事件Firefox中可以使用CSS "-moz-user-select:none"属性来禁止文本选定
+3、webkit浏览器可以使用“-khtml-user-select”，当然也可以使用onselectstart事件来阻止用户选定元素内文本，如下
+<div onselectstart="return false">accc</div>
+<body onselectstart="return false"> 
+.aa{gn:expression(this.onselectstart=function(){return false;})} 
+
+在ie9以下事件是挂在window上的，不是document上
+ie9以下 attachEvent onclick
+http://www.cnblogs.com/xiaohuochai/p/5828369.html
+
+图片延迟加载lazyload.js
+
+meta标签介绍
+http://www.imooc.com/article/4475

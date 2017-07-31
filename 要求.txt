@@ -1,0 +1,86 @@
+学习进度：vue.js______es6___________webpack___________h5 css3_______________前端规范（代码规范和app）______________整理代码__________Ajax_______________gzip__________前端性能优化
+websocket__________socket
+安装fireBug插件 和 page speed插件
+整体：
+前端自动化工具（Gulp/Grunt等）
+模块化（CommonJS，AMD/CMD模块加载器，各种Bundler，ES2015 Modules等）
+前端 MV* 框架（Backbone，Angular等）
+编译到 CSS 和 JS 的一些语言（Less/Sass/CoffeeScript等）
+前端自动化测试工具（Karma，Mocha，Web Driver等）
+
+es6地址：http://es6.ruanyifeng.com/#docs/module                     http://www.cnblogs.com/Wayou/p/es6_new_features.html
+
+熟悉http/xml/json/webservices/rest等网络通信技术
+
+3、熟悉HTML5及CSS3特性，包括(localStorage/Application Cache/CSS 3.0标准)；
+
+有Web App或Hybrid App的研发经验优先。
+
+8. 熟悉 JS 建站工具如 Grunt 等，熟悉 CSS 编译工具及语言如 LESS
+
+9、有 github 项目或个人博客优先；
+
+1、使用 html5（jade 等），js（coffee 等），css3（sass 等）开发项目； 
+2、开发中使用 jquery（zepto 等），angular（react 等）； 
+3、在 nodejs 环境下尝试过 express，grunt，gulp，webpack 等等； 
+
+熟悉Gulp、Webpack、Bower，能熟练配置各类gulp任务；
+
+3、熟练使用javascript、ajax、jQuery，有与服务端数据交互的经验。
+
+4、了解MVC开发架构，熟悉js面向对象开发，有Web App开发经验者优先。
+
+3、理解并掌握Javascript语言核心技术DOM、BOM、Ajax、JSON等；
+4、对CSS/Javascript性能优化、解决多浏览器兼容性问题有一定的经验；
+
+同程：
+
+2.精通html/xhtml，css，熟悉页面架构和布局；
+ 熟练运用JavaScript/jQuery/Ajax完成服务器交互及动态效果；
+3.熟悉Web标准，对表现与数据分离，html语义化等有较深刻理解；
+ 
+4.熟悉js的特性，运行机制，熟练的设计和开发js 的实践经验； 
+
+5.熟悉jQuery/YUI/MooTools/Dojo中至少一种框架，特别是jQuery；理解其设计原理、应用特点、适用场景，可以灵活的将一些思想运用到日常开发中；
+ 
+6.有丰富的关于Web标准、易用性、浏览器端原理以及网站性能等方面的知识； 
+
+7.有asp 、asp.net、php 或 jsp 相关经验的优先 
+加分项: 会用Google; 有 Github 账号，向开源社区贡献过代码或Stackoverflow解答问题； 有个人技术Blog。
+
+
+2、对用户体验、交互设计等有一定了解；对页面代码结构及前端交互性能有深入的理解；
+3、精通HTML5/CSS3/JavaScript/Ajax和W3C标准，熟悉移动端页面开发，能熟练运用HTML5、CSS进行PC端网页制作和构建移动端WebApp；
+4、至少掌握一种常用的前端框架，有丰富的移动端兼容性适配的实施经验；
+5、熟悉Web前端与后端交互数据接口定义并有相应项目经验；
+6、优秀的创意构思能力及审美素养，有像素级的追求、敏锐的观察力及分析能力；
+7、良好的沟通和表达，善于团队合作，学习能力强，富有工作激情、主动性和责任感。
+
+任职资格：
+1.	软件工程或计算机及其相关专业,精通htmlhtml5、csscss3
+2.	熟悉Web标准，对表现与数据分离、html语义化等有较深刻理解
+3.	熟练掌握jQuery、zepto，熟悉angularJS、VUE、requireJsseaJS、等前端常用的主流框架，并对框架的实现机制有一定的了解
+4.	对原生javascript知识有一定的掌握，并有原生代码编写实战经验
+5.	有丰富的关于Web标准、易用性、浏览器端原理以及网站性能等方面的知识
+6.	要求2年以上前端开发工作经验，且至少1年以上移动端前端开发经验，对移动端Web技术主流框架思想和新的前端思想要有所认识和关注
+7.	了解一门后台编程语言（PHPjspJAVA.NET
+odeJs）优先
+8.	具有微信开发经验者优先
+
+岗位要求：
+1.计算机软件、通信工程、自动化等相关专业，本科以上学历，3年以上相关开发经历；
+2. 熟练掌握前端开发技术(HTML5、JS、ExtJS、Json、XHTML、CSS3)，了解各项技术的相关标准，并严格按照标准进行开发，熟练使用Sencha框架能与后台开发人员一起编写Ajax交互程序；
+3. 熟悉手机端和PC端web实现的差异，有移动平台web前端开发经验；
+4. 精通DIV+CSS和W3C标准，能熟练运用XHTML、CSS进行合理的网页制作，深刻理解各主流浏览器之间的兼容性；
+5. 熟练掌握设计软件，如：Photoshop，Fireworks，Dreamweaver；
+6. 善于使用前端的基本调试工具(如：Firebug)，熟练手写代码，能够准确细致地规划CSS结构；
+7. 熟悉交互设计，对可用性、可访问性等用户体验知识有相当的了解和实践经验；
+8. 有智慧城市项目开发者优先；
+9. 有HTML5的Canvas以及SVG开发经验者优先;
+
+1.精通HTML5/CSS3/JavaScript/Ajax/Less和W3C标准。对表现与数据分离，html语义化等有较深刻理解； 
+2.熟悉移动端页面开发，能熟练运用HTML5、CSS进行PC端网页制作和构建移动端WebApp；
+3.能够熟练解决各个主流浏览器兼容性问题；
+3.理解并掌握Javascript语言核心技术DOM、BOM、Ajax、JSON等，熟练运用JavaScript/jQuery/Ajax完成服务器交互及动态效果，熟练JS对象编程和jQuery框架；
+4.熟练Vue、bootstrap框架，了解angularjs、React；
+5.熟练使用SVN、sublime、webpack、ps等工具；
