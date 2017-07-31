@@ -1,0 +1,16 @@
+{
+  "name": "liaoli",
+  "version": "1.0.0",
+  "description": "description",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "json-loader": "^0.5.4",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "scripts": {
+    "start": "webpack"
+  },
+  "author": "",
+  "license": "ISC"
+}

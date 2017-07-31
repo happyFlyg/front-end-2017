@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ol>
+        <li>node执行es6：babel-node pages.js</li>
+        <li>cmd 退到上一层文件夹 cd..</li>
+    </ol>
+    <h2>browser-sync</h2>
+    <ol>
+        <li>cnpm install browser-sync -g</li>
+        <li>本项目中安装依赖 cnpm install browser-sync --save-dev</li>
+        <!-- 以下只是启动服务  并没有实时监听 -->
+        <li>browser-sync start --server</li>
+        <!-- 实时监听 刷新文件 -->
+        <li>browser-sync start --server -f "lib/*.js"</li>
+        <li>教程地址：http://www.browsersync.cn/</li>
+    </ol>
+    <h2>cnpm批处理文件：</h2>
+    <ol>
+    	<li>scripts里面 "build"："cnpm run XXX&&cnpm run XXX"</li>
+    	<li>cnpm run build</li>
+    </ol>
+    <p>// --files 路径是相对于运行该命令的项目（目录） browser-sync start --server --files "css/*.css, *.html" // 如果你的文件层级比较深，您可以考虑使用 **（表示任意目录）匹配，任意目录下任意.css 或 .html文件。 browser-sync start --server --files "**/*.css, **/*.html"</p>
+    <p>browser-sync http-server(socket)----基于nodejs </p>
+</body>
+
+</html>

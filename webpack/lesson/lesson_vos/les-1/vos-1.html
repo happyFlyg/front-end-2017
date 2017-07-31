@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>babel</title>
+</head>
+<body>
+	<ol>
+	    <li>cnpm init 初始化</li>
+		<li>cnpm install babel-cli --save-dev</li>
+		<li>babel的配置文件：新建.babelrc文件</li>
+		<li>.babelrc文件里面写：{"presets":["es2015"],"plugins":[]}</li>
+		<li>安装es5标准：cnpm install --save-dev babel-preset-es2015</li>
+		<!-- 编译单个文件 -->
+		<li>babel es6.js -o es5.js</li>
+		<!-- 编译文件夹下的es6 文件 -->
+		<li>babel es6 -d es5</li>
+		<!-- 实时编译文件夹 watch-->
+		<li>babel --watch es6 -d es5</li>
+		<li>ctrl+C 终止批处理</li>
+		<!-- 综合处理 -->
+		<li>在package.json scripts 里面设置 "build":"babel es6 -d lib" </li>
+	</ol>
+</body>
+</html>

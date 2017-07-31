@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>json-loader babel</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <h2>json-loader：cmd的方式</h2>
+    <ol>
+        <li>cnpm install json-loader --save-dev</li>
+        <li>index.js里面：
+            <pre>
+		   	define(["./stu.json"],function(stu_json){
+		   		console.log(stu_json.name);
+		   		return document.getElementById("test").innerHTML=txt;
+		   	})
+		   </pre>
+        </li>
+        <li>
+            config.js文件里面：
+            <pre>
+				module: {
+					loaders: [{
+						test: /\.json$/,
+						loader: "json"
+					}]
+				}
+			</pre>
+        </li>
+        <li>
+            webpack ./src/js/index.js ./assets/js/index.js
+        </li>
+        <li>
+            cnpm start
+        </li>
+    </ol>
+    <h2>babel：</h2>
+    <ol>
+    	<li>cnpm install babel-core babel-loader babel-preset-es2015 babel-preset-react --save-dev</li>
+    	<li></li>
+    </ol>
+</body>
+<script src="temp/index.js"></script>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>watch </title>
+</head>
+<body>
+	<ol>
+		<li>cnpm install uglify-js -g</li>
+		<li>cnpm install uglify-js --save-dev</li>
+		<li>uglifyjs assets/js/index.js -o assets/js/index.min.js</li>
+		<li>或者以下方法（-m -o）,压缩的更小</li>
+		<li>uglifyjs assets/js/index.js -m -o assets/js/index.min.js</li>
+	</ol>
+    <h3>注意：</h3>
+    <ol>
+    	<li>-m是混淆，-o是输出。-m -o 必须是先混淆后输出</li>
+    </ol>
+</body>
+</html>

@@ -1,0 +1,1 @@
+webpackJsonp([1,3,4],[function(o,n,c){c(3),o.exports=c(4)},,,function(o,n){console.log("我是a")},function(o,n){console.info("我是b")}]);

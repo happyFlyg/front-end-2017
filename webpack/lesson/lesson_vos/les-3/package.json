@@ -1,0 +1,17 @@
+{
+  "name": "les-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build":"cnpm run build_es5&& cnpm run build_watch",
+    "build_es5": "babel src -d lib",
+    "build_watch":"browser-sync start --server -f lib/*.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.18.8"
+  }
+}

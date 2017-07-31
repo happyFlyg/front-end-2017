@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一切皆模块</title>
+</head>
+<body>
+	<div id="wel"></div>
+	<h2>引入jquery模块</h2>
+	<ol>
+		<li>cnpm install jquery -g</li>
+	</ol>
+	<h2>css 打包</h2>
+	<ol>
+		<li>cnpm install css-loader --save-dev</li>
+		<li>cnpm install style-loader --save-dev</li>
+		<li>
+			<pre>
+				module:{
+					loaders:[
+					   {
+					   	test:/\.css$/,
+					   	loader:'style-loader!css-loader'
+					   }
+					]
+				}
+			</pre>
+		</li>
+	</ol>
+	<h2>less：</h2>
+	<ol>
+		<li>
+			<pre>
+				module:{
+					loaders:[
+					   {
+					   	test:/\.css$/,
+					   	loader:'style-loader!css-loader'
+					   },
+					   {
+					   	test:/\.less$/,
+					   	loader:'style!css!less'
+					   }
+					]
+				}
+			</pre>
+		</li>
+	</ol>
+	<h2>css中嵌套另外一个css</h2>
+	<ol>
+		<li>主文件写：@import url('./font.css')</li>
+	</ol>
+	<h2>less less-loader：</h2>
+	<ol>
+		<li>同时安装less-loader和less：cnpm install less-loader less --save-dev</li>
+	</ol>
+	<h3>注意：</h3>
+	<ol>
+		<li>引用时主模块引用就够了，子模块不能引用，不然打包后会非常庞大</li>
+		<li>loader里面多项用！链接</li>
+	</ol>
+</body>
+<script src="temp/index.js"></script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>webpack</title>
+</head>
+
+<body>
+    <h2>webpack ：模块化打包工具</h2>
+    <ol>
+        <li>cnpm install webpack -g</li>
+        <li>cnpm init</li>
+        <li>cnpm install webpack --save</li>
+        <li>直接写路径导出：webpack src/js/index.js assets/js/index.js</li>
+    </ol>
+    <h2>配置工具：</h2>
+    <ol>
+        <li>根目录建立一个文件webpack.config.js</li>
+        <li>
+            <pre>
+    			module.exports={    	 
+    			   entry: __dirname + "/src/js/index.js",
+    			   output: {
+    			   	path: __dirname + "/assets/js",
+    			   	filename: "index.js"
+    			   }
+    	        }
+    		</pre>
+        </li>
+        <li>webpack</li>
+        <li>
+        	<ol>
+        		<li>另外一种方法：</li>
+        		<li>package.json文件里面：
+        		   <pre>
+        		   	 "scripts": {
+        		   	   "start": "webpack"
+        		   	 }
+        		   	 cnpm start
+        		   </pre>
+        		</li>
+        	</ol>
+        </li>
+    </ol>
+    <h3>注意：</h3>
+    <ul>
+        <li>gulp优化了前端工作流</li>
+        <li>使用webpack时，文件夹不能用webpack命名，会报错</li>
+        <li>前端构建工具的骨架：
+            <ol>
+                <li>开发环境(src文件夹>css,js,images,lib(外部引用的库（jq,vue,react）))</li>
+                <li>测试环境(db)</li>
+                <li>生产环境（assets(Android环境下此文件夹不被编译)文件夹）</li>
+            </ol>
+        </li>
+        <li>路径中斜杠不能少</li>
+        <li>当script名称是start时，直接cnpm start,其它都要加run,例如：cnpm run build</li>
+    </ul>
+</body>
+
+</html>

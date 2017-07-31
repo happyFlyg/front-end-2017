@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>less-css</title>
+</head>
+<body>
+	<ol>
+		<li>cnpm install less -g</li>
+		<li>cnpm install less --save-dev</li>
+	</ol>
+	<ol>
+		<li>lessc 帮助文档</li>
+		<li>lessc less/index.less index.less</li>
+	</ol>
+	<h2>lessc 压缩编译less</h2>
+	<ol>
+		<li>cnpm install less less-plugin-clean-css -g</li>
+		<li>cnpm install --save-dev less less-plugin-clean-css</li>
+		<!-- lessc 压缩编译less -->
+		<li>lessc ./index.less > index.css --clean-css</li>
+	</ol>
+	<h2>js压缩</h2>
+	<ol>
+		<li>cnpm install uglifyjs -g</li>
+		<li>cnpm install uglifyjs --save-dev</li>
+		<!-- 注意：-o -->
+		<li>uglifyjs index.js -o index.min.js</li>
+		<li>先混淆后压缩 uglifyjs index.js -m -o index.min.js。注意：-m在前面</li>
+	</ol>
+</body>
+<script scr="index.js"></script>
+</html>

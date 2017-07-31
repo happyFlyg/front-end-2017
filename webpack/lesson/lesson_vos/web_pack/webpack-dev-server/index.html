@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>webpack-dev-server</title>
+</head>
+<body>
+<h2></h2>
+<h2>步骤：</h2>
+	<ol>
+		<li>cnpm init -y</li>
+		<li>cnpm install webpack --save-dev</li>
+		<li>安装jquery依赖：cnpm install jquery --save</li>
+	</ol>
+	<h2>webpack-dev-server：</h2>
+	<ol>
+		<li>cnpm install webpack-dev-server -g</li>
+		<li>cnpm install webpack-dev-server --save-dev</li>
+		<li>
+			<pre>
+				module.exports={
+					entry: __dirname + "/src/js/index.js",
+					output: {
+						path: __dirname + "/assets/js",
+						filename: "index.js",
+						publicPath:"/temp/"
+					},
+					devServer:{
+						contentBase:"./",
+						host:"192.168.1.125",
+						port:'8080',
+						color:true
+					}
+				}
+			</pre>
+		</li>
+		<li>最后访问：http://192.168.1.125:8080/</li>
+		<li>实时编译刷新：webpack-dev-server --inline或者webpack-dev-server --iFrame</li>
+		<li>计算哪个页面的哪个部分改变了：
+		webpack-dev-server --inline --hot
+		</li>
+	</ol>
+	<h3>注意:</h3>
+	<ol>
+		<li>--save-dev（开发环境的依赖）与--save（生产环境依赖）。输入cnpm install安装两种依赖，输入cnpm install --production安装save依赖</li>
+		<li>cnpm init -y 加上y后直接生成package.json文件</li>
+		<li>cnpm install webpack@1 -g 安装1.0版本@1</li>
+		<li>cnpm install webpack-dev-server@1 -g</li>
+		<li>引用时引用缓存里面的temp</li>
+		<li>当使用--hot（只刷新改变的部分，常用于spa页面）时，要引入webpack.
+		<pre>
+			var webpack=require('webpack');
+		</pre></li>
+		<li>webpack 在服务端使用热查，像淘宝大型网站可以用，常用前端框架都有热查功能</li>
+	</ol>
+</body>
+<script src="temp/index.js"></script>
+</html>
