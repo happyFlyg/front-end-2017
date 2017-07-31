@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>wos_lianxi</title>
+    <style>
+    .class_a {
+        background: #f3f3f3
+    }
+    
+    .class_b {
+        color: red
+    }
+    
+    .class_c {
+        width: 100px;
+        height: 100px
+    }
+    </style>
+</head>
+
+<body>
+    <!-- class -->
+    <div id="app">
+        <ol>
+            <li :class="{'class_a':isRed}">"[class_a,isRed]"</li>
+            <li :class="[class_A,class_B]">[class_A,class_B]</li>
+            <li :class="{'class_a':isRed,'class_b':isRed}">{'class_a':isRed,'class_b':isRed}</li>
+            <li :class="[class_A,{'class_c':isC}]">"[class_A,{class_c:isC}]"</li>
+        </ol>
+    </div>
+</body>
+<script src="../../lesson/js/vue.min.js"></script>
+<script>
+var app = new Vue({
+    el: "#app",
+    data: {
+    	class_A:'class_a',
+    	class_B:'class_b',
+    	class_C:'class_c',
+        isRed: true,
+        isC:true
+    }
+})
+</script>
+
+</html>

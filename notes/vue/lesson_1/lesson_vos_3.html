@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>输出文本(v-on:) == @click</title>
+</head>
+<style>
+body{
+	padding:20px;
+}
+.red {
+    color: red;
+}
+
+.back {
+    background: #ddd
+}
+
+.color {
+    color: blue;
+}
+
+.class_c {
+    width: 100px;
+    height: 100px;
+}
+</style>
+
+<body>
+    <div id="app">
+        <!-- v-text直接输出： <b>hello</b> vue -->
+        <p v-text="message" v-if="is_show"></p>
+        <div v-show="is_show">廖丽廖丽</div>
+        <span>@keyup.enter</span>
+        <input type="text"@keyup.enter="sh" />
+        <p> <span>@keyup.13</span>
+            <input type="text" @keyup.13="sh" />
+        </p>
+        <!-- v-html 输出内容： hello vue -->
+        <p v-html="message"></p>
+        <button v-on:click="sh">显示隐藏</button>
+        <p :title="'廖丽'">liaoliliaoli</p>
+        <!-- v-bind -->
+        <h2>v-bind:</h2>
+        <div>
+            <!-- 简写 -->
+            <img :src="img_src" width="200px" />
+            <!-- 正常书写 -->
+            <img v-bind:src="img_src" width="200px" />
+        </div>
+        <!-- class -->
+        <h2>class:</h2>
+        <ol>
+            <li :class="{red:isRed}">绑定class true/false来判断字体的颜色{red:isRed}</li>
+            <li :class="[class_A,class_B]">[class_A,class_B]</li>
+            <li :class="{'back':isA,'color':isB}">"{'back':isA,'color':isB}"</li>
+            <li :class="[class_A,{'class_c':isC}]">"[class_A,{'class_c':isC}]"</li>
+        </ol>
+        <h2>style:</h2>
+        <ol>
+        	<li :style="{fontSize:size+'px'}">fontSize</li>
+        	<li :style="[styleObjectA,styleObjectB]">styleObjectA,styleObjectB </li>
+        </ol>
+    </div>
+     <!-- 简写方式 -->
+        <h2>简写方式:</h2>
+        <ol>
+            <li>绑定的简写方式是：:src=""</li>
+            <li>事件的简写方式是：@click=""</li>
+        </ol>
+        <h2>v-show  用css控制显示隐藏，v-if预加载，经常显示隐藏的用v-show，大块显示隐藏用v-if</h2>
+        <ol>
+        	<li>v-if 预加载,v-show  用css控制显示隐藏</li>
+        	<li>经常显示隐藏的用v-show 避免调用浏览器</li>
+        	<li>v-if 预加载，显示速度快一些，v-show 没有预加载，显示速度不影响</li>
+        </ol>
+</body>
+<script src="../lesson/js/vue.min.js"></script>
+<script>
+var app = new Vue({
+    el: "#app",
+    data: {
+        message: "<b>hello</b> vue",
+        is_show: true,
+        img_src: "../images/timg.jpg",
+        isRed: true,
+        class_A: 'back',
+        class_B: 'color',
+        class_C: 'class_c',
+        isA: true,
+        isB: true,
+        isC: true,
+        size:55,
+        styleObjectA:{
+        	color:"#f0f0f0"
+        },
+        styleObjectB:{
+        	fontSize:"66px"
+        }
+    },
+    methods: {
+        sh: function() {
+            if (this.is_show == true) {
+                this.is_show = false;
+            } else {
+                this.is_show = true;
+            }
+        }
+    },
+    watch: {}
+})
+</script>
+
+</html>

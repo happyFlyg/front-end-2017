@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式练习</title>
+</head>
+
+<body>
+    <p>#fff002</p>
+    <p>2351811698@qq.com</p>
+    <p>21_8227-98@vip.qq.co`m</p>
+</body>
+<script>
+// alert("niahoaoapoa\n激发激发非框架拉开发了")
+var regexp_1 = /[\w.]+@[\w.]+\w/; //邮箱1
+var regexp_str = regexp_1.exec("27738.17091@vip.qq.com");
+document.write("邮箱匹配1：" + regexp_str + "<br>");
+var regexp_2 = /[\w.-]+@[\w.]+\w/; //邮箱2  加号表示中间匹配任意的数字，加号前面必须有东西
+var regexp_str_02 = regexp_2.exec("277-38.17091@vip.qq.com")
+document.write("邮箱匹配2：" + regexp_str_02 + "<br>");
+var regex = /#\w{3,6}/; //颜色值三到六位数字
+var color_str = regex.exec("#000");
+document.write("匹配颜色值：" + color_str + "<br>");
+document.write("下划线："+(/[\w]{1,}/g).exec("45_fdd")+ "<br>");
+var spot_regexp=/#.{3,}/;//点儿代表一段话的结尾
+var spot_regexp_str=spot_regexp.exec("# 你好吗,我还好啊。哈哈哈");
+document.write("点儿代表一段话的结尾："+spot_regexp_str+ "<br>");
+var num_regexp=/\$?[0-9]{3}./;
+var num_regexp_str=num_regexp.exec("123.13");
+document.write("$  大于一百的数字："+num_regexp_str+ "<br>");
+//匹配字数
+var code_regexp=/<[bB]>.+<\/[bB]>/;//贪婪型搜索
+var code_regexp_str=code_regexp.exec("You <B>can</B>use<b>the design</b>of your regular");
+console.info("贪婪型搜索标签内的字符："+code_regexp_str);//<B>can</B>use<b>the design</b>
+var lazy_regexp=/<[bB]>.+?<\/[bB]>/;//懒惰型  加一个问号就可以了
+var lazy_regexp_str=lazy_regexp.exec("You <B>can</B>use<b>the design</b>of your regular");
+console.log("懒惰型搜索标签内的字符："+lazy_regexp_str);
+document.write("懒惰型搜索标签内的字符："+lazy_regexp_str+ "<br>");
+//单词边界 \b
+var boundary_regexp=/\bcan\b/;
+var boundary_regexp_str=boundary_regexp.exec("you can cat are darycat");
+console.warn("单词边界："+boundary_regexp_str);
+//查找有多少个单词用过cat字符
+var un_boundary_regexp=/\Bcat[\b\B]*/;
+var un_boundary_regexp_str=un_boundary_regexp.exec("you can cat are darycat");
+console.info("非单词边界："+un_boundary_regexp_str);
+//查找判断html文档/^\s*<!DOCTYPE html>\n/          \n代表换行
+//子表达式
+var child_regexp=/(\d{1,3}\.){3}(\d{1,3})/;
+var child_regexp_str=child_regexp.exec("192.168.1.161");
+console.log("子表达式："+child_regexp_str);//子表达式：192.168.1.161,1.,161     逗号后面是每个子表达式返回的最后一个结果，方便查找错误
+//查询日期
+var searchDate_regexp=/(-\d{1,2}){2}/;
+var searchDate_regexp_1=/(\d{4})-/;
+var searchDate_regexp_str=searchDate_regexp.exec("2010-9-10");
+var searchDate_regexp_str_1=searchDate_regexp_1.exec("2010-9-10");
+console.info("查询月日："+searchDate_regexp_str);
+console.log("查询年份："+searchDate_regexp_str_1);
+//ip地址验证  //1-99   (\d{1,2})
+//1开头的三位数字      (1\d{2})
+//2开头，后面0-4       (2[0-4]\d)
+//25开头，第三位数0-5  (25[0-5])
+//ip地址验证   /(((\d{1,2})|(1\d{2})|(2[0-4]\d)|(25[0-5]))\.{3}(\d{1,3}))/
+//(((\d{1,2})|(1\d{2})|(2[0-4]\d)|(25[0-5]))\.){3}(\d{1,3})
+</script>
+
+</html>

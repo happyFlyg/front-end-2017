@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition</title>
+	<style>
+		*{
+			padding:0;
+			margin:0
+		}
+		li{
+			list-style-type: none
+		}
+		.transition_ul{
+			display: table;
+		}
+		.transition_ul li{
+			display: table-cell;
+			width:15%;
+            height:50px;
+            margin-right:10px;
+            background: #fff;
+            border:1px solid #d9d9d9;
+            transition:box-shadow 0.15s ease-in-out,transform 0.15s ease-in-out;
+		}
+		.transition_ul li:hover{
+			box-shadow: 0 7px 20px #f3f3f3;
+			transform: translateY(-3px); 
+		}
+	</style>
+</head>
+<body>
+	<ul class="transition_ul">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

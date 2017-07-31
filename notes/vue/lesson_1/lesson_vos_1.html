@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-for v-if</title>
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+            <li> v-if:控制显示隐藏
+                <p v-if="num">{{message}}</p>
+                <p>{{num?"yes":"no"}}</p>
+            </li>
+            <li>v-for:循环
+                <ul>
+                    <li v-for="(num,todo) in todos">{{num}}-{{todo.text}}</li>
+                    <!-- 新版本一般写of -->
+                    <li>新版本一般写v-for  of</li>
+                    <li v-for="todo of todos" v-text="todo.text"></li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    <ol>
+    	<li>push()向数组末尾添加项，并返回新的长度</li>
+    	<li>pop()删除并返回数组末尾一项</li>
+    	<li>shift()删除并返回数组第一项</li>
+    	<li>unshift()向数组的开头添加一个或更多元素，并返回新的长度。</li>
+    	<li>splice()删除元素，并向数组添加新元素。
+         arrayObject.splice(index,howmany,item1,item2)
+    	</li>
+    	<li>sort()对数组的元素进行排序</li>
+    	<li>reverse()颠倒数组中元素的顺序。</li>
+    </ol>
+</body>
+<script src="../lesson/js/vue.min.js"></script>
+<script>
+var app = new Vue({
+    el: "#app",
+    data: {
+        num: true,
+        message: "hello liao!",
+        todos: [{
+            text: "one"
+        }, {
+            text: "two"
+        }]
+    }
+});
+app.todos.push({ text: "three"},{ text: "push添加多项"});//原生添加一个
+app.todos.unshift({text: "向数组头部加元素"});
+
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/car.css">
+    <title>cart</title>
+</head>
+<body>
+    <div class="container" id="app">
+       <div class="title">
+           <div class="pro_msg">商品信息</div>
+           <ul class="flex">
+               <li>商品金额</li>
+               <li>商品数量</li>
+               <li>总金额</li>
+               <li>编辑</li>
+           </ul>
+       </div>
+       <ul class="content">
+           <li>
+               <div class="pro_msg">
+                   <span class="select_list">
+                       <span class='select_list_click'></span>
+                   </span>
+                   <img src="" alt="">
+                   <span>
+                       <p>香烟名称</p>
+                       <p>赠送：<span class="gift">XXX</span></p>
+                   </span>
+               </div>
+               <ul class="flex">
+                   <li>19</li>
+                   <li>
+                      <span>-</span>
+                      <input type="text">
+                      <span>+</span>
+                   </li>
+                   <li class="red">0.00</li>
+                   <li class="delete">删除</li>
+               </ul>
+           </li>
+       </ul>
+       <div class="bottom">
+           <span class="select_list"></span>
+           <span>全选</span>
+           <span>取消全选</span>
+           <div class="right">
+               <span>总金额：</span>
+               <button>结账</button>
+           </div>
+       </div>
+    </div>
+</body>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script src="js/car.js"></script>
+</html>

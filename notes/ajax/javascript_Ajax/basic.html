@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX基础DEMO</title>
+	<script src="js/basic.js"></script>
+</head>
+<body>
+	<button onclick="testCreatXhr();">创建XHR对象</button>
+	<script>
+		function testCreatXhr(){
+			var xhr=creatXHR2();//basic文件里的方法
+			xhr.open('GET','http://test/keyword/hit?keyword=c',true,'用户名','密码');//用户名和密码是可选项，true代表异步，false代表同步，当服务器需要用户名密码验证的时候需要第四第五个参数
+			xhr.setRequestHeader("Content-Type","application/json");
+			xhr.setRequestHeader("test","value");//自定义头部
+			xhr.send();
+			//xhr.timeout=1
+			//console.log(xhr);
+			xhr.onloadend=function(){
+				console.log('loadend,%s',xhr.responseText);
+			}
+			/**
+			 * POST方法
+			 */
+			xhr.open("POST",'http://test/keyword/hit',true,"用户名","密码");
+			xhr.setRequestHeader("Content-Type","application/json")//Content-Type告诉服务器请求的数据类型
+			xhr.send('keyword=c&other=test');//通常是urlencoded方式发送给服务器，也可以是json数据，数据参数放在request body里面
+			/**
+			 * json形式传递数据
+			 */
+			xhr.send(JSON.stringify({
+				keyword:"c",
+				other:"test"
+				}));
+			// 不能直接发送json对象，http请求只能发文本格式，要将json对象进行序列化变成json字符串（JSON.stringify）;
+			// 对于不支持内置json对象的浏览器使用json2.js库
+			/**
+			 * 超时设置
+			 */
+			xhr.timeout=5000;
+			xhr.ontimeout=function(){//超时函数
+				console.log('timeout');
+			}
+			/**
+			 * 仅xhr level2支持
+			 */
+			xhr.onload=function(){
+				if(xhr.status==200){
+					console.log('load,%s',xhr.responseText);
+				}
+			}
+			/**
+			 * 传统方式 全部兼容
+			 */
+			xhr.onreadystatechange=function(e){
+				if(xhr.readyState===4&&xhr.status==200){
+					console.log(xhr.responseText);//json 字符串转化成对象
+					JSON.parse();
+					eval(xhr.responseText)//浏览器没有json内置对象
+					console.log(xhr.responseXML);
+					console.log(xhr.getAllResponseHeaders());
+					console.log(xhr.getResponseHeader("Content-Type"));
+					console.log(xhr.status);//状态码
+					console.log(xhr.statusText);//状态文本
+				}
+				//http status 500错误  200正确 403请求被拒绝，没有权限  404请求没有找到对应资源
+				//readyState 5种状态
+				//0：未初始化
+				//1：连接建立、请求发出
+				//2：服务器返回响应
+				//3：交互（处理响应数据）
+				//4：完成，数据可交付客户端使用
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>less练习</title>
+    <link rel="stylesheet" href="../common/common.css" />
+    <style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .container {
+        width: 100%;
+        height:100%;
+        margin: 0 auto;
+        background: #ddd;
+    }
+    
+    .container:after {
+        clear: both;
+    }
+    
+    .container div {
+        height: 100%;
+        border: 1px solid red;
+        color: #fff;
+    }
+    
+    .content {
+    	width:100%;
+        float: right;
+        margin-left:-100%;
+        background: green;
+    }
+    
+    .menu {
+    	float: left;
+    	width: 200px;
+        background: #333
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">content</div>
+        <div class="menu">menu</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+/* 被编译的 */
+/* @变量名：值 */
+.box {
+  width: 100px;
+  height: 100px;
+  border: 3px solid pink;
+}
+.border {
+  border: 3px solid pink;
+}
+.box_2 {
+  width: 100px;
+  height: 100px;
+  border: 3px solid pink;
+  margin-left: 20px;
+}
+.test_hunhe {
+  border: 20px solid red;
+}
+.test_hunhe_03 {
+  border: 5px solid green;
+}
+.radius_test {
+  width: 100px;
+  height: 40px;
+  background: green;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+/* .arrow{
+	height:0;
+	width:0;
+	overflow: hidden;//处理ie6最小高度
+	border-width: 10px;
+	border-color: red transparent transparent transparent;
+	border-style:solid dashed dashed dashed;//dashed处理ie6的黑边
+} */
+/* //@_不管是上面选择哪个方向，都会带着这个公共的样式 */
+.arrow {
+  border-width: 100px;
+  border-color: transparent transparent transparent green;
+  border-style: dashed dashed dashed solid;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+/* //匹配模式——定位 */
+.position {
+  position: relative;
+}
+/* 运算 */
+.box_02 {
+  width: 320px;
+  color: #d6d6d6;
+}
+/*嵌套*/
+/* &代表上一层选择器 */
+.list {
+  width: 1000px;
+  margin: 30px auto;
+  padding: 0;
+  list-style-type: none;
+}
+.list li {
+  height: auto;
+  line-height: 30px;
+  background: pink;
+  margin-bottom: 5px;
+  padding: 0 10px;
+}
+.list a {
+  float: left;
+}
+.list a:hover {
+  color: red;
+}
+.list span {
+  float: right;
+}
+/* arguments变量 */
+.test_arguments {
+  border: 10px #333 dashed;
+}
+/* 避免编译 */
+/* 要输出less不认识的专有语法：可以在字符串前面加一个~。
+例如：width:~ calc(100%-35) */
+/* 可以使用calc()给元素的border、margin、pading、font-size和width等属性设置动态值*/
+.test_calc {
+  width: -webkit-calc(100% - 40px);
+  width: -moz-calc(100% - 40px);
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  height: 40px;
+  background: blue;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+/* //表达式加减前后一定要有空格，乘除不用特意加，但建议加上 */
+/* !important关键字  为所有混合带来的样式，添加上!important*/
+.test_important {
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  border-radius: 5px !important;
+}

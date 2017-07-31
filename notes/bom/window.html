@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>window</title>
+	<style>
+		.btn{
+			background:#f2f2f2;
+			height:30px;
+			line-height: 30px;
+			width:60px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="btn" id="btn" onclick="btnClicked()">点击我</div>
+	<script>
+	    var windowW=window.innerWidth/2;
+	    var windowH=window.innerHeight/2;
+		function btnClicked(){
+			window.open("bom01.html","windowName","width=500,height=500,top=237,left=138");
+		}
+		console.log("windowW::::"+windowW);
+		console.info("windowH::::"+windowH);
+	</script>
+</body>
+</html>

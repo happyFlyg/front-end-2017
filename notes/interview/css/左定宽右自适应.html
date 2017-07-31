@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左边定宽、右边自适应，不少于3种方法</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		html,body{
+			height:100%;
+			width:100%;
+			color:#fff;
+		}
+		.demo{
+            height:100%;
+            width:100%;
+		}
+		.demo .left{
+			width:200px;
+			height:100%;
+			background: #333
+		}
+		.demo .right{
+			background: #999
+		}
+		/**
+		 * 第一种方法 calc
+		 */
+		.demo-1 .right,.demo-1 .left{
+           float: left;
+		}
+		.demo-1 .right{
+			width:calc(100% - 200px);
+			height:100%;
+		}
+		/**
+		 * 第2种方法 flex
+		 */
+		.demo-2{
+			display: flex;
+		}
+		.demo-2 .right{
+			flex:1;
+		}
+		/**
+		 * 第3种方法 absolute
+		 */
+		.demo-3 .left,.demo-3 .right{
+			float: left;
+		}
+		.demo-3 .right{
+			width:100%;
+			height:100%;
+			position: absolute;
+			top:0;
+			left:0;
+			margin-left:200px;
+		}
+		/**
+		 * 第4种方法 table
+		 */
+		.demo-4{
+			display: table;
+		}
+		.demo-4 .left,.demo-4 .right{
+            display: table-cell;
+		}
+		
+	</style>
+</head>
+<body>
+	<!-- <div class="demo-1 demo">
+		<div class="left">left</div>
+		<div class="right">right</div>
+	</div> -->
+	<!-- <div class="demo-2 demo">
+		<div class="left">left</div>
+		<div class="right">right</div>
+	</div> -->
+<!-- 	<div class="demo-3 demo">
+		<div class="left">left</div>
+		<div class="right">right</div>
+	</div> -->
+	<div class="demo-4 demo">
+		<div class="left">left</div>
+		<div class="right">right</div>
+	</div>
+</body>
+</html>

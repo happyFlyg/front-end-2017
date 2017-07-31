@@ -1,0 +1,122 @@
+@charset "utf-8";
+/* Keyframes */
+
+@keyframes xuanzhuan{
+	0%{ transform:rotate(0)}
+	100%{transform:rotate(360deg)}
+	}
+@-webkit-keyframes xuanzhuan{
+	0%{ transform:rotate(0)}
+	100%{transform:rotate(360deg)}
+	}
+
+/*飞入*/
+@keyframes moveFromTop{
+	0%{ transform:translateY(-100%);}
+	}
+@-webkit-keyframes moveFromTop{
+	0%{ transform:translateY(-100%);-webkit-transform:translateY(-100%);}
+	}
+@keyframes moveFromLeft{
+	0%{ transform:translateX(-100%);}
+	}
+@-webkit-keyframes moveFromLeft{
+	0%{ transform:translateX(-100%);-webkit-transform:translateX(-100%);}
+	}
+@keyframes moveFromRight{
+	0%{ transform:translateX(200%);}
+	}
+@-webkit-keyframes moveFromRight{
+	0%{ transform:translateX(200%);-webkit-transform:translateX(-200%);}
+	}
+@keyframes moveFromBottomLong{
+	0%{ bottom:-110%;}
+	100%{ bottom:40%;}
+	}
+@-webkit-keyframes moveFromBottomLong{
+	0%{ bottom:-110%;}
+	100%{ bottom:40%;}
+	}
+@keyframes moveFromBottom{
+	from{ transform: translateY(100%);}
+	}
+@-webkit-keyframes moveFromBottom{
+	from{ transform: translateY(100%);-webkit- transform: translateY(100%);}
+	}
+@keyframes moveFromBottom2{
+	from{ transform: translateY(150%);}
+	}
+@-webkit-keyframes moveFromBottom2{
+	from{ transform: translateY(150%);-webkit- transform: translateY(150%);}
+	}
+@keyframes moveFromBottom3{
+	from{ transform: translateY(220%);}
+	}
+@-webkit-keyframes moveFromBottom3{
+	from{ transform: translateY(220%);-webkit- transform: translateY(220%);}
+	}
+/*放大缩小动画*/
+@keyframes resizeBig{
+	0%{ transform:scale(2,2); opacity:0;}
+	100%{ transform:scale(1,1); opacity:1;}
+	}
+@-webkit-keyframes resizeBig{
+	0%{ transform:scale(2,2);-webkit-transform:scale(2,2);opacity:0;}
+	100%{ transform:scale(1,1);-webkit- transform:scale(1,1);opacity:1;}
+	}
+@keyframes moveToLeft{
+	to{ transform:translateX(-120%);}
+	}
+@-webkit-keyframes moveToLeft{
+	to{ transform:translateX(-120%);-webkit-transform:translateX(-120%);}
+	}
+@keyframes moveToRight{
+	to{ transform:translateX(120%);}
+	}
+@-webkit-keyframes moveToRight{
+	to{ transform:translateX(120%);-webkit-transform:translateX(120%);}
+	}
+/*淡入淡出*/
+@keyframes opacity0To1{
+	0%{ opacity:0;}
+	100%{  opacity:1;}
+	}
+@-webkit-keyframes opacity0To1{
+	0%{ opacity:0;}
+	100%{  opacity:1;}
+	}
+@keyframes Opacity07To10{
+	0%{ opacity:0.7;}
+	50%{  opacity:1;}
+	100%{ opacity:0.7;}
+	}
+@-webkit-keyframes Opacity07To10{
+	0%{ opacity:0.7;}
+	50%{  opacity:1;}
+	100%{ opacity:0.7;}
+	}
+/*页面切换*/
+@keyframes moveToTopbox{
+	to{ transform:translateY(-100%);}
+	}
+@-webkit-keyframes moveToTopbox{
+	to{ transform:translateY(-100%);-webkit-transform:translateY(-100%);}
+	}
+@keyframes moveFromBottombox{
+	from{ transform:translateY(100%);}
+	}
+@-webkit-keyframes moveFromBottombox{
+	from{ transform:translateY(100%);-webkit-transform:translateY(100%);}
+	}
+@keyframes moveToBottombox{
+	to{ transform:translateY(100%);}
+	}
+@-webkit-keyframes moveToBottombox{
+	to{ transform:translateY(100%);-webkit-transform:translateY(100%);}
+	}	
+@keyframes moveFromTopbox{
+	from{ transform:translateY(-100%);}
+	}
+@-webkit-keyframes moveFromTopbox{
+	from{ transform:translateY(-100%);-webkit-transform:translateY(-100%);}
+	}	

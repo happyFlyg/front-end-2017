@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nodejs</title>
+</head>
+<body>
+    <h2>适用场景：</h2>
+    <ol>
+        <li>高并发性</li>
+        <li>以服务方式海浪化数据</li>
+        <li>webapp</li>
+        <li>消息列队</li>
+    </ol>
+    <h2>不适用场景：</h2>
+    <ol>
+        <li>高cpu使用率</li>
+        <li>简单web应用（开个虚拟主机就好）</li>
+        <li>大量回调式编程逻辑</li>
+    </ol>
+    <h2>node.js是单线程非阻塞式模型（不妨碍拿数据，拿完很多个数据后一个个处理）</h2>
+    <ol>
+        <li>线程的大哥是进程（开很多个nodejs）</li>
+        <li>c++自己释放内存，node通过c++释放内存</li>
+    </ol>
+    <h2>为什么选择nodejs？</h2>
+    <ol>
+        <li>高性能web服务器</li>
+        <li>大前端改造了互联网革命</li>
+        <li>简单易学</li>
+    </ol>
+    <h2>npm命令:</h2>
+    <ol>
+        <li>npm -v：查看版本号</li>
+    	<li>npm root：查看包的命令</li>
+    	<li>npm root -g：查看全局安装包的命令</li>
+    	<li>npm install：安装命令</li>
+    	<li>npm install -g：全局安装</li>
+    	<li>npm init：package.json</li>
+    	<li>npm ls：显示所有安装包</li>
+    	<li>npm remove：删除</li>
+    	<li>npm update：更新</li>
+    	<li>npm help：查看npm所有命令</li>
+    </ol>
+    <h2>node 编码规范：</h2>
+    <ol>
+    	<li>加var声明</li>
+        <li>加减乘除等运算符前后加空格</li>
+        <li>+-*/前后用空格</li>
+        <li>全用单引号</li>
+        <li>逗号放在后面</li>
+        <li>分号（一句话结束后一定要用分号）</li>
+        <li>变量命名（小驼峰写法） 不能这样写（student_name）,只能这样写studentName</li>
+        <li>方法命名  第一个单词尽量用动词，例如getStudentId returnUserInfo</li>
+        <li>类命名（大驼峰写法）UserDatabase</li>
+        <li>常量命名(大写 下划线)：FORM_NAME</li>
+        <li>包名 不要写：js node</li>
+        <li>node里面尽量不要使用三个等号，建议两个等号</li>
+        <li>异步加载：function sss(err,data){}</li>
+    </ol>
+    <h2>express：</h2>
+    <ol>
+    	<li>cnpm install express -g</li>
+    </ol>
+    <h2>模块儿机制：</h2>
+    <ol>
+        <li>node加载速度非常快（node是c++写的），编译c++，执行底层代码。完全可以用C++写代码</li>
+        <li>js写的代码，v8引擎编译成C语言</li>
+        <li>webwidget</li>
+    </ol>
+    <h2>注意：</h2>
+    <ol>
+    	<li>一般服务器上的包都是全局安装的</li>
+    </ol>
+</body>
+
+</html>

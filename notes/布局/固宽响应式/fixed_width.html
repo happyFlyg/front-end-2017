@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>固定宽度的响应式布局</title>
+    <link rel="stylesheet" href="fixed_width.css"/>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+    }
+    
+    div.section {
+        width: 100%;
+        height: 60px;
+    }
+    /* 左侧固定，右侧自适应 ：方法一：*/
+    
+    .left_fixed {
+        background: #f2f2f2;
+        margin-bottom: 10px;
+    }
+    
+    .left_fixed div {
+        height: 100%;
+    }
+    
+    .menu {
+        width: 200px;
+    }
+    
+    .left_menu {
+        float: left;
+        width: 200px;
+        background: green
+    }
+    
+    .right_content {
+        width: 100%;
+        background: #333;
+        color: #fff;
+    }
+    /* 左侧固定，右侧自适应 ：方法二：calc()*/
+    
+    .right_content_2 {
+        float: right;
+        width: calc(100% - 200px);
+        width: -webkit-calc(100% - 200px);
+        width: -moz-calc(100% - 200px);
+        background: #333;
+        color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 方法一 -->
+    <div class="left_fixed section">
+        <div class="left_menu menu">左侧菜单区</div>
+        <div class="right_content">右侧内容区</div>
+    </div>
+    <!-- 方法二 -->
+    <div class="left_fixed section">
+        <div class="left_menu menu">左侧菜单区</div>
+        <div class="right_content_2 ">右侧内容区</div>
+    </div>
+</body>
+
+</html>

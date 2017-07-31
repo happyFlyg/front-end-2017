@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>my_first_vue_project</title>
+</head>
+
+<body>
+    <div id="app">
+        数据渲染：v-text v-html {{}}
+        <p>{{}}</p>
+        <p v-text="a"></p>
+        <p v-html="a"></p>
+        控制模块隐藏：v-if v-show
+        <p v-if="isShow"></p>
+        <p v-show="isShow"></p>
+        循环渲染列表：v-for
+        <ul>
+            <li v-for="list in items">
+                <p v-text="list.label"></p>
+            </li>
+        </ul>
+        事件绑定：v-on
+        <button v-on:click="doThis"></button>
+        <img v-bind:src="imageSrc" />
+        <div :class="{red:isRed}"></div>
+        <div :class="[classA,classB]"></div>
+        <div :class="[classA,{classB:isB,classC:isC}]"></div>
+        <h3>小结一下</h3>
+        <ol>
+            <li>new一个vue对象的时候你可以设置它的属性，其中最重要的包括三个，分别是data,methods,watch。</li>
+            <li>其中data代表vue对象的数据，methods代表vue对象的方法，wacth设置了对象监听的方法</li>
+            <li>Vue对象里的设置通过html指令进行关联</li>
+            <li>重要的指令包括：
+                <ol>
+                    <li>v-text 渲染数据</li>
+                    <li>v-if 控制显示</li>
+                    <li>v-on 绑定事件</li>
+                    <li>v-for 循环渲染等</li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <!-- built files will be auto injected -->
+</body>
+<script src=""></script>
+<script>
+new Vue({
+    el: "app",
+    data: {
+        a: 1,
+        b: [],
+        isShow: true,
+        items: [{
+            label: 'apple'
+        }, {
+            label: 'banna'
+        }]
+    },
+    methods: {
+        doSomething: function() {
+            this.a++;
+        },
+        doThis: function(someThing) {
+
+        }
+    },
+    watch: {
+        'a': function(val, oldVal) {
+            console.log(val, oldVal)
+        }
+    }
+})
+</script>
+
+</html>

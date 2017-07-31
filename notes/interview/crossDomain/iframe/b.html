@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div id="messageBox"></div>
+</body>
+<script type="text/javascript">
+	window.onload = function() {
+	  var messageBox = document.getElementById('messageBox');
+	  window.addEventListener('message', function(e) {
+	    //do something
+	    //考虑安全性，需要判断一下信息来源
+	    if(e.origin !== 'http://xxxx') return;
+	    messageBox.innerHTML = e.data;
+	  });
+	}
+</script>
+</html>

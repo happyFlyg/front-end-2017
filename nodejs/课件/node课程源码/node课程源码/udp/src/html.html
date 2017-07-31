@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="../exp/lib/aflax/aflax.js"></script>
+<script type="text/javascript">
+    var aflax = new AFLAX("../exp/lib/aflax/aflax.swf");
+    var connection = null;
+    function go(){
+        connection = new AFLAX.Socket(aflax, "127.0.0.1", 8888,
+                "onConnectEvent", "onDataEvent", "onCloseEvent");
+    }
+
+    function onConnectEvent(val)
+    {
+        console.info(val);
+    }
+
+    function onDataEvent(str)
+    {
+        console.info(str);
+    }
+
+    function onCloseEvent()
+    {
+        console.info("the connection is already closed");
+    }
+    function go1(){
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+	<style type="text/css">
+		.red{
+			background: red;
+		}
+	</style>
+</head>
+<body id="body">
+	<p id="pp">你麻痹的大爷是个坏怂，臭不要脸的人是坏人</p>
+</body>
+<script type="text/javascript">
+// 第一种
+	/*window.onload=function(){
+		var str=document.getElementById('pp').innerHTML;
+        var strRep=str.replace(/麻痹的|大爷/g,'');
+        document.getElementById('pp').innerHTML=strRep
+	}*/
+//第二种	
+/*window.onload=function(){
+	//需要屏蔽的敏感数组
+	var str=['麻痹','不要脸'];
+	for(var i=0;i<str.length;i++){
+		var textReg= new RegExp(str[i],'g');
+		// var textReg= /str[i]/g;  不起作用
+		document.getElementById('pp').innerHTML=document.getElementById('pp').innerHTML.replace(textReg,'');
+	}
+	
+}*/
+//第三种  给敏感文字加底色
+window.onload=function(){
+	//需要屏蔽的敏感字
+	var str=['麻痹的','不要脸'];
+	for(var i=0;i<str.length;i++){
+		var strExp= new RegExp(str[i],'g');
+		var obj_text=document.getElementById('pp');
+		obj_text.innerHTML=obj_text.innerHTML.replace(strExp,'<span class="red">' +str[i] + '</span>')
+	}
+}
+</script>
+</html>

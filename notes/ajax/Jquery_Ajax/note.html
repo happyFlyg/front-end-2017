@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jquery Ajax</title>
+</head>
+<body>
+	JQuery中AJAX的API
+	<ol>
+		<li>$.get(url,[data],[callback],[type])</li>
+		<li>$.post(url,[data],[callback],[type])</li>
+		<li>$(selector).load(url,[data],[callback])</li>
+		<li>$.getJSON(url,[data],[callback])</li>
+		<li>$.getScript(url,[callback])</li>
+	</ol>
+	<p>type:text|html|json|script</p>
+	<p>load方法将页面片段载入selector所代表的容器中</p>
+	<p>$.getJSON和$.getScript加载json格式数据或脚本</p>
+	<ol>
+		<li>所有快捷API都有一个共同特点</li>
+		<li>不能指定错误的回调</li>
+		<li>同时，有错误时（http status 或者type不匹配等）都没有任何提示</li>
+	</ol>
+	$.ajax两种使用方式
+	<ol>
+		<li>$.ajax(url,[settings])</li>
+		<li>$.ajax(settings),此时url是settings中的一个属性</li>
+	</ol>
+	处理响应结果的回调函数success error statusCode complete
+	<p>请求数据：data,processData,contentType,traditional</p>
+	<p>响应数据：dataType、dataFilter</p>
+	<p>请求类型：type GET、POST、PUT、DELETE...默认GET</p>
+	<p>同步异步：async,默认true,异步</p>
+	<p>是否缓存：cache,默认true</p>
+	<p>前置处理：beforeSend</p>
+	<p>headers:设置请求头</p>
+	其它一些参数：
+	<ol>
+		<li>global:是否触发全局事件</li>
+		<li>ifModifed</li>
+		<li>username,password,http需要验证时使用</li>
+		<li>timeout:设置请求超时时间，若请求超时，触发error(xhr,'timeout','timeout')</li>
+		<li>context:回调中this指向的对象</li>
+	</ol>
+	跨域AJAX支持：
+	<p>json、jsonpCallback</p>
+</body>
+</html>

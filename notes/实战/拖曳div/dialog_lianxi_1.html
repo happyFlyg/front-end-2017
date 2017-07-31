@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>慕课网-拖拽实现</title>
+<style type="text/css">
+
+    #draggable{ width: 100px;height: 100px; position: absolute;top: 100px;left: 100px;border: 1px solid #ccc;background: #eee;padding: 10px;cursor: default;}
+
+</style>
+</head>
+<body>
+
+<div id="draggable">拖我</div>
+
+<script type="text/javascript">
+    var oDrag = document.getElementById('draggable');
+    var isDraging = false;
+    var startX = 0;
+    var startY = 0;
+    oDrag.addEventListener('mousedown',function(e){
+        //鼠标事件1 - 在标题栏按下（要计算鼠标相对拖拽元素的左上角的坐标 ，并且标记元素为可拖动） 
+        isDraging =true;
+        e=e||window.event;
+        startX =e.pageX-oDrag.offsetLeft;
+        startY =e.pageY-oDrag.offsetTop;
+        
+    })
+    document.onmouseup = function(e){
+        //鼠标事件3 - 鼠标松开的时候（标记元素为不可拖动）
+         e=e||window.event;
+        isDraging = false;
+       
+    }
+    document.onmousemove = function(e) {
+        //鼠标事件2 - 鼠标移动时（要检测，元素是否标记为移动）
+        if(isDraging){
+            var moveX=0;
+            var moveY=0;
+            moveX=e.pageX-startX;
+            moveY=e.pageY-startY;
+            maxX=document.documentElement.clientWidth-oDrag.offsetWidth;
+            maxY=document.documentElement.clientHeight-oDrag.offsetHeight;
+            moveX=Math.min(maxX,Math.max(0,moveX));
+            moveY=Math.min(maxY,Math.max(0,moveY));
+            oDrag.style.left=moveX+"px";
+            oDrag.style.top=moveY+"px";
+        }
+        
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+@charset "utf-8";
+/*第三页 */
+
+.p3_1{
+	bottom: -110%;
+    height: 100%;
+    left: 8%;
+    position: absolute;
+    width: 90%;
+	}
+.p3_bg{ position:absolute; top:0; left:0;}

@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* 第一页 */
+.p1_1{ 
+	position:absolute;
+	left: 20%;
+    top: 12%;
+    width: 60%;
+	}
+.p1_2{ 
+	left: 5%;
+    position: absolute;
+    top: 40%;
+    width: 90%;
+}
+.p1_3{ 
+	left: 10%;
+    position: absolute;
+    top: 54%;
+    width: 20%;
+}
+.p1_4{ 
+	left: 34%;
+    position: absolute;
+    top: 54%;
+    width: 67%;
+}

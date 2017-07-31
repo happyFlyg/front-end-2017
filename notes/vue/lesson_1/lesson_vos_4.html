@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+</head>
+
+<body>
+    <h2>v-model:</h2>
+    <div id="app">
+        <ol>
+            <li v-for="todo in todos" v-text="'v-for：'+todo.text"></li>
+        </ol>
+        <p>{{message}}</p>
+        <input type="text" v-model="message" />
+        <!-- checkbox -->
+        <h2>checkbox</h2>
+        <input type="checkbox" v-model="checked" />
+        <span>{{checked}}</span>
+        <!--多个勾选框，绑定到同一个数组： -->
+        <h2>多个勾选框，绑定到同一个数组：</h2>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames | json }}</span>
+        <!-- radio -->
+        <h2>radio</h2>
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+        <!-- select -->
+        <h2>select</h2>
+        <select v-model="selected">
+            <option selected>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+        <!-- 多选（绑定到一个数组）： -->
+        <h2>多选（绑定到一个数组）：</h2>
+        <select v-model="selected_1" multiple>
+            <option selected_1>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <br>
+        <span>Selected_1: {{ selected_1 | json }}</span>
+        <!-- 动态选项，用 v-for 渲染： -->
+        <h2>动态选项，用 v-for 渲染：</h2>
+        <select v-model="selected">
+            <option v-for="option in options" :value="option.val">{{option.text}}</option>
+        </select>
+        <span>selected:{{selected}}</span>
+    </div>
+    <hr>
+    <ol>
+        <h2>v-model:</h2>
+        <li>v-model:双向数据绑定</li>
+    </ol>
+</body>
+<script src="../lesson/js/vue.min.js"></script>
+<script>
+var app = new Vue({
+    el: "#app",
+    data: {
+        todos: [{
+            text: '01'
+        }, {
+            text: '02'
+        }, {
+            text: '03'
+        }],
+        message: 'v-model',
+        checked: false,
+        checkedNames: [],
+        picked: "One",
+        selected: "A",
+        selected_1: ["A"],
+        options: [{
+            text: 'one',
+            val: "A"
+        }, {
+            text: 'two',
+            val: "B"
+        }, ]
+    }
+})
+</script>
+</html>

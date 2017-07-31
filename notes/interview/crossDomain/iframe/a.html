@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iframe跨域 window.postMessage</title>
+</head>
+<body>
+	<p>
+	  <button id="sendMsg">sendMsg</button>
+	</p>
+
+	<iframe id="receiveMsg" src="http://b.html">
+	</iframe>
+</body>
+<script>
+	window.onload = function() {
+	  var receiveMsg = document.getElementById('receiveMsg').contentWindow; //获取在iframe中显示的窗口
+	  var sendBtn = document.getElementById('sendMsg');
+
+	  sendBtn.addEventListener('click', function(e) {
+	    e.preventDefault();
+	    receiveMsg.postMessage('Hello world', 'http://b.html');
+	  });
+	}
+</script>
+</html>

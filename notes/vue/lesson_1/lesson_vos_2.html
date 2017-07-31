@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>购物车 methods watch v-on:click=@click</title>
+</head>
+
+<body>
+<div id="app">
+    <button v-on:click="add">+</button>
+	<p>数量：{{num}}</p>
+	<p>单价：{{unit_price}}</p>
+	<hr>
+	<p>总价：{{total_price}}</p>
+    <button @click="reduce">-</button>
+</div>
+</body>
+<script src="../lesson/js/vue.min.js"></script>
+<script>
+	var app=new Vue({
+		el:"#app",
+		data:{
+           num:0,
+           unit_price:10,
+           total_price:0
+		},
+		methods:{
+			add:function(){
+				this.num++;
+				this.total_price=this.num*this.unit_price;
+			},
+			reduce:function(){
+				this.num--;
+				if(this.num<0){
+					this.num=0;
+				}
+				this.total_price=this.num*this.unit_price;
+			}
+		},
+		watch:{//num一定要用引号引起来
+			"num":function(newval,oldval){
+				if(this.num>3){//买三个送一个
+                   this.total_price=this.total_price-this.unit_price;
+				}
+			}
+		}
+	})
+</script>
+</html>

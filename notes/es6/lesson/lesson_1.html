@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>es6________lesson_1</title>
+	<style>
+		.red{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<ol>
+		<li>
+		   <h3>export命令：外部读取模块内部的变量，必须用export输出内部变量</h3>
+		   <ol>
+		   	   <li>export var firstName='liao';</li>
+		   	   <li>export var lastName="li";</li>
+		   	   <li>export var year="1990";</li>
+		   </ol>
+		</li>
+		<li>
+			<h3>export 可以合并书写:export{firstName,lastName,year};</h3>
+			<ol>
+		   	   <li>var firstName='liao';</li>
+		   	   <li>var lastName="li";</li>
+		   	   <li>var year="1990";</li>
+		   </ol>
+		   <h4 class="red">优先考虑这种写法，因为在脚本尾部一眼就能看出输出了哪些变量</h4>
+		</li>
+		<li>
+			<h3>export 1 会报错， var m=1; export m;也会报错,这种写法只是输出的数字，没有输出对外的接口</h3>
+			正确的写法如下：
+			<ol>
+				<li>export var m=1;</li>
+				<li>var m=1;export{m};</li>
+				<li>var m=1; export{m as n};</li>
+			</ol>
+		</li>
+		<li>
+			<h3>总结一下export用法：export{a,b,c}，export{fn1,fn2,fn3}，其中a,b,c是变量，fn是函数</h3>
+		</li>
+	</ol>
+</body>
+</html>

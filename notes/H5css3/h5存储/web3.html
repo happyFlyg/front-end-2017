@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>简易数据库</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>姓名：</td>
+            <td>
+                <input type="text" id="name">
+            </td>
+        </tr>
+        <tr>
+            <td>Email：</td>
+            <td>
+                <input type="text" id="email">
+            </td>
+        </tr>
+        <tr>
+            <td>电话：</td>
+            <td>
+                <input type="text" id="tel">
+            </td>
+        </tr>
+        <tr>
+            <td>备注：</td>
+            <td>
+                <input type="text" id="memo">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" value="保存" onclick="saveStorage()">
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <p>检索：
+        <input type="text" id="find">
+        <input type="button" value="检索" onclick="findStorage('msg')">
+    </p>
+    <p id="msg"></p>
+</body>
+<script>
+function saveStorage() {
+    var data = {};
+    data.name = document.getElementById('name').value;
+    data.email = document.getElementById('email').value;
+    data.tel = document.getElementById('tel').value;
+    data.memo = document.getElementById('memo').value;
+    var str = JSON.stringify(data);
+    localStorage.setItem(data.name, str);
+    alert("数据已经保存")
+}
+
+function findStorage(id) {
+    var find = document.getElementById('find').value;
+    var str = localStorage.getItem(find);
+    var msg = JSON.parse(str);
+    var result = "姓名：" + msg.name + "<br>";
+    result += "Email：" + msg.email + "<br>";
+    result += "电话：" + msg.tel + "<br>";
+    result += "备注：" + msg.memo + "<br>";
+    var target=document.getElementById(id);
+    target.innerHTML=result;
+}
+</script>
+
+</html>

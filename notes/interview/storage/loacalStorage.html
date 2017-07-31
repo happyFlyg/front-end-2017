@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>localStorage长期存储</title>
+</head>
+
+<body>
+    <input id="inputVal"></input>
+    <p id="text"></p>
+    <button id="saveStorageBtn">点击存储</button>
+    <ol>
+    	<li>存储数据：localStorage.setItem('')</li>
+    	<li>获取数据：localStorage.getItem('')</li>
+    	<li>删除单个数据：localStorage.removeItem('')</li>
+        <li>删除所有数据：localStorage.clear()</li>
+        <li>得到某个索引的key：localStorage.key(index)</li>
+    </ol>
+    <h2>localStorage的另外一种写法</h2>
+    <ol>
+        <li>存储：localStorage.lastName='flyg'</li>
+        <li>查找：localStorage.lastName</li>
+    </ol>
+    <h2>注意：</h2>
+    <ol>
+        <li>通常以字符串形式存储，获取值时可以转换类型</li>
+        <li>sessionStorage和localStorage用法一样，只是生命周期不一样</li>
+    </ol>
+</body>
+<script type="text/javascript">
+document.getElementById('saveStorageBtn').addEventListener('click', function() {
+    var inputVal = document.getElementById('inputVal').value;
+    // 一种写法
+    localStorage.setItem('inputVal', inputVal);
+    // 另外一种写法
+    // localStorage.inputVal=inputVal;
+});
+window.onload = function() {
+	document.getElementById('inputVal').value=localStorage.getItem('inputVal');
+    document.getElementById('text').innerHTML = localStorage.inputVal;
+}
+// localStorage.removeItem('inputVal')
+</script>
+
+</html>

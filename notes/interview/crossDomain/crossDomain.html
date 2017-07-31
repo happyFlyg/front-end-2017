@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨域请求</title>
+</head>
+<body>
+	<ol>
+		<li>jsonp是利用script的src属性进行跨域请求的，故data(请求的url后面带callback参数)只能加在url后面，因此只是get方式请求，get请求数据暴露在url里面，故不是很安全</li>
+		<li>无错误处理，但兼容ie低版本浏览器</li>
+		<li>针对现代浏览器建议使用CORS方法</li>
+	</ol>
+</body>
+<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$.ajax({
+		url:url,
+		dataType:'jsonp',
+		success:function(data){
+            console.log(data.msg)
+		}
+	})
+</script>
+</html>

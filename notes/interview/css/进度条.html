@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>css3圆形进度条</title>
+    <style type="text/css">
+    .spinner {
+        font-size: 20px;
+        width: 5em;
+        height: 5em;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 .5em rgba(58, 168, 237, .2);
+    }
+
+    .spinner i {
+        position: absolute;
+        clip: rect(0, 5em, 5em, 2.5em);
+        width: 5em;
+        height: 5em;
+        animation: spinner-circle-clipper 1s ease-in-out infinite;
+    }
+
+    @keyframes spinner-circle-clipper {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(180deg);
+        }
+    }
+    .spinner i:after {
+    position: absolute;
+    clip: rect(0, 5em, 5em, 2.5em);
+    width: 5em;
+    height: 5em;
+    content: '';
+    animation: spinner-circle 1s ease-in-out infinite;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 .5em #3aa8ed;
+}
+
+@keyframes spinner-circle {
+    0% {
+        transform: rotate(-180deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="spinner"><i></i></div>
+</body>
+
+</html>

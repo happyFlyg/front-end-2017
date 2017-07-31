@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+</head>
+<body>
+	$.ajax()两种使用方法；
+	<ol>
+		<li>$.ajax(url,[settings])</li>
+		<li>$.ajax(settings),此时url是settings中的一个属性</li>
+	</ol>
+	处理响应结果的回调函数 success、error、statusCode、complete
+	<p>请求数据：data</p>
+</body>
+<script>
+	function basicUsage(){
+		//第一种方式
+		$.ajax('/test',{
+			success:function(){
+				alert("ok");
+			}
+		});
+		//第二种方式
+		$.ajax({
+			url:'/test',
+			success：function(){
+				alert('ok2');
+			}
+		});
+        
+	}
+	function callbackUsage(){
+		$.ajax('/user/allusers',{
+			success:function(data){
+				console.log(arguments);//第一项程序返回的结果(array，第二项当前响应的状态文本(success)。第三个是xhr对象(object)。
+			},
+			error:function(jqXHR,textStatus,err){
+				//jqXHR:JQuery增强的xhr
+				//textStatus:请求完成状态
+				//err:底层通过throw抛出的异常对象，类型与值与错误类型有关
+				console.log(arguments);
+			},
+			complete:function(jqXHR,textStatus){
+				//jqXHR:JQuery 增强的xhr
+				//textStatus:请求完成状态
+			    console.log('statusCode:%d',jqXHR.status,jqXHR.statusText);
+			    console.log('textStatus:%s',textStatus);
+			},
+			statusCode:{
+				'403':function(jqXHR,textStatus,err){
+					console.log(arguments);
+					console.log(403);
+				},
+				'400':function(){
+					console.log(400);
+				}
+			}
+
+		});
+	}
+    //processData:true 预处理，编译
+    //contentType:  请求的数据编码格式
+    //Content-Type:application/x-www-form-urlencoded;charset-UTF-8;
+    //contentType:application/json
+    //traditional:false 对深层次迭代有好处，对于数组还是true比较合适  对传入的数据中有数组的时候起作用
+    //datatype 响应数据的期望类型，常用的有‘text\html\json\scri
+    //pt\jsonp’
+    //dataFilter 返回值的预处理
+    //
+    //
+    //
+
+    function testData(){
+       $.ajax({
+       	url:'',
+       	success:function(data){
+       		console.log(data);
+       	},
+       	datatype:'json',
+       	dataFilter:function(data,type){
+       		console.log(data);
+       		console.log(type);
+       		var tmp=JSON.parse(data);
+       		return tmp.length;
+       	}
+       });
+    }
+    function testBeforeSend(){
+    	$.ajax({
+    		url:'',
+    		beforeSend:function(jqXHR,settings){
+               console.log(arguments);
+               console.log('befordSend');
+               jqXHR.setRequestHeader('test','haha');
+               jqXHR.testData={a:1,b:2};
+    		},
+    		success:function(data){
+    			console.log(data);
+    		},
+    		complete:function(xhr){
+    			console.log(xhr);
+    			console.log(xhr.testData);
+    		}
+    	});
+    	/**
+    	 * [testAjaxSetup description]
+    	 * 其它参数
+    	 */
+    	function testAjaxSetup(){
+    		$.ajax('/test');//默认以get方式请求
+    		$.ajaxSetup({
+    			cache:false;//$.ajax()中的缓存只针对get请求
+    			headers:{
+    				test:new Date().getTime()
+    			},
+    			type:'POST'
+    		});
+    		
+    		$.ajax('/test');//请求以post方式提交
+    		$.ajax('/user/allusers',{
+    			type:"GET"//请求以GET发起
+    		});
+    	}
+    }
+</script>
+</html>

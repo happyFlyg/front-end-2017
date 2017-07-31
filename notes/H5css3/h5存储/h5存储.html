@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>h5存储</title>
+</head>
+<body>
+	<p id="msg"></p>
+	<input type="text" id="input"/>
+	<input type="button" value="保存数据" onclick="saveStorage('input')">
+	<input type="button" value="读取数据" onclick="loadStorage('msg')">
+</body>
+<script>
+/*sessionStorage*/
+	function saveStorage(id){
+        var target=document.getElementById(id);
+        var str=target.value;
+        //保存数据 key value
+        sessionStorage.setItem("message",str);
+	}
+	function loadStorage(id){
+		var target=document.getElementById(id);
+		var msg=sessionStorage.getItem('message');
+		target.innerHTML=msg;
+	}
+	/*localStorage*/
+	function savelocalStorage(id){
+		var target=document.getElementById(id);
+		var str=target.value;
+		localStorage.setItem('msg',str);
+
+	}
+	function loadLocalStorage(id){
+		var target=document.getElementById(id);
+		var mg=localStorage.getItem('msg');
+		target.innerHTML=mg;
+	}
+</script>
+</html>

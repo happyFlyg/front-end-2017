@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式实操</title>
+</head>
+
+<body>
+    <div id="div">
+        <ol id="ol_container"></ol>
+    </div>
+</body>
+<script>
+var txt = "hello 123456789 byebye";
+var regexp = new RegExp("hello", "g");
+var regexp = new RegExp(/\d/); //另外一种写法
+var output = regexp.test(txt);
+console.log(output)
+console.info(regexp.exec(txt));
+//搜索文档中返回很多个子串儿
+var hello = "hello 123456789 hello";
+var regexp_hello = /hello/g;
+while ((regexp_hello_str = regexp_hello.exec(hello)) != null) {
+    document.write("第" + regexp_hello.lastIndex + "位，找到" + regexp_hello_str + "<br/>");
+}
+//把上面的document.write变成数组，把while变成函数，封装调用
+function regexp_output(regexp, str) {
+    var str_arr = [];
+    while ((regexp_str = regexp.exec(str)) != null) {
+        str_arr.push(regexp_str);
+        var list_dom = document.createElement("li");
+        var ol_container = document.getElementById('ol_container');
+        document.write(html);
+    }
+    document.write("封装变成数组：" + str_arr);
+}
+var p = "hello dlaksd hello  dmlaksmdladmladml hello";
+regexp_output(/hello/g, p);
+</script>
+
+</html>

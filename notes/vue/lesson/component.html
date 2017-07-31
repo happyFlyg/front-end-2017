@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件化</title>
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+        </ol>
+        <input type="text" v-model="msg">
+    </div>
+    <div id="app2">
+        <ol>
+            <tofo-item v-for="item in listItem" v-bind:todo="item"></tofo-item>
+        </ol>
+    </div>
+    <div id="app-7">
+        <ol>
+            <!-- 现在我们为每个todo-item提供待办项对象    -->
+            <!-- 待办项对象是变量，即其内容可以是动态的 -->
+            <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
+</body>
+<script src="js/vue.min.js"></script>
+<script>
+/*简单组件*/
+Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{ todo.text }}</li>'
+});
+var app7 = new Vue({
+    el: '#app-7',
+    data: {
+        groceryList: [{
+            text: '蔬菜'
+        }, {
+            text: '奶酪'
+        }, {
+            text: '随便其他什么人吃的东西'
+        }]
+    }
+});
+</script>
+
+</html>

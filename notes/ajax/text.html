@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>text</title>
+	<style>
+		.test+input{
+			width:500px;
+			height:40px;
+			background: red;
+		}
+		#prev ~ div{
+		    background: blue;
+		}
+		*.li.span{
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<div class="test"></div>
+		<input type="text" class="li span" value="caozhixuan"/>
+		<input type="text" class="li" value="liaoli" />
+		<span id="prev"></span>
+	</div>
+	 <input type="text" class="li"/>
+	 <input type="text" class="li span"/>
+</body>
+</html>

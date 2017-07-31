@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js书写规避错误</title>
+</head>
+<body>
+	<ol>
+		<li>
+		    <h3>错误写法：</h3>
+		    <pre>
+		    	var obj=document.getElementById('pp').innerHTML;
+		    	obj=obj.replace();
+		    </pre>
+		    <h3>正确写法：</h3>
+		    <pre>
+		    	var obj=document.getElementById('pp');
+		    	obj.innerHTML=obj.innerHTML.replace();
+		    </pre>
+		</li>
+	</ol>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域和作用域链</title>
+	<script type="text/javascript">  
+	function buttonInit(){  
+	    for(var i=1;i<4;i++){  
+	        var b=document.getElementById("button"+i);  
+	        b.addEventListener("click",function(){ alert("Button"+i);},false);
+	        // console.info(i);   
+	    }
+	    console.log(i);  
+	}  
+	window.onload=buttonInit;  
+	</script>  
+
+</head>
+<body>
+	<button id="button1">Button1</button>  
+	<button id="button2">Button2</button>  
+	<button id="button3">Button3</button>  
+</body>
+</html>

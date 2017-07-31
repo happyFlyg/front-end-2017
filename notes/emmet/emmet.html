@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>emmet</title>
+</head>
+
+<body>
+    <ol>
+        <li>
+            1.引示符号
+            <ol>
+                <li>html:5或者！</li>
+                <li>. class</li>
+                <li># id</li>
+                <li>[] 标签的内部属性</li>
+                <li>{}标签的内容</li>
+                <li>()分组标签</li>
+            </ol>
+        </li>
+        <li>2.关系符号
+            <ol>
+                <li>大于号，表示嵌套</li>
+                <li>同级元素 +号</li>
+                <li>^脚号 表示上级元素 分离</li>
+                <li>*同级元素的个数</li>
+                <li>$数字通配符</li>
+                <li>$@- 表示数字递减</li>
+                <li>$@3 表示数字从3开始</li>
+            </ol>
+        </li>
+        <li>3.占位标记
+            <ol>
+                <li>lorem</li>
+            </ol>
+        </li>
+    </ol>
+    <!-- div>ul>li^^p 脚号  一个表示一个上级-->
+    <div>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+    <p>div>ul>li^^p</p>
+    <!-- ul>li*2 -->
+    <ul>
+        <li>ul>li*2</li>
+        <li></li>
+    </ul>
+    <!-- div可以省略   #id后按tab -->
+    <div id="rt"></div>
+    <!-- ul>li.item$*5   $数字通配符 一个$表示一位数字 -->
+    <ul>
+        <li class="item1">ul>li.item$*5</li>
+        <li class="item2"></li>
+        <li class="item3"></li>
+        <li class="item4"></li>
+        <li class="item5"></li>
+    </ul>
+    <!-- div.list$@-*3 -->
+    <div class="list03">div.list$@-*3</div>
+    <div class="list02"></div>
+    <div class="list01"></div>
+    <!-- ul>li.lis$@3*2 @后面加数字表示从几开始-->
+    <ul>
+        <li class="lis3">ul>li.lis$@3*2</li>
+        <li class="lis4"></li>
+    </ul>
+    <!-- [] 标签的内部属性 -->
+    <div><a href="www.baidu.com">div>a[href="www.baidu.com"]</a></div>
+    <!-- {} 标签的内容 -->
+    <div>div>a[href="www.baidu.com"]{百度}<a href="www.baidu.com">百度</a></div>
+    <!-- 分组标签 (a>h1)+(b>h2)-->
+    <a href="">
+        <h1></h1>
+    </a>
+    <b>
+    	<h2></h2>
+    </b>
+    <!-- lorem 随机加入内容   p*3>lorem-->
+    
+</body>
+link:favic
+</html>

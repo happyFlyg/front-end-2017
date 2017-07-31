@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html,js综合</title>
+	<style>
+		.box{
+			position: relative;
+			width:200px;
+			height:200px;
+			background: #ddd
+		}
+		/* .con{
+			position: absolute;
+			width:50%;
+			height:50%;
+			background: #333;
+			top:50%;
+			left:50%;
+			transform:translate(-50%,-50%);
+		} */
+		.con{
+			position: absolute;
+			width:100px;
+			height:100px;
+			background: #333;
+			top:50%;
+			left:50%;
+			margin-left:-50px;
+			margin-top:-50px;
+		}
+		.float .left{
+			float: left;
+			width:200px;
+			height:200px;
+			background: red
+		}
+		.float .right{
+			float: left;
+		}
+	</style>
+</head>
+<body>
+<!-- 实现水平垂直居中 -->
+    <div class="box">
+    	<div class="con"></div>
+    </div>
+    <h2>get与post区别</h2>
+    <ol>
+    	<li>与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。</li>
+    	<li>然而，在以下情况中，请使用 POST 请求：</li>
+    	<ol>
+    		<li>无法使用缓存文件（更新服务器上的文件或数据库）</li>
+    		<li>向服务器发送大量数据（POST 没有数据量限制）</li>
+    		<li>发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠</li>
+    	</ol>
+    </ol>
+    <h2>split join区别</h2>
+    <ol>
+    	<li>stringObject.split(separator,howmany),split() 方法用于把一个字符串分割成字符串数组。</li>
+    	<li>arrayObject.join(separator)，join() 方法用于把数组中的所有元素放入一个字符串。</li>
+    </ol>
+    <h2>下面的函数返回值是什么</h2>
+    <pre>
+    	var a=6;
+    	setTimeout(function(){
+    		alert(a);
+    		a=666;
+    	},1000);
+    	a=66;
+        // 66 setTimeout()函数一旦执行后，其作用域是window,后台挂载的延迟一到，渲染的是全局变量a
+    </pre>
+    <h2>元素浮动后，dispplay值是多少</h2>
+    <h3>下面的span元素浮动后变成了块级元素，display:block</h3>
+    <div class="float">
+    	<span class="left"></span>
+    	<span class="right"></span>
+    </div>
+    <ol>
+    	<li>元素浮动的方向和margin方向相同时，ie6有个双边距bug，即float:fight和margin-right:。解决的方法是display:inline</li>
+    </ol>
+    <h2>cookies，sessionStorage，localStorage的区别</h2>
+    <h2>下面函数alert结果是:</h2>
+    <pre>
+    	var foo='Hello';
+    	(function(){
+    	  var bar='World';
+    	  alert(foo+bar) //Hello World
+    	})();
+    	alert(foo+bar); //bar is not defined
+    </pre>
+    <h2>下面foo.x值是什么</h2>
+    <p>undefined</p>
+    <pre>
+    	var foo={n:1};
+    	var bar=foo;
+    	foo.x=foo={n:2};
+    </pre>
+    <h2>js动态添加option</h2>
+    <select name="" id="opt">
+       <option value="2">b</option>
+    </select>
+    <input type="button" onclick="add()" value="点击添加option">
+    <h2>alert分别输出什么</h2>
+    <pre>
+    	var a=2;
+    	var fun=(function(){
+    	  var a=3;
+    	  return function(){
+    	    a++;
+    	    alert(a);
+    	  }
+    	})();
+    	fun();
+    	fun();
+    </pre>
+    <h2>输出结果：</h2>
+    <pre>
+    	function func1(){
+    	  var n=99;
+    	  nAdd=function(){
+    	    this.n+=1;
+    	    console.log(this.n)
+    	  };
+    	  function fun2(){
+    	  	console.log(n);
+    	  }
+    	  return fun2();
+    	}
+    	var result=func1();
+    	result();
+    	nAdd();
+    	result();
+    </pre>
+    <h2>作用域和作用域链</h2>
+    <p>http://www.cnblogs.com/lhb25/archive/2011/09/06/javascript-scope-chain.html</p>
+    <h2>堆和栈的区别</h2>
+    <h2>栈溢出和堆溢出</h2>
+    <h2>onload和ready的区别</h2>
+    <ol>
+        <li>ready在onload之前加载</li>
+        <li>ready只加载dom,onload除了加载dom外还加载图片等媒体文件</li>
+    </ol>
+    <h2>js队列</h2>
+    <h2>js堆排序  队列排序</h2>
+    <h2>js如何释放内存</h2>
+    <h2>js内存分配和管理</h2>
+    <h2>页面如何引用文件，如很多个js文件</h2>
+    <h2>提交url后网页发生了什么</h2>
+    <h2>http状态码，1开头的，2开头的，3开头的分别代表什么意思</h2>
+    <h2>移动端的轮播图有几千张怎么办</h2>
+    <h2>移动端图片如何自适应</h2>
+    <h2>性能优化的方式</h2>
+    <h2>jquery数组遍历</h2>
+    <h2>ES6,ES7语法</h2>
+    <h2>网页性能优化，站点速度优化，更快的web加载、执行和渲染</h2>
+    <h2>get post区别 https://juejin.im/entry/57597bd45bbb500053c88b4c</h2>
+    <h2>解决scoped兼容问题：jQuery Scoped CSS plugin https://github.com/thingsinjars/jQuery-Scoped-CSS-plugin</h2>
+    <h2>webservice工作原理</h2>
+    <p>https://juejin.im/entry/582c41b8128fe100694e1702</p>
+    <h2>浏览器相关知识</h2>
+    <p>http://www.ituring.com.cn/book/miniarticle/40158</p>
+    <h2>CDN</h2>
+    <ol>
+        <li>内容分发（就近分配资源）</li>
+        <li>负载均衡</li>
+    </ol>
+    <h2>tcp</h2>
+    <ol>
+        <li></li>
+    </ol>
+    <h2>性能优化</h2>
+    <p>http://www.tuicool.com/articles/zMz2qya</p>
+    <h2>闭包</h2>
+    <p>http://zhqgit.top/2017/03/20/JS%E8%BF%9B%E9%98%B6%E7%AF%87-%E7%BB%88%E7%BB%93%E4%BD%A0%E5%AF%B9%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%92%8C%E9%97%AD%E5%8C%85%E7%9A%84%E7%96%91%E6%83%91/</p>
+</body>
+<script>
+	function add(){
+		document.getElementById('opt').options.add(new Option('a','1'))
+	}
+	//运行结果
+	function func1(){
+    	  var n=99;
+    	  nAdd=function(){
+    	    this.n+=1;
+    	    console.log(this.n)
+    	  };
+    	  function fun2(){
+    	  	console.log(n);
+    	  }
+    	  return fun2();
+    	}
+    	var result=func1();
+    	// result();
+    	nAdd();
+    	// result();
+    //运行结果
+    (function func4(){
+          var a=b='res'
+        })();
+    console.log('a的值'+a)
+    console.log('b的值'+b)
+</script>
+</html>

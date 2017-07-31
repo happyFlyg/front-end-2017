@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>shortcut</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function test(){
+		sendToTest();
+		testWithData();//携带数据
+		testWithCallback();//callback函数
+		testWithDataAndCallback();//同时携带数据和callback函数
+	}
+	//only get|post
+	function sendToTest(){
+		$.get('/test',{y:2});
+		$.post('/test',{z:3});
+	}
+	//with data
+	function testWithData(){
+		$.get('/test?x=1');//假如参数中有中文或者特殊符号
+		$.get('/test',{y:2});//参数会放在url后面
+		$.post('/test',{x:1});//参数会放在表单的formData部分
+	}
+	//with callback
+	function testWithCallback(){
+       $.get('/user/allusers',function(data,callbacktype,jqXHR){//data 服务器成功之后返回的响应的数据，callbacktype返回的服务器响应之后的状态信息（始终是success），jqXHR是被JQuery封装的xhr对象（可以当作原生的XMLHttpRequest对象）
+       	console.log(data);
+       	console.log(callbacktype);//success
+       	console.log(jqXHR);
+       })
+	}
+	function testWithDataAndCallback(){
+		$.get('/user/list',{type:1},function(data){
+			console.log(data);
+		})
+	}
+	function testGetJson(){
+		$.getJSON("/user/list",{type:1},function(data){//更多的是用在跨域的AJAX请求
+			console.log(data);
+		});
+	}
+	function testLoad(){
+		$("#container").load('/user/allusers');//后台以get方式
+		$("#container").load('/user/list',{type:1},function(){//后台以post方式，当传入data时load()会自动转成post方式
+			console.log(arguments);
+		})
+	}
+	//上面的type:1作用是筛选type=1的用户列表
+	//getScript方法 动态加载脚本，当需要脚本的时候再加入
+	function getScript(){
+		$.getScript('/js/testlib.js',function(){
+			alert(testFun(1,2));
+		});
+	}
+
+</script>
+</html>
