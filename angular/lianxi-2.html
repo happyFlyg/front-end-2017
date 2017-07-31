@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+         <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+    </head>
+    <body>
+
+        <div ng-controller="myAppCtrl">
+            ctrl:<input type="text" ng-model="testname"><br>
+            directive:<myname name="testname"></myname>
+        </div>
+
+        <script type="text/javascript">
+          var myapp=angular.module('myApp',[]);
+          myapp.controller('myAppCtrl',['$scope',function($scope){
+            $scope.testname='liaoli';
+          }]);
+          myapp.directive('myname',function(){
+            return {
+                restrict:'AE',
+                scope:{
+                    name:'='
+                },
+                template:'<input type="text" ng-model="name" />',
+                replace:true
+            }
+          });
+
+        </script>
+    </body>
+</html>

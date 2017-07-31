@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lesson-10-使用 Directive 自定义 HTML 组件</title>
+</head>
+<body ng-app="app">
+     <!-- <hello></hello> -->
+     <div hello class='jike'></div>
+	<ul>
+		<li>restrict的含义与应用</li>
+		<li>replace的使用</li>
+		<li>template的使用</li>
+	</ul>
+	<ul>
+		<li>restrict(E):element
+		    <p>与template一起使用</p>
+		</li>
+		<li>restrict(A):attrbuite
+		<p>与link一起使用</p></li>
+		<li>restrict(C):class
+		<p>与link一起使用</p></li>
+	</ul>
+</body>
+<script type="text/javascript" src='js/angular.min.js'></script>
+<script type="text/javascript">
+	var app=angular.module('app',[]);
+	app.directive('hello',function(){
+		// return {
+		// 	restrict:'E',
+		// 	replace:true,//替换掉我们自定义的directive的名称
+		// 	template:'<div>Hello Angular</div>'
+		// }
+		
+		return {
+			restrict:'A',
+			link:function(){
+				alert('我是属性')
+			}
+		}
+	});
+	app.directive('jike',function(){
+		return {
+			restrict:'C',
+			link:function(){
+				alert('我是class')
+			}
+		}
+	})
+
+</script>
+
+</html>

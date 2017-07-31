@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lesson3</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container" ng-app='app'>
+		<div class="view" ng-controller='myCtrl3'>
+		<input type="text" name="" ng-model='userName'/>
+<!-- 		<h1 ng-clock class='ng-clock'>
+			{{userName}}
+		</h1> -->
+		<!-- <div class="ko" ng-bind="'hello'+userName"></div>
+		</div> -->
+		<div class='{{userName}}'>{{msg3}}</div>
+	</div>
+</body>
+<script type="text/javascript" src='js/angular.min.js'></script>
+<script type="text/javascript" src='js/myCtrl.js'></script>
+</html>

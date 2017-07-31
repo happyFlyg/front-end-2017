@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>AJAX BASIC</title>
+		<script src="js/basic.js"></script>
+	</head>
+
+	<body>
+		AJAX基础DEMO
+		<hr>
+		<button onclick="testCreateXhr();">创建XHR对象</button>
+
+		<script>
+			// 1. 创建xhr
+			var xhr = createXHR(); // 直接new，不支持IE6-
+			var xhr2 = createXHR2(); //兼容版 ，支持所有浏览器
+			
+			function testCreateXhr() {
+				var xhr = createXHR2();
+				//xhr.timeout = 1;
+				// console.log(xhr);
+				xhr.onload = function() {
+					
+				}
+				
+				xhr.onreadystatechange = function(e) {
+						// readyState 5种状态
+						// 0: 未初始化
+						// 1： 连接建立、请求发出
+						// 2: 服务器返回响应
+						// 3: 交互（处理响应数据）
+						// 4: 完成，数据可交付客户端使用 
+						console.log('onreadystatechange: readyState:%d, status:%d, responseText:%s', xhr.readyState, xhr.status, xhr.responseText);
+						// demo
+						console.log(xhr.responseText);
+						console.log(xhr.responseXML);
+						console.log(xhr.getAllResponseHeaders());
+						console.log(xhr.getResponseHeader("Content-Type"));
+						console.log(xhr.status);
+						console.log(xhr.statusText);
+					}
+					//				xhr.ontimeout = function(e) {
+					//					console.log('timeout');
+					//				}
+				xhr.open('GET', '/all?x=qq', true);
+				xhr.setRequestHeader("Content-Type", "application/json");
+				xhr.send();
+			}
+		</script>
+	</body>
+
+</html>

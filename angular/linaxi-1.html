@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular lianxi1</title>
+</head>
+<body>
+	<div class="cntainer" ng-app='myApp' ng-controller="myController">
+		<input type="text" name="" ng-model='task'/>
+		<button ng-click="add()">添加</button>
+		<h4 ng-if='tasks.length>0'>任务列表</h4>
+		<ul>
+			<li ng-repeat='item in tasks track by $index'>
+			    {{item}}
+			    <button ng-click='tasks.splice($index,1,"liaoli")'>删除</button>
+			</li>
+		</ul>
+
+	</div>
+</body>
+<script type="text/javascript" src='js/angular.min.js'></script>
+<script type="text/javascript">
+	angular.module('myApp', [])
+	.controller('myController',function($scope){
+     $scope.task='';
+     $scope.tasks=[];
+     $scope.add=function(){
+     	$scope.tasks.push($scope.task);
+     }
+	})
+</script>
+</html>

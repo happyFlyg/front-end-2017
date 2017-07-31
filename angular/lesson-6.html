@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lesson-6-services与指令的使用</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container" ng-app='app' >
+	<div ng-controller='myCtrl'>
+		<h1>{{kp}}</h1>
+		<h2>{{htp}}</h2>
+		<h1 ng-bind='Data.msg'></h1>
+		<p>{{userName}}</p>
+	</div>
+	<p>service 表现形式：</p>
+		value constant factory service provider
+	</div>
+</body>
+<script type="text/javascript" src='js/angular.min.js'></script>
+<script type="text/javascript">
+	angular.module('app',[])
+	.value('name','zhangshan')
+	.value('name','liaoli')//可以改变
+	.constant('http','www.baidu.com')//常量不可以改变
+	.constant('http','www.sohu')
+	.factory('data',function(){
+		return{
+			msg:'你好啊',
+			setMsg:function(){
+				this.msg='我不好';
+			}
+		}
+	})
+	.service('user',function(){
+		this.firstName='上官';
+		this.lastName='飞燕';
+		this.getName=function(){
+			return this.firstName+this.lastName
+		}
+		
+	})
+	.controller('myCtrl',function($scope,name,http,data,user){
+		$scope.op='nihaol';
+		$scope.kp=name;
+		$scope.htp=http;
+		$scope.Data=data;
+		data.setMsg();
+		$scope.userName=user.getName();
+	})
+</script>
+</html>

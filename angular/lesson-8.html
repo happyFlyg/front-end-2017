@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+	.img{
+		width:90px;
+	}
+	.info{
+		background: blue;
+		color:#fff;
+	}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>lesson-8-常用指令的使用，包括 ng-bind，ng-model，ng-show/hide，ng-if，ng-submit，ng-disabled 等。</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body ng-app='app'>
+    <div ng-controller='userCtrl'>
+    <a ng-href="template"></a>
+        <form name='f' ng-submit="register(user)">
+            <fieldset>
+                <legend>基本信息</legend>
+                <img ng-if='user.imgShow' ng-src='{{user.iconImg}}' ng-class="{'img':user.iconClass}">
+                <div>
+                 <input type="text" name="" placeholder="用户名" ng-model='user.uname' required="">
+                    <input type="text" name="" placeholder="密码"  required=""/> 职位：
+                    <select ng-disabled="1==1" name="" id="">
+                        <option value=''>--请选择--</option>
+                        <option ng-selected="user.zhiwei==2" value='1'>java工程师</option>
+                        <option ng-selected="user.zhiwei==1" value='2'>web工程师</option>
+                    </select>
+                    性别：
+                    <input ng-checked="user.sex==0" type="radio" name="sex" />&nbsp;男&nbsp;
+                    <input ng-checked='user.sex==1' type="radio" name="sex" />&nbsp;女&nbsp;
+                </div>
+            </fieldset>
+            <fieldset>
+            	<legend>爱好</legend>
+            	<div>
+            		<input ng-checked="isChecked(1)" type="checkbox" name="ai"/>&nbsp;篮球&nbsp;
+            		<input ng-checked="isChecked(2)" type="checkbox" name="ai"/>&nbsp;足球&nbsp;
+            		<input ng-checked="true" type="checkbox" name="ai"/>&nbsp;羽毛球&nbsp;
+            	</div>
+            </fieldset>
+            <button ng-disabled="f.$invalid" type='submit' class='btn info'>提交</button>
+        </form>
+    </div>
+    <p>指令ng-bind,ng-model,ng-show/hide,ng-if,ng-submit,ng-disabled的使用</p>
+    <p>ng-checked,ng-src,ng-href,ng-class,ng-selected,ng-change的使用</p>
+</body>
+<script type="text/javascript" src='js/angular.min.js'></script>
+<script type="text/javascript">
+    angular.module('app',[])
+    .controller('userCtrl',function($scope){
+        $scope.user={
+        	uname:'',
+        	pwd:'',
+        	zhiwei:'1',
+        	sex:'1',
+        	aihao:'',
+        	iconImg:'images/logo.jpg',
+        	iconClass:true,
+        	imgShow:true,
+        	aihao:[1,3]
+        };
+        $scope.isChecked=function(n){
+        	var isok=false;
+        	for(var i=0;i< $scope.user.aihao.length;i++){
+        		if(n==$scope.user.aihao[i]){
+        			isok=true;
+        			break;
+        		}
+        	}
+        	return isok;
+        };
+        $scope.register=function(u){
+          console.log(u);
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lesson-9-ne-repeat的使用</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body ng-app='myapp'>
+	<div ng-controller='myCtrl'>
+		<div>地址管理</div>
+		<ul class="ui-list">
+			<li  ng-repeat="item in list" class="ui-border-t">
+				<h4 ng-if='$index!=2'>{{$index+1+"."+item.address}}</h4>
+			</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript" src='js/angular.min.js'></script>
+<script type="text/javascript">
+	angular.module('myapp',[])
+	.controller('myCtrl',function($scope){
+		$scope.list=[
+		{id:1,address:'莲花小区14栋2层'},
+		{id:2,address:'建设小区14栋2层'},
+		{id:3,address:'北京东路99号'},
+		{id:4,address:'阳澄湖大道89号'},
+		];
+	})
+</script>
+</html>

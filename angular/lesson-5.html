@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>lesson-5在 $scope 中变量和方法的使用</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<style type="text/css">
+.errorMsg1 {
+    width: 100px;
+    height: 36px;
+}
+</style>
+
+<body ng-app='app'>
+    <div ng-controller='myCtrl'>
+        <input type="text" name="" ng-model='user.uname'>
+        <input type="text" name="" ng-model='user.pwd'>
+        <div ng-click='login()' class="btn btn-success">登录</div>
+        <div class='errorMsg1 btn btn-danger' ng-if="errorMsg.length>0&&errInfo==true" ng-bind='errorMsg'></div>
+        <!-- <input type="text" name="" ng-model='msg'> -->
+        <!-- <h1>{{reverse()}}</h1> -->
+    </div>
+</body>
+<script type="text/javascript" src='js/angular.min.js'></script>
+<script type="text/javascript">
+angular.module('app', [])
+    .controller('myCtrl', function($scope) {
+        $scope.msg = '';
+        $scope.user = {
+            uname: '',
+            pwd: ''
+        };
+        $scope.errorMsg = "";
+        $scope.errInfo = true;
+        $scope.reverse = function() {
+            return $scope.msg.split('').reverse().join();
+        };
+        $scope.login = function() {
+            if ($scope.user.uname == 'admin' && $scope.user.pwd == '123') {
+                $scope.errInfo = false;
+                alert('登陆成功')
+            } else {
+                $scope.errInfo = true;
+                $scope.errorMsg = '登陆失败';
+            }
+        };
+    })
+</script>
+
+</html>

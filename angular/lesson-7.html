@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lesson-6- controller 中共享数据</title>
+</head>
+<body ng-app="app">
+	<div ng-controller='fCtrl'>
+		<input type="text" name="" ng-model='data.msg'/>
+		<h1>{{data.msg}}</h1>
+	</div>
+	<div ng-controller='sCtrl'>
+		<input type="text" name="" ng-model='data.msg'/>
+		<h1>{{data.msg}}</h1>
+	</div>
+</body>
+<script type="text/javascript" src='js/angular.min.js'></script>
+<script type="text/javascript">
+	angular.module('app', [])
+	.factory('Data',function(){
+		return {
+			msg:'来至factory'
+		}
+	})//相当于全局变量
+	// 应用：比如下单页面和购物车页面的商品数量
+	.controller('fCtrl',function($scope,Data){
+		$scope.data=Data;
+	})
+	.controller('sCtrl',function($scope,Data){
+		$scope.data=Data;
+	})
+</script>
+</html>
