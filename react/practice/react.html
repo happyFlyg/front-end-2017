@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>reactJs</title>
+    <style type="text/css">
+    body {
+        /* font: 14px proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;*/
+        color: #333;
+        font-size: 14px;
+    }
+    </style>
+    <!--[if lte IE 8]>
+  <script src="/react/js/html5shiv.min.js"></script>
+  <script src="/react/js/es5-shim.min.js"></script>
+  <script src="/react/js/es5-sham.min.js"></script>
+  <![endif]-->
+    <!-- [if gte IE 8] >
+    <link rel="stylesheet" type="text/css" href="">
+    <![endif] -->
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <div id="Liao"></div>
+    <div id="example"></div>
+    <div id="example2"></div>
+    <div id="example3"></div>
+    <script type='text/babel'>
+       ReactDOM.render(
+          <h1>料理</h1>,
+          document.getElementById('container')
+       );
+    </script>
+   <script type='text/babel'>
+     var attr=['liaoli','caojingr','caozhixuan'];
+     ReactDOM.render(
+        <div>
+          {
+             attr.map(function(value,index){
+                return <div>key:{index}<p>value:{value}</p></div>;
+             })
+          }
+        </div>,
+        document.getElementById('Liao')
+
+     );
+   </script>
+   <script type='text/babel'>
+     var attr2=[
+         <h2>内嵌数组，数组展开</h2>,
+         <h1>数组展开</h1>
+     ];
+     ReactDOM.render(
+         <div>{attr2}</div>,
+         document.getElementById('example')
+     );
+   </script>
+  <script type='text/babel'>
+    var Helloworld=React.createClass({
+        render: function(){
+            return <h1>创建类:{this.props.name}</h1>;
+        }
+    });
+    ReactDOM.render(
+        <Helloworld name="this.props.name"/>,
+        document.getElementById('example2')
+    );
+  </script>
+<script type='text/babel'>
+   var HelloList=React.createClass({
+   render:function(){
+       return <ol>{React.Children.map(this.props.children,function(name){
+           return <li>{name}</li>;
+       })}</ol>
+   }
+   });
+   ReactDOM.render(
+       <HelloList>
+       <p>this.props.children</p>
+       <p>this.props.children</p>
+       </HelloList>,
+       document.getElementById('example3')
+   );
+</script>
+</body>
+
+</html>
