@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$ 实例属性</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>实例属性</h2>
+	<div id="app">
+	   <p>a：{{a}}</p>
+	</div>
+	<button onclick="vm.addOut()">外部调用方法</button>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>从外部操作构造器内部的  叫做实例</li>
+		<li>Vue把data\methods  全部暴露在外面</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器   vm装载的是所有实例
+var vm=new Vue({
+	el:'#app',
+	data:{
+		msg:'hello Vue',
+	    a:1
+	},
+	methods:{
+		addOut:function(){
+			this.a++
+		}
+	}
+});
+console.log(vm.$el);
+console.info(vm.msg);
+</script>
+</html>

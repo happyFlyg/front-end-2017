@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>实例事件</h1>
+	<hr>
+	<div id="app">
+		<p>{{a}}</p>
+		<button @click="jia">+</button>
+	</div>
+		<p> <button onclick="jian()">-</button> </p>
+<p> <button onclick="off()">DEL</button> </p>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				a:1
+			},
+			methods:{
+				jia:function(ee){
+					this.a ++
+				}
+			}
+		})
+
+//vm.$once
+		vm.$on('jian',function(num){
+			console.log('执行了jian()')
+			this.a -= num
+		})
+
+		function jian(){
+			vm.$emit('jian','2')
+		}
+
+		function off(){
+			vm.$off('jian')
+		}
+	</script>
+</body>
+</html>

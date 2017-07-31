@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>其它指令</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+	<style>
+		[v-cloak]{
+			display: none
+		}
+	</style>
+</head>
+<body>
+	<h2>其它指令</h2>
+	<div id="app">
+	   <p v-pre>{{msg}}</p>
+       <p v-cloak>渲染完成之前是看不到我的</p>
+       <hr>
+       <p v-once>原先输入的是：{{msg}}</p>
+       <textarea  v-model="msg" name="" id="" cols="30" rows="10"></textarea>
+	</div>
+	<ol>
+		<li>v-pre 显示花括号里面的内容</li>
+		<li>[v-cloak]在浏览器为客户渲染完成之前，你是看不到我的</li>
+	</ol>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>v-cloak 配合style使用
+		    <pre>
+		    	[v-cloak]{
+		    		display: none
+		    	}
+		    </pre>
+		</li>
+		<li>v-once 只显示一次</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+    var app=new Vue({
+    	el:'#app',
+    	data:{
+            msg:'hello vue'
+    	}
+    })
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>propsData</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>propsData</h2>
+	<div id="app">
+	   <header id="header"></header>
+	</div>
+	<hr>
+	<ol>
+		<li>propsData从1.0遗留下来的选项方式，用于开发环境而不用于生产环境，propsData模拟一些数据，将数据传给Vue.extend()里面,通过Vue.extend()处理数据</li>
+		<li>同过propsData进行跨域模拟</li>
+		<li>挂载时new一个扩展构造器变量函数 new extendPro().$mount('#header')</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var extendPro=Vue.extend({
+	template:'<h3>我是通过扩展的props获取的数据propsData——{{a}}</h3>',
+    //获取propsData
+    props:['a']
+})
+new extendPro({
+	propsData:{//设置propsData
+		a:'flyg'
+	}
+}).$mount('#header')
+</script>
+</html>

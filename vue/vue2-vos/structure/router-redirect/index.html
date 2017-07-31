@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>redirect 路由重定向</title>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <hr>
+    <h2>注意：</h2>
+    <ol>
+        <li>路由中的父路径必须是绝对路径，children里面的path可以是相对路径</li>
+    </ol>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+const home={
+    template:`<div>home内容</div>`
+}
+const contemt={
+    template:`<div>下面框架</div>`
+}
+const bars={
+    template:`<div>侧边栏</div>`
+}
+const mains={
+    template:`<div>主要内容</div>`
+}
+const router = new VueRouter({
+    routes: [{
+        path: '/',
+        component: home
+    }, {
+        path: '/cont',
+        component: contemt,
+        children: [{
+            path: 'fir',
+            component: bars
+        }, {
+            path: 'sec',
+            component: mains
+        },{
+            path:'third',
+            redirect:'fir'
+        }]
+    }]
+})
+new Vue({
+   router,
+   template:`
+       <div id="app">
+           <ol>
+               <li><router-link to="/">home</router-link></li>
+               <li><router-link to="/cont">cont</router-link></li>
+               <ol>
+                   <li><router-link to="/cont/fir">bar</router-link></li>
+                   <li><router-link to="/cont/sec">main</router-link></li>
+                   <li><router-link to="/cont/third">/cont/third</router-link></li>
+               </ol>
+           </ol>
+           <router-view></router-view>
+       </div>
+   ` 
+}).$mount('#app')
+</script>
+
+</html>

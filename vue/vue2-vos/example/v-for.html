@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>v-for</h2>
+    <div id="app">
+        <ul>
+            <li v-for="item in devstudent">{{item}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="ddd of devst">{{ddd.name}} - {{ddd.age}}</li>
+        </ul>
+    </div>
+    <hr>
+    <h2>注意：</h2>
+    <ol>
+        <li>2.0可以到1.0运行，反之不可以运行</li>
+        <li>循环谁写在谁上</li>
+        <li>别名item不会污染数据</li>
+        <li>computed在视图显示之前进行运算</li>
+        <li>this指的是整个构造器app</li>
+        <li>方法和数据是直接暴露在外面的，所以可以直接this.student</li>
+    </ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var app = new Vue({
+        el: "#app",
+        data: {
+            student: [12, 13, 149, 35],
+            st: [{
+                "name": "张三",
+                "age": "24"
+            }, {
+                "name": "李四",
+                "age": "17"
+            }, {
+                "name": "王五",
+                "age": "47"
+            }, {
+                "name": "ll",
+                "age": "24"
+            }]
+        },
+        computed: {
+            devstudent: function() {
+                // return [1,7,39,123,5].sort(sortNum);
+                // return this.student.sort(sortNum);
+                return this.student.reverse(); //reverse不跟函数
+            },
+            devst: function() {
+                return sortByKey(this.st, "age");
+            }
+        }
+    })
+    //数组中排序
+function sortNum(a, b) {
+    return a - b;
+}
+//复杂的数组按照特定项排序
+function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key];
+        var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+}
+</script>
+
+</html>

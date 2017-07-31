@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>v-model</h1>
+	<hr>
+	<div id="app">
+		<p>原始文本：{{message}}</p>
+		<h3>文本框</h3>
+		<p>v-model: <input type="text" v-model="message"></p>
+		<p>v-model.lazy: <input type="text" v-model.lazy="message"></p>
+		<p>v-model.number: <input type="text" v-model.number="message"></p>
+		<p>v-model.trim: <input type="text" v-model.trim="message"></p>
+		<hr>
+		
+		<h3>文本区域</h3>
+		<textarea cols="30" rows="10" v-model="message"></textarea>
+		<hr>
+
+		<h3>单选按钮</h3>
+		<p>
+			<input type="checkbox" id="asdf" v-model="xz">
+			<label for="asdf">{{xz}}</label>
+		</p>
+		<hr>
+
+		<h3>多个单选框绑定一个数组</h3>
+		<p>
+			<input type="checkbox" id="Jack" value="Jack" v-model="xzArray">
+			<label for="Jack">Jack</label>
+			<br>
+			<input type="checkbox" id="John" value="John" v-model="xzArray">
+			<label for="John">John</label>
+			<br>
+			<input type="checkbox" id="Mike" v-model="Mike" v-model="xzArray">
+			<label for="Mike">Mike</label>
+			<p>{{xzArray}}</p>
+		</p>
+		<hr>
+
+		<h3>单选按钮</h3>
+		<input type="radio" id="one" value="true" v-model="danxuan">
+		<label for="one">true</label>
+		<input type="radio" id="two" value="false" v-model="danxuan">
+		<label for="two">false</label>
+		<p>{{danxuan}}</p>
+		<hr>
+		
+		<h3>选择列表</h3>
+		<p>
+			<select v-model="dsfsdf">
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<p>{{dsfsdf}}</p>
+			<select v-model="rerge" multiple>
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<p>{{rerge}}</p>
+		</p>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'hello Vue!',
+				xz:true,
+				xzArray:[],
+				danxuan:'',
+				dsfsdf:'',
+				rerge:[]
+			}
+		})
+	</script>
+</body>
+</html>

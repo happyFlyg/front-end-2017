@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot 标签的内容扩展</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>slot 标签的内容扩展</h2>
+	<div id="app">
+	   <goods v-for="aaa in goods">
+	   	   <span slot="name">{{aaa.name}}</span>
+	   	   <span slot="num">{{aaa.num}}</span>
+	   </goods>
+	</div>
+	<template id="demo">
+		<p>名称：<slot name="name"></slot>数量：<slot name="num"></slot></p>
+	</template>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>slot帮助我们把组件的内容传播出去,即标签里的内容传到组件模板</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+var goods={
+	template:'#demo'
+}
+var vm=new Vue({
+	el:'#app',
+	data:{
+		goods:[
+		    {name:'pen',num:'10'},
+		    {name:'car',num:'1'}
+		]
+	},
+	components:{
+		'goods':goods
+	}
+})
+</script>
+</html>

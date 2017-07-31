@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件之间调用函数</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>组件之间调用函数</h2>
+    <div id="app">
+        <p>我是a：{{originalPrice}}</p>
+        <p>
+            <btncom @click.native="add"></btncom>
+        </p>
+    </div>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+var childCom = {
+    template: '<div>子组件</div>',
+}
+var btnComTemp = {
+    template: `<div><div>组件调用调用原生函数——我是b：{{b}}</div><childcom @click.native.stop="childMethod"></childcom></div>`,
+    data: function() {
+        return {
+            b: 1
+        }
+    },
+    methods: {
+        childMethod: function() {
+            this.b += 10
+        }
+    },
+    components: {
+        'childcom': childCom
+    }
+}
+var app = new Vue({
+    el: '#app',
+    data: {
+        originalPrice: 10,
+        discount: 0.8
+    },
+    components: {
+        'btncom': btnComTemp
+    },
+    methods: {
+        add: function() {
+            this.originalPrice += 10
+        }
+    }
+
+})
+</script>
+
+</html>

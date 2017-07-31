@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue.directive 自定义指令</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>Vue.directive 自定义指令</h2>
+    <div id="app">
+        <!-- <p v-flyg="color">{{num}}</p> -->
+        <p v-flyg.col.fontSize="color" id="fly">{{num}}</p>
+        <!--  <h4>modifiers：</h4>
+       <p v-flyg.color.fontSize="color">{{num}}</p> -->
+        <p>
+            <button @click="add">+</button>
+        </p>
+    </div>
+    <button onclick="unbind()">解绑</button>
+    <hr>
+    <h2>注意：</h2>
+    <ol>
+        <li>全局API在构造器之前写</li>
+        <li>五个生命周期：bind,inserted,update,componentUpdated,unbind</li>
+        <li>解绑destroy：在Vue作用域外声明函数app.$destroy()</li>
+    </ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+function unbind() { //解绑
+    app.$destroy();
+}
+
+Vue.directive('flyg', {
+    bind: function(el, binding, vnode) { //被绑定
+        console.log('1---bind');
+        //以下是对el, binding, vnode详解
+        var s = JSON.stringify;
+        console.info('name：' + s(binding.name) + '<br>' +
+            'value：' + s(binding.value) + '<br>' + 'expression：' + s(binding.expression) + '<br>' + 'argument：' + s(binding.arg) + '<br>' + 'modifiers：' + s(binding.modifiers) + '<br>' + 'vnode keys：' + Object.keys(vnode).join(','));
+        //页面载入时是红色的
+        el.style.color =  binding.value;
+    },
+    inserted: function() { //绑定到节点
+        console.info('2---inserted');
+    },
+    update: function(el,binding) { //组件更新
+        console.log('3________update');
+         //更新完成后
+        el.style.color= 'green';
+    },
+    componentUpdated: function() { //组件更新完成
+        console.info('4_____componentUpdated');
+       
+    },
+    unbind: function() { //解绑
+        console.warn('5----------unbind')
+    }
+});
+// 构造器
+var app = new Vue({
+    el: '#app',
+    data: {
+        num: 10,
+        color: 'red'
+    },
+    methods: {
+        add: function() {
+            this.num++;
+        }
+    }
+});
+</script>
+
+</html>

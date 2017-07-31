@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>v-if v-show v-else</h1>
+	<p>v-if 判断是否加载，v-show:调整css display</p>
+	<hr>
+	<div id="app">
+		<div v-show="ok">原来是真的啊！</div>
+
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				ok:true,
+				ok2:false
+			}
+		})
+	</script>
+</body>
+</html>

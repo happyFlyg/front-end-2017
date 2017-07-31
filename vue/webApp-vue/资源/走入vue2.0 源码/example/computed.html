@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>computed</h1>
+	<hr>
+	<div id="app">
+		<p>原价：{{yuanjia}}</p>
+		<p>折扣：{{zhekou}}</p>
+		<p>现价：{{xianjia}}</p>
+		<p><button @click="add">+</button></p>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				yuanjia:10,
+				zhekou:0.7
+			},
+			computed:{
+				xianjia:function(){
+					return '￥' + this.yuanjia *  this.zhekou
+				}
+			},
+			methods:{
+				add:function(){
+					this.yuanjia++
+				}
+			}
+		})
+	</script>
+</body>
+</html>

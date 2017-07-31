@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>标题</h1>
+	<hr>
+	<div id="app">
+		<ul>
+			<li v-for="(bbb,ccc) in devst">
+				{{ ccc }} {{ bbb.name }} - {{ bbb.age }}
+			</li>
+		</ul>
+
+
+
+		<hr>
+		<ul>
+			<li v-for="aaaa in devstudent">
+				{{aaaa}}
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				student:[56,57,23,5,48,78,98,26],
+				devstudent:'',
+				st:[
+					{name:'wos',age:'35'},
+					{name:'taobao',age:'28'},
+					{name:'sohu',age:'34'},
+					{name:'sina',age:'58'},
+					{name:'youku',age:'29'},
+					{name:'taobao',age:'18'}
+				]
+			},
+			computed:{
+				devstudent:function(){
+					//return this.student.sort(sortNumber)
+					return this.student.reverse()
+				},
+				devst: function (){
+					return sortByKey(this.st,'age')
+				}
+			}
+		})
+
+		function sortByKey(array, key) {
+		    return array.sort(function(a, b) {
+		        var x = a[key]; var y = b[key];
+		        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+		    });
+		}
+
+
+		function sortNumber(a, b){
+			return a - b
+		}
+	</script>
+</body>
+</html>

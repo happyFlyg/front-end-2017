@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>slot</h1>
+	<hr>
+	<div id="app">
+		<goods v-for="aaa in goods">
+			<span slot="name">{{aaa.name}}</span>
+			<span slot="num">{{aaa.num}}</span>
+		</goods>
+	</div>
+	
+	<template id="demo">
+		<p>
+			名称：<slot name="name"></slot>
+			数量：<slot name="num"></slot>
+		</p>
+	</template>
+
+	<script>
+
+		goods = {
+			template:'#demo'
+		}
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				goods:[
+					{name:'pen',num:'20'},
+					{name:'car',num:'1'}
+				]
+			},
+			
+			components:{
+				"goods":goods,
+			}
+		})
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>query append exact</title>
+</head>
+
+<body>
+    <h2>query append exact</h2>
+    <div id="app">
+    </div>
+    <hr>
+    <h2>注意：</h2>
+    <ol>
+        <li>如果用params的话用name，否则不好使。用query的话用path就行，query宽松一些，query可以读取数据库的值</li>
+        <li>确定值的情况下用name和params，不确定就用path和query</li>
+        <li>通过params获取path中的参数</li>
+        <li>exact 常用于相对于父工程下，加上这个，否则路由会跑到别处去</li>
+        <li>/about是绝对路径，about是相对路径</li>
+    </ol>
+</body>
+<script src="../../assets/js/vue.js"></script>
+<script src="../../assets/js/vue-router.js"></script>
+<script>
+const home = {
+    template: `<div>home内容</div>`
+}
+const users = {
+    template: `<div>
+    	<h4>users内容</h4>
+    	<router-view></router-view>
+    	</div>`
+}
+const user = {
+    template: `
+			<div>获取用户名：{{$route.params.username}}——获取query参数：{{$route.query.aaa}}</div>
+    	`
+}
+
+const router = new VueRouter({
+    routes: [{
+        path: '/',
+        component: home
+    }, {
+        path: '/users',
+        component: users,
+        children: [{//省略了根目录
+            path: ':username',
+            name: 'user',
+            component: user
+        }]
+    }]
+})
+new Vue({
+    router,
+    template: `
+    	    <div>
+    	        <ol>
+    	            <li><router-link to="/">/</router-link></li>
+    	            <li><router-link to="/users" append>/users</router-link></li>
+    	            <ol>
+			            <li><router-link :to="{path:'/users/flyg',query:{aaa:'bbb'}}">flyg</router-link></li>
+    	            </ol>
+    	            <li>
+	    	            <router-link to="about" append>append</router-link>
+    	            </li>
+    	            <li><router-link to="about" exact>exact</router-link></li>
+    	        </ol>
+    	        <router-view></router-view>
+    	    </div>
+    	`
+}).$mount('#app')
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.extend 延伸构造器</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>Vue.extend 延伸构造器</h2>
+    <div id="header">
+        <h2>Vue.extend</h2>
+    </div>
+    <div id="footer">
+    </div>
+    <h2>注意：</h2>
+    <ol>
+        <li>Vue.directive必须放在Vue.extend之前，否则报错</li>
+    </ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 原始构造器
+var app = new Vue({
+    el: '#app',
+    message: 'hello flyg'
+});
+//延伸构造器
+var header = Vue.extend({
+    template: '<div><p v-text="msg"></p><button>点击颜色变化</button></div>',
+    data: function() {
+        return {
+            msg: 'hello my is header'
+        }
+    }
+});
+//挂载
+new header().$mount('#header');
+var footer = Vue.extend({
+    template: '<h4 v-text="footerTxt" v-flyg="color"></h4>',
+    data: function() {
+        return {
+            footerTxt: 'hello 我是底部！',
+            color: 'red'
+        }
+    }
+});
+
+new footer().$mount('#footer');
+</script>
+
+</html>

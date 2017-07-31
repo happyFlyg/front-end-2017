@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>Template</h1>
+	<hr>
+	<div id="app">
+	</div>
+	<template id="demo2">
+		<h1 style="color:red">我是template标签模板</h1>
+	</template>
+
+	<script type="x-template" id="demo3">
+		<h1 style="color:red">我是script标签模板</h1>
+	</script>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'hello Vue!'
+			},
+			template:'#demo3'
+			// template:`
+			// 	<h1 style="color:red">我是选项模板</h1>
+			// `
+		})
+	</script>
+</body>
+</html>

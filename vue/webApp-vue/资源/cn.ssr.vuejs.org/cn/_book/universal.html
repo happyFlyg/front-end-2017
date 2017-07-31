@@ -1,0 +1,615 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>编写通用代码 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="structure.html" />
+    
+    
+    <link rel="prev" href="basic.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="basic.html">
+            
+                <a href="basic.html">
+            
+                    
+                    基本用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="universal.html">
+            
+                <a href="universal.html">
+            
+                    
+                    编写通用代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="structure.html">
+            
+                <a href="structure.html">
+            
+                    
+                    源码结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="routing.html">
+            
+                <a href="routing.html">
+            
+                    
+                    路由和代码分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="data.html">
+            
+                <a href="data.html">
+            
+                    
+                    D预加载数据和状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="hydration.html">
+            
+                <a href="hydration.html">
+            
+                    
+                    客户端融合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="bundle-renderer.html">
+            
+                <a href="bundle-renderer.html">
+            
+                    
+                    包渲染器介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="build-config.html">
+            
+                <a href="build-config.html">
+            
+                    
+                    构建配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="css.html">
+            
+                <a href="css.html">
+            
+                    
+                    CSS管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="head.html">
+            
+                <a href="head.html">
+            
+                    
+                    Head管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="caching.html">
+            
+                <a href="caching.html">
+            
+                    
+                    缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="streaming.html">
+            
+                <a href="streaming.html">
+            
+                    
+                    流媒体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    API参考
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="api.html">
+            
+                <a href="api.html#createrendereroptions">
+            
+                    
+                    createRenderer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="api.html">
+            
+                <a href="api.html#createbundlerendererbundle-options">
+            
+                    
+                    createBundleRenderer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="api.html">
+            
+                <a href="api.html#class-renderer">
+            
+                    
+                    Class: Renderer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="api.html">
+            
+                <a href="api.html#class-bundlerenderer">
+            
+                    
+                    Class: BundleRenderer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="api.html">
+            
+                <a href="api.html#renderer-options">
+            
+                    
+                    Renderer 可选项
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.5.1" data-path="api.html">
+            
+                <a href="api.html#template">
+            
+                    
+                    template
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.2" data-path="api.html">
+            
+                <a href="api.html#clientmanifest">
+            
+                    
+                    clientManifest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.3" data-path="api.html">
+            
+                <a href="api.html#inject">
+            
+                    
+                    inject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.4" data-path="api.html">
+            
+                <a href="api.html#shouldpreload">
+            
+                    
+                    shouldPreload
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.5" data-path="api.html">
+            
+                <a href="api.html#runinnewcontext">
+            
+                    
+                    runInNewContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.6" data-path="api.html">
+            
+                <a href="api.html#basedir">
+            
+                    
+                    basedir
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.7" data-path="api.html">
+            
+                <a href="api.html#cache">
+            
+                    
+                    cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.8" data-path="api.html">
+            
+                <a href="api.html#directives">
+            
+                    
+                    directives
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="api.html">
+            
+                <a href="api.html#webpack-plugins">
+            
+                    
+                    Webpack 插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >编写通用代码</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x4E66;&#x5199;&#x901A;&#x7528;&#x4EE3;&#x7801;">&#x4E66;&#x5199;&#x901A;&#x7528;&#x4EE3;&#x7801;</h2>
+<p>&#x5728;&#x8FDB;&#x4E00;&#x6B65;&#x63A2;&#x7D22;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x82B1;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x8BA8;&#x8BBA;&#x5199;&#x80FD;&#x8FD0;&#x884C;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x901A;&#x7528;&#x4EE3;&#x7801;&#x9650;&#x5236;&#x3002;&#x7531;&#x4E8E;&#x7528;&#x4F8B;&#x548C;&#x5E73;&#x53F0;API&#x4E0D;&#x540C;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x4EE3;&#x7801;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x4E5F;&#x4F1A;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x4E0B;&#x9762;&#x590D;&#x4E60;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x7684;&#x70B9;&#x3002;</p>
+<h3 id="&#x670D;&#x52A1;&#x5668;&#x6570;&#x636E;&#x54CD;&#x5E94;">&#x670D;&#x52A1;&#x5668;&#x6570;&#x636E;&#x54CD;&#x5E94;</h3>
+<p>&#x5728;&#x4EC5;&#x4EC5;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x7528;&#xFF0C;&#x7528;&#x6237;&#x5C06;&#x4F7F;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x65B0;&#x7684;&#x5B9E;&#x4F8B;&#x3002;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#x6211;&#x4EEC;&#x4E5F;&#x60F3;&#x4E00;&#x6837;&#xFF1A;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x72EC;&#x7ACB;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x6CA1;&#x6709;&#x8DE8;&#x8BF7;&#x6C42;&#x7684;&#x6570;&#x636E;&#x6E32;&#x67D3;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x5728;&#x5B9E;&#x9645;&#x6E32;&#x67D3;&#x9700;&#x8981;&#x786E;&#x5B9A;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x670D;&#x52A1;&#x7AEF;<code>pre-fetching</code>&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x65F6;&#x5728;&#x6E32;&#x67D3;&#x7684;&#x65F6;&#x5019;&#x5E94;&#x7528;&#x6570;&#x636E;&#x5DF2;&#x7ECF;&#x83B7;&#x5F97;&#x5230;&#x3002;&#x610F;&#x5473;&#x7740; <code>data reactivity</code>&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x9ED8;&#x8BA4;&#x7981;&#x7528;&#x3002;&#x7981;&#x7528;<code>data reactivity</code>&#x907F;&#x514D;&#x4E86;&#x5C06;&#x6570;&#x636E;&#x8F6C;&#x5316;&#x4E3A;&#x88AB;&#x52A8;&#x5BF9;&#x8C61;&#x7684;&#x6027;&#x80FD;&#x6210;&#x672C;&#x3002;</p>
+<h3 id="&#x7EC4;&#x4EF6;&#x751F;&#x547D;&#x5468;&#x671F;&#x94A9;&#x5B50;">&#x7EC4;&#x4EF6;&#x751F;&#x547D;&#x5468;&#x671F;&#x94A9;&#x5B50;</h3>
+<p>&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#xFF0C;&#x6240;&#x4EE5;&#x6240;&#x6709;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x94A9;&#x5B50;&#x4EC5;&#x4EC5;<code>beforeCreate</code>&#x548C;<code>created</code>&#x5C06;&#x4F1A;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#x65F6;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5176;&#x4ED6;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#x4F8B;&#x5982;<code>beforeMount</code>&#x6216;<code>mounted</code>&#x5C06;&#x4F1A;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x4E2A;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x70B9;&#x662F;&#x5E94;&#x8BE5;&#x907F;&#x514D;&#x5728;<code>beforeCreate</code>&#x548C;<code>created</code>&#x4EA7;&#x751F;&#x5168;&#x5C40;&#x526F;&#x4F5C;&#x7528;&#xFF0C;&#x4F8B;&#x5982;&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;&#x5B9A;&#x65F6;&#x5668;<code>setInterval</code>&#x3002;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x5668;&#x7136;&#x540E;&#x5728;<code>beforeDestroy</code>&#x6216;<code>destroyed</code>&#x9500;&#x6BC1;&#x6389;&#x3002;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#x662F;<code>destroyed</code>&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5B9A;&#x65F6;&#x5668;&#x4F1A;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x5E26;&#x526F;&#x4F5C;&#x7528;&#x4EE3;&#x7801;&#x653E;&#x5728;&#x5728;<code>beforeMount</code>&#x6216;<code>mounted</code>&#x51FD;&#x6570;&#x5185;&#x3002;</p>
+<h3 id="&#x8BBF;&#x95EE;&#x7279;&#x5B9A;&#x5E73;&#x53F0;&#x7684;api">&#x8BBF;&#x95EE;&#x7279;&#x5B9A;&#x5E73;&#x53F0;&#x7684;API</h3>
+<p>&#x901A;&#x7528;&#x4EE3;&#x7801;&#x4E0D;&#x80FD;&#x5047;&#x5B9A;&#x8BBF;&#x95EE;&#x7279;&#x5B9A;&#x4E8E;&#x5E73;&#x53F0;&#x7684;api,&#x6240;&#x4EE5;&#x5982;&#x679C;&#x60A8;&#x7684;&#x4EE3;&#x7801;&#x76F4;&#x63A5;&#x4F7F;&#x7528;<code>window</code>&#x6216;<code>document</code>,&#x4ED6;&#x4EEC;&#x5728;Nodejs&#x6267;&#x884C;&#x65F6;&#x5C06;&#x629B;&#x51FA;&#x9519;&#x8BEF;,&#x53CD;&#x4E4B;&#x4EA6;&#x7136;&#x3002;</p>
+<p>&#x76EE;&#x6807;&#x5728;&#x670D;&#x52A1;&#x5668;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x4F46;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x5E73;&#x53F0;API,&#x63A8;&#x8350;&#x7528;&#x901A;&#x7528;API&#x53BB;&#x5305;&#x88C5;&#x7279;&#x5B9A;&#x4E8E;&#x5E73;&#x53F0;&#x7684;&#x5B9E;&#x73B0;,&#x6216;&#x8005;&#x4F7F;&#x7528;&#x7C7B;&#x5E93;&#x5E2E;&#x4F60;&#x505A;&#x8FD9;&#x4E9B;&#x3002;&#x4F8B;&#x5982;,axios&#x662F;&#x4E00;&#x4E2A;&#x5728;&#x670D;&#x52A1;&#x5668;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x5F00;&#x653E;&#x76F8;&#x540C;&#x7684;API <code>HTTP client</code>&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x6D4F;&#x89C8;&#x5668;api,&#x5E38;&#x89C1;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x8BBF;&#x95EE;&#x5B83;&#x4EEC;&#x4EC5;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x3002;</p>
+<p>&#x6CE8;&#x610F;,&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x5E76;&#x4E0D;&#x662F;&#x901A;&#x7528;&#x4EE3;&#x7801;,&#x5B83;&#x53EF;&#x80FD;&#x662F;&#x96BE;&#x4EE5;&#x5C06;&#x5176;&#x96C6;&#x6210;&#x5230;&#x4E00;&#x4E2A;server-rendered&#x5E94;&#x7528;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x5B83;&#x5DE5;&#x4F5C;&#x901A;&#x8FC7;<code>mock</code>&#x4E00;&#x4E9B;&#x5168;&#x5C40;&#x53D8;&#x91CF;,&#x4F46;&#x8FD9;&#x662F;<code>hacky</code>,&#x53EF;&#x80FD;&#x4F1A;&#x5E72;&#x6270;&#x5176;&#x4ED6;&#x7C7B;&#x5E93;&#x7684;&#x73AF;&#x5883;&#x68C0;&#x6D4B;&#x4EE3;&#x7801;&#x3002;</p>
+<h3 id="&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;">&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;</h3>
+<p>&#x5927;&#x591A;&#x6570;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;DOM&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#x65F6;&#x51FA;&#x9519;&#x3002;&#x8FD9;&#x91CC;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x89E3;&#x51B3;&#xFF1A;</p>
+<ol>
+<li>&#x9009;&#x62E9;&#x4F7F;&#x7528;&#x62BD;&#x8C61;&#x673A;&#x5236;&#x7EC4;&#x4EF6;&#x8FD0;&#x884C;&#x5728;&#x865A;&#x62DF;DOM&#x66FF;&#x4EE3;&#x3002;&#x4F8B;&#x5982;&#x4F7F;&#x7528;<code>render</code>&#x51FD;&#x6570;</li>
+<li>&#x5982;&#x679C;&#x6709;&#x7EC4;&#x4EF6;&#x4E0D;&#x80FD;&#x8F7B;&#x6613;&#x88AB;&#x7EC4;&#x4EF6;&#x66FF;&#x6362;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x201C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7248;&#x672C;&#x201D;&#x7684;&#x4F7F;&#x7528;&#x6307;&#x4EE4;&#x9009;&#x9879;&#x5F53;&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#x65F6;&#x3002;</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="basic.html" class="navigation navigation-prev " aria-label="Previous page: 基本用法">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="structure.html" class="navigation navigation-next " aria-label="Next page: 源码结构">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"编写通用代码","level":"1.3","depth":1,"next":{"title":"源码结构","level":"1.4","depth":1,"path":"structure.md","ref":"structure.md","articles":[]},"previous":{"title":"基本用法","level":"1.2","depth":1,"path":"basic.md","ref":"basic.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"universal.md","mtime":"2017-06-08T20:58:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-17T19:05:36.316Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

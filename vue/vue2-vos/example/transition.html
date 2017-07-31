@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue-else-if 动画</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <style>
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s
+    }
+    
+    .fade-enter,
+    .fade-leave-active {
+        opacity: 0
+    }
+    </style>
+</head>
+
+<body>
+    <h2>vue-else-if 动画</h2>
+    <div id="app">
+        <div v-if="type==='a'">aaaaaaaaaaaa</div>
+        <div v-else-if="type==='b'">bbbbbbbbbbb</div>
+        <div v-else-if="type==='c'">cccccccccccc</div>
+        <div v-else> not a/b/c</div>
+        <!-- transition -->
+        <button v-on:click="show = !show">
+           Toggle
+         </button>
+         <transition name="fade">
+           <p v-if="show">hello</p>
+         </transition>
+    </div>
+    <hr>
+    <h2>注意：</h2>
+    <ol>
+        <li>建议直接使用css动画库 animate.css https://daneden.github.io/animate.css/</li>
+    </ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var vm = new Vue({
+    el: '#app',
+    data: {
+        type: 'c',
+        show: true
+    }
+})
+</script>
+
+</html>

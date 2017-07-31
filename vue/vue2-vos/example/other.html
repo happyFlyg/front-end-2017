@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>杂项</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>杂项</h2>
+	<div id="app">
+	   {{msg}}
+	   <hello></hello>
+	   <world></world>
+	</div>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>组件写个名称有助于排错</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+Vue.component('hello',{
+	template:'<div>全局注册的&lt;hello&gt;</div>'
+});
+var localComponent={
+	name:'flyg',
+	template:'<div>$parent获取父亲的msg：{{this.$parent.msg}}——局部注册的&lt;world&gt;</div>'
+}
+// 构造器
+var app=new Vue({
+	el:'#app',
+	data:{
+		msg:'hello Vue'
+	},
+	methods:{
+
+	},
+	computed:{
+
+	},
+	watch:{
+		msg:function(){
+			console.log('msg改变了')
+		}
+	},
+	components:{
+		'world':localComponent
+	}
+})
+</script>
+</html>

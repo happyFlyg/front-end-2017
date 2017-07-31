@@ -1,0 +1,27 @@
+body{
+	padding: 50px;
+	font-size: 16px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+#main li{
+	padding: 5px 0;
+}
+hr{
+	height: 0px;
+	width: 100%;
+	border-top:2px dotted #ff6600;
+	margin: 10px 0 30px 0;
+}
+a{
+	text-decoration:none;
+}
+h1{
+	color:#ff6600;
+}
+li{
+	height: 25px;
+	line-height:25px;
+}
+h3{
+	color:#ff0666;
+}

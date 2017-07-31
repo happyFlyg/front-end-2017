@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>component-3</h1>
+	<hr>
+	<div id="app">
+		<world></world>
+	</div>
+
+
+	<script>
+		city = {
+			template:'<div>this is city</div>'
+		}
+		
+		worldworld = {
+			template:`<div>
+				<p>局部注册的 -&gt; &lt;world&gt;</p>
+				<city></city>
+			</div>`,
+			components:{
+				"city":city,
+			}
+		}
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'hello Vue!'
+			},
+			components:{
+				"world":worldworld,
+			}
+		})
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.set</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>Vue.set</h2>
+    <div id="app">
+        <ul>
+            <li v-for="aaa in goods">{{aaa.name}}-{{aaa.num}}</li>
+        </ul>
+        <p>总共{{count}}件商品</p>
+        <button @click="clearAll">清空</button>
+    </div>
+    <button onclick="add()">查看商品数量</button>
+    <h2>注意：</h2>
+    <ol>
+    	<li>Vue中的data可以调用外部对象</li>
+    	<li>清空数据时写null则后续加不上数据，写0或者数组 是可以加上数据的</li>
+    	<li>delete和set尽量少用，jquery遗留下来的</li>
+    </ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+function add(){
+	// 原始写法
+	// Vue.set(shopingInfo,'count','4');
+	// 简写  最常用的写法
+	shopingInfo.goods.push({name:'house',num:'1'});
+	app.count ++;
+}
+var shopingInfo = {
+        count: 3,
+        goods: [{
+            name: 'car',
+            num: '1'
+        }, {
+            name: 'pen',
+            num: '2'
+        }]
+    }
+    // 构造器
+var app = new Vue({
+    el: "#app",
+    data: shopingInfo,
+    methods:{
+    	/*clearAll:function(){
+    		this.count=null;
+    		this.goods=null;
+    	}*/
+    	clearAll:function(){
+    		this.count=0;
+    		this.goods=[]
+    	}
+    }
+})
+</script>
+
+</html>

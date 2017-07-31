@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>v-if，v-else ，v-show</h2>
+	<ol>
+		<li>v-if：判断是否加载，v-show：调整css的display</li>
+		<li>v-show(tab),v-if判断整体的环境（cookie）减轻浏览器的渲染压力</li>
+	</ol>
+	<div id="app">
+	   <p>{{msg}}</p>
+	   <p v-if="ok">{{msg}}</p>
+	   <p v-else>原来是隐藏了</p>
+	   <p v-if="ok2">2是真的</p>
+	   <p v-else>2是假的</p>
+	</div>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+	var app=new Vue({
+		el:"#app",
+		data:{
+			msg:"hello vue2",
+			ok:false,
+			ok2:false
+		}
+	});
+</script>
+</html>

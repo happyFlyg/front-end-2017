@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-bind</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+	<style>
+		.classA{
+			color:red;
+		}
+	    .classB{
+	    	font-size: 24px;
+	    }
+	</style>
+</head>
+<body>
+	<h2>v-bind</h2>
+	<div id="app">
+	   <div v-bind:title="bindTitle" v-bind:name="divName" v-bind:style="backstyle">v-bind绑定属性</div>
+	   <ul>
+	       <li :class="className">绑定class</li>
+	       <!-- 下面的classA 是style里面的classA 不是变量 -->
+	       <li :class="{classA:classATrue}">绑定class 并判断,是style里面的class</li>
+	       <li :class="[classAarr,classBarr]">绑定class中使用数组</li>
+	       <li :class="classATrue?classAarr:classBarr">绑定class中使用三元表达式</li>
+	       <li :class="[classATrue?classAarr:classBarr]">绑定class中使用三元表达式</li>
+	       <li :class="[{classAarr:classATrue},classBarr]">绑定class中使用判断组合</li>
+	       <li :style="{color:red,fontSize:font}">绑定style，对象写法</li>
+	       <li :style="styleArray">style绑定json语句</li>
+	   </ul>
+	</div>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>v-bind 是针对标签绑定属性</li>
+		<li>@绑定事件</li>
+		<li>:冒号绑定属性</li>
+		<li>绑定多个class使用数组，单个用对象</li>
+		<li>绑定style时,key是样式名称,value必须是data定义的</li>
+		<li>vue中不允许出现像样式里面一样的font-size,要写成fontSize</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var app=new Vue({
+	el:"#app",
+	data:{
+		msg:"hello vue2",
+		bindTitle:"绑定的title",
+		backstyle:"background:red;font-size:20px;width:300px;height:50px",
+		divName:"",
+		className:"classA",
+		classATrue:false,
+		classAarr:'classA',
+		classBarr:'classB',
+		red:'red',
+		font:'30px',
+		styleArray:{
+			color:'green',
+			fontSize:'14px'
+		}
+	},
+	methods:{
+
+	},
+	computed:{
+
+	}
+})
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>component-1 组件1</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>component-1 组件1</h2>
+	<div id="app">
+	   <hello></hello>
+	   <hello></hello>
+	   <flyg></flyg>
+	</div>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>组件其实是自定义标签</li>
+		<li>全局化的组件只要是在作用域内，都起作用</li>
+		<li>局部注册的组件 要写成复数形式 components，组件的名称用引号引起来（字符串的形式）</li>
+		<li>全局化的组件用于公共的头尾部，局部用于单个...</li>
+		<li>组件名称全部是小写，不能有大写</li>
+	</ol>
+	<h2>组件和指令的区别：</h2>
+	<ol>
+		<li>Vue.directive指令是用属性的方式控制html标签，Vue.component组件是创建新的html标签</li>
+		<li>项目中建议多用组件（借鉴react），少用指令（借鉴ng），因为两者都用的话会很混乱，指令用于不需要太多样式存在的，比如表单，Vue里偏向组件</li>
+		<li>组件的template里面的dom必须要有根元素</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 全局化注册的组件
+Vue.component('hello',{
+   template:'<div>全局化注册的-&gt;&lt;hello&gt;</div>'
+})
+// 局部注册的组件(引用外部变量)
+var worldwo={
+	template:'<div>局部注册的组件-&lt;flyg&gt;</div>'
+}
+// 构造器
+var app=new Vue({
+	el:'#app',
+	data:{
+	},
+	components:{
+        'flyg':worldwo
+	}
+})
+</script>
+</html>

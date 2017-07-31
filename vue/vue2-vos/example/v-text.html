@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-text v-html</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>v-text v-html</h2>
+    <div id="app">
+      <span>{{msg}}=</span>
+      <span v-text="msg"></span>
+      <p v-html="vueHtml"></p>
+    </div>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var app = new Vue({
+   el:"#app",
+   data:{
+      msg:"hello vue2",
+      vueHtml:"<h3>v-html</h3>"
+   }
+})
+</script>
+
+</html>

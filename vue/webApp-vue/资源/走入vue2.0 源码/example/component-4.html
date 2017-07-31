@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>component-4</h1>
+	<hr>
+	<div id="app">
+		<component v-bind:is="who"></component>
+	</div>
+
+
+	<script>
+		pA = {
+			template:'<div>this is pA {{a}}</div>',
+			data:function(){
+				return{
+					a:'1'
+				}
+			}
+		}
+		pB = {
+			template:'<div>this is pB</div>'
+		}
+		pC = {
+			template:'<div>this is pC</div>'
+		}
+		pD= {
+			template:'<div>this is pD</div>'
+		}
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				who:'pA'
+			},
+			components:{
+				"pA":pA,
+				"pB":pB,
+				"pC":pC,
+				"pD":pD
+			}
+		})
+
+	</script>
+</body>
+</html>

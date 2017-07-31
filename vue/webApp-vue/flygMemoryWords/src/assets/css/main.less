@@ -1,0 +1,246 @@
+@import './variables.less';
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+th,
+td,
+dl,
+dd,
+form,
+fieldset,
+legend,
+input,
+textarea,
+select {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 100%;
+    font-family: Helvetica;
+    background: #fff;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden
+}
+input{
+	outline:none
+}
+a {
+    color: #2d374b;
+    text-decortion: none
+}
+
+a:hover {
+    color: #cd0200;
+    text-decoration: underline
+}
+
+em {
+    font-style: normal
+}
+
+li {
+    list-style: none
+}
+
+img {
+    border: 0;
+    vertical-align: middle
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+p {
+    word-warp: break-word
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    margin: 0
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%
+}
+
+button {
+    border: 0;
+    outline: none
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transform: translateX(200%)
+}
+
+.fade-enter,
+.fade-leave {
+    transition: all 0.2s ease
+}
+.clearFix:after{
+	visibility: hidden;
+    clear:both;
+    display:block;
+    content: '.';
+    height:0;
+}
+.clearFix{
+	zoom:1
+}
+.clearBoth{
+	clear:both
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1
+}
+
+.left {
+    float: left
+}
+
+.right {
+    float: right
+}
+.text-align-left {
+    text-align: left
+}
+.text-align-right {
+    text-align: right
+}
+.text-align-center {
+    text-align: center
+}
+
+.text-green {
+    color: @green
+}
+
+.text-orange {
+    color: @orange
+}
+.text-white {
+    color: @white
+}
+.text-bold {
+    font-weight: bold
+}
+
+.text-indent {
+    text-indent: 2em
+}
+
+.text-size-sm {
+    font-size: 75%
+}
+
+.text-size-md {
+    font-size: 120%
+}
+
+.text-size-lg {
+    font-size: 150%
+}
+
+.text-size-lg-note {
+    font-size: 100%;
+    color: @gray-light
+}
+
+.font-size-lg {
+    font-size: @font-size-lg
+}
+
+.text-size-lg-marginBm {
+    margin-bottom: 20px
+}
+
+.text-size-md-note {
+    font-size: 80%;
+    color: @gray-light
+}
+
+.btnBottom {
+    position: fixed;
+    bottom: 0;
+    left: 0
+}
+
+
+/**
+ * margin
+ */
+.mar-top-10 {
+    margin-top: 10px
+}
+
+.mar-top-20 {
+    margin-top: 20px
+}
+
+.mar-top-50 {
+    margin-top: 50px
+}
+
+.mar-btm-10 {
+    margin-bottom: 10px
+}
+
+.mar-btm-20 {
+    margin-bottom: 20px
+}
+
+.margin-left-10 {
+    margin-left: 10px
+}
+
+.margin-left-15 {
+    margin-left: 15px
+}
+
+
+/**
+ * padding
+ */
+
+.padding-sm {
+    padding: 10px
+}
+
+.padding-md {
+    padding: 20px
+}
+
+.padding-lg {
+    padding: 30px
+}
+.padding-r10{
+	padding-right:10px
+}

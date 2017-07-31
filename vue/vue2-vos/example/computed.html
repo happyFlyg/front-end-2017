@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>computed</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>computed</h2>
+    <div id="app">
+        <p>原价：{{originalPrice}}</p>
+        <p>折扣：{{discount}}</p>
+        <p>现价：{{currentPrice}}</p>
+        <p>
+            <button @click="add">增加原价</button>
+        </p>
+    </div>
+    <hr>
+    <h2>注意：</h2>
+    <ol>
+        <li>computed里面的function 不要用es6的箭头函数写，因其this指向本身，而computed里面的函数this指向构造器</li>
+        <li>computed申明更多的data</li>
+        <li>computed随时跟踪数据变化</li>
+    </ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var app = new Vue({
+    el: '#app',
+    data: {
+        originalPrice: 10,
+        discount: 0.8
+    },
+    computed: {
+        currentPrice: function() {
+            return '￥' + this.originalPrice * this.discount
+        }
+    },
+    methods: {
+        add: function() {
+            this.originalPrice += 10
+        }
+    }
+})
+</script>
+
+</html>

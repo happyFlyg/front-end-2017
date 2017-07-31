@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lifeCycle</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>lifeCycle</h2>
+	<div id="app">
+	   <p v-text="num"></p>
+	   <button @click="add">加加</button>
+	</div>
+	<button onclick="app.$destroy()">销毁数据 destroy</button>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>activated 和 deactivated 在有路由的时候起作用</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var app=new Vue({
+	el:"#app",
+	data:{
+        num:1
+	},
+	methods:{
+		add:function(){
+            this.num++
+		}
+	},
+	beforeCreate:function(){
+		console.log('1-beforeCreate 初始化之后')
+	},
+	created:function(){
+		console.log('2-created 创建完成')
+	},
+	beforeMount:function(){
+		console.log('3-beforeMount 挂载之前')
+	},
+	mounted:function(){
+		console.log('4-mounted 被创建')
+	},
+	beforeUpdate:function(){
+		console.log('5-beforeUpdate 数据更新前')
+	},
+	updated:function(){
+		console.log('6-updated 被更新后')
+	},
+	//<keep-alive></keep-alive>
+	activated:function(){
+		console.log('7-activated')
+	},
+	deactivated:function(){
+		console.log('8-deactivated')
+	},
+	beforeDestroy:function(){
+		console.log('9-beforeDestroy 销毁之前')
+	},
+	destroyed:function(){
+		console.log('10-destroyed 销毁之后')
+	}
+})
+</script>
+</html>

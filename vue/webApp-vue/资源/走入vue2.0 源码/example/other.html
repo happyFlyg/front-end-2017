@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>杂项</h1>
+	<hr>
+	<div id="app">
+		<hello></hello>
+		<world></world>
+	</div>
+
+
+	<script>
+		Vue.component('hello',{
+			template:'<div>${this.$parent.message}全局化注册的 -&gt; &lt;hello&gt;</div>',
+			delimiters:['${','}']
+		})
+
+		worldworld = {
+			template:'<div>{{this.$parent.message}}局部注册的 -&gt; &lt;world&gt;</div>'
+		}
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'hello Vue!'
+			},
+			components:{
+				"world":worldworld,
+			}
+		})
+
+	</script>
+</body>
+</html>

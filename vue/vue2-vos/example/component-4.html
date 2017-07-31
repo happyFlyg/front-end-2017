@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>component-4 component标签动态改变模板</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>component-4 component标签动态改变模板</h2>
+	<div id="app">
+	   <component :is="who"></component>
+	</div>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>component标签动态改变模板，适用于tab切换</li>
+		<li>组件里面的数据必须是带返回值的函数形式，不是对象</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+var pA={
+	template:'<div>this is pA——{{a}}</div>',
+	data:function(){
+		return {
+			a:'"我是组件里的数据，是带返回值的函数，不是对象！"'
+		}
+	}
+};
+var pB={
+	template:'<h3>this is pB</h3>'
+}
+// 构造器
+var app=new Vue({
+	el:'#app',
+	data:{
+		who:'paName'
+	},
+	components:{
+		'paName':pA,
+		'pbName':pB
+	}
+})
+</script>
+</html>

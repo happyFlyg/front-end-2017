@@ -1,0 +1,722 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>路由和代码分离 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="data.html" />
+    
+    
+    <link rel="prev" href="structure.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="basic.html">
+            
+                <a href="basic.html">
+            
+                    
+                    基本用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="universal.html">
+            
+                <a href="universal.html">
+            
+                    
+                    编写通用代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="structure.html">
+            
+                <a href="structure.html">
+            
+                    
+                    源码结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="routing.html">
+            
+                <a href="routing.html">
+            
+                    
+                    路由和代码分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="data.html">
+            
+                <a href="data.html">
+            
+                    
+                    D预加载数据和状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="hydration.html">
+            
+                <a href="hydration.html">
+            
+                    
+                    客户端融合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="bundle-renderer.html">
+            
+                <a href="bundle-renderer.html">
+            
+                    
+                    包渲染器介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="build-config.html">
+            
+                <a href="build-config.html">
+            
+                    
+                    构建配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="css.html">
+            
+                <a href="css.html">
+            
+                    
+                    CSS管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="head.html">
+            
+                <a href="head.html">
+            
+                    
+                    Head管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="caching.html">
+            
+                <a href="caching.html">
+            
+                    
+                    缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="streaming.html">
+            
+                <a href="streaming.html">
+            
+                    
+                    流媒体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    API参考
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="api.html">
+            
+                <a href="api.html#createrendereroptions">
+            
+                    
+                    createRenderer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="api.html">
+            
+                <a href="api.html#createbundlerendererbundle-options">
+            
+                    
+                    createBundleRenderer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="api.html">
+            
+                <a href="api.html#class-renderer">
+            
+                    
+                    Class: Renderer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="api.html">
+            
+                <a href="api.html#class-bundlerenderer">
+            
+                    
+                    Class: BundleRenderer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="api.html">
+            
+                <a href="api.html#renderer-options">
+            
+                    
+                    Renderer 可选项
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.5.1" data-path="api.html">
+            
+                <a href="api.html#template">
+            
+                    
+                    template
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.2" data-path="api.html">
+            
+                <a href="api.html#clientmanifest">
+            
+                    
+                    clientManifest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.3" data-path="api.html">
+            
+                <a href="api.html#inject">
+            
+                    
+                    inject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.4" data-path="api.html">
+            
+                <a href="api.html#shouldpreload">
+            
+                    
+                    shouldPreload
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.5" data-path="api.html">
+            
+                <a href="api.html#runinnewcontext">
+            
+                    
+                    runInNewContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.6" data-path="api.html">
+            
+                <a href="api.html#basedir">
+            
+                    
+                    basedir
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.7" data-path="api.html">
+            
+                <a href="api.html#cache">
+            
+                    
+                    cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5.8" data-path="api.html">
+            
+                <a href="api.html#directives">
+            
+                    
+                    directives
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="api.html">
+            
+                <a href="api.html#webpack-plugins">
+            
+                    
+                    Webpack 插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >路由和代码分离</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x8DEF;&#x7531;&#x548C;&#x4EE3;&#x7801;&#x5206;&#x79BB;">&#x8DEF;&#x7531;&#x548C;&#x4EE3;&#x7801;&#x5206;&#x79BB;</h2>
+<h3 id="vue-router&#x8DEF;&#x7531;">vue-router&#x8DEF;&#x7531;</h3>
+<p>&#x60A8;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x6CE8;&#x610F;&#x5230;,&#x6211;&#x4EEC;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x4EE3;&#x7801;&#x4F7F;&#x7528;*&#x5904;&#x7406;&#x63A5;&#x53D7;&#x4EFB;&#x610F;url&#x3002;&#x8FD9;&#x4F7F;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x901A;&#x8FC7;URL&#x8BBF;&#x95EE;&#x5230;&#x6211;&#x4EEC;&#x7684;Vue&#x5E94;&#x7528;,&#x91CD;&#x7528;&#x76F8;&#x540C;&#x7684;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x7AEF;!</p>
+<p>&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x7684;&#x5B98;&#x65B9;vue-router&#x3002;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x6587;&#x4EF6;&#x3002;&#x6CE8;&#x610F;&#x4E0E;createApp&#x76F8;&#x4F3C;,&#x6211;&#x4EEC;&#x540C;&#x6837;&#x9700;&#x8981;&#x4E3A;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x5B9E;&#x4F8B;,&#x6240;&#x4EE5;&#x8BE5;&#x6587;&#x4EF6;&#x9700;&#x8981;&#x5BFC;&#x51FA;createRouter&#x51FD;&#x6570;:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// router.js</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>
+<span class="hljs-keyword">import</span> Router <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue-router&apos;</span>
+
+Vue.use(Router)
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createRouter</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Router({
+    mode: <span class="hljs-string">&apos;history&apos;</span>,
+    routes: [
+      <span class="hljs-comment">// ...</span>
+    ]
+  })
+}
+</code></pre>
+<p>&#x66F4;&#x65B0; app.js</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// app.js</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./App.vue&apos;</span>
+<span class="hljs-keyword">import</span> { createRouter } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./router&apos;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createApp</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// create router instance</span>
+  <span class="hljs-keyword">const</span> router = createRouter()
+
+  <span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue({
+    <span class="hljs-comment">// inject router into root Vue instance</span>
+    router,
+    render: h =&gt; h(App)
+  })
+
+  <span class="hljs-comment">// return both the app and the router</span>
+  <span class="hljs-keyword">return</span> { app, router }
+}
+</code></pre>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;entry-server.js&#x5B9E;&#x73B0;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x8DEF;&#x7531;&#x903B;&#x8F91;:</p>
+<pre><code class="lang-javascirpt">// entry-server.js
+import { createApp } from &apos;./app&apos;
+
+export default context =&gt; {
+  // &#x56E0;&#x4E3A;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x5F02;&#x6B65;&#x8DEF;&#x7531;&#x94A9;&#x5B50;&#x6216;&#x7EC4;&#x4EF6;,
+  // &#x6211;&#x4EEC;&#x5C06;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;promise,&#x8BA9;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x7B49;&#x5230;&#x4E00;&#x5207;&#x90FD;&#x51C6;&#x5907;&#x597D;&#x518D;&#x6E32;&#x67D3;
+  return new Promise((resolve, reject) =&gt; {
+    const { app, router } = createApp()
+
+    // &#x8BBE;&#x7F6E;&#x670D;&#x52A1;&#x7AEF;&#x8DEF;&#x7531; location
+    router.push(context.url)
+
+    // &#x7B49;&#x5F85;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;&#x6216;&#x94A9;&#x5B50;
+    router.onReady(() =&gt; {
+      const matchedComponents = router.getMatchedComponents()
+      // &#x6CA1;&#x6709;&#x5339;&#x914D;&#x7684;&#x8DEF;&#x7531;&#x8FD4;&#x56DE;404
+      if (!matchedComponents.length) {
+        reject({ code: 404 })
+      }
+
+      // promise&#x9700;&#x8981;&#x8FD4;&#x56DE;app&#x5B9E;&#x4F8B;
+      resolve(app)
+    }, reject)
+  })
+}
+</code></pre>
+<p>&#x5047;&#x8BBE;&#x670D;&#x52A1;&#x7AEF;&#x5DF2;&#x7ECF;&#x6253;&#x5305;&#x5B8C;&#x6210;(&#x5148;&#x6682;&#x65F6;&#x5FFD;&#x89C6;&#x6784;&#x5EFA;),&#x670D;&#x52A1;&#x7AEF;&#x7528;&#x6CD5;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x8FD9;&#x6837;:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// server.js</span>
+<span class="hljs-keyword">const</span> createApp = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;/path/to/built-server-bundle.js&apos;</span>)
+
+server.get(<span class="hljs-string">&apos;*&apos;</span>, (req, res) =&gt; {
+  <span class="hljs-keyword">const</span> context = { url: req.url }
+
+  createApp(context).then(app =&gt; {
+    renderer.renderToString(app, (err, html) =&gt; {
+      <span class="hljs-keyword">if</span> (err) {
+        <span class="hljs-keyword">if</span> (err.code === <span class="hljs-number">404</span>) {
+          res.status(<span class="hljs-number">404</span>).end(<span class="hljs-string">&apos;Page not found&apos;</span>)
+        } <span class="hljs-keyword">else</span> {
+          res.status(<span class="hljs-number">500</span>).end(<span class="hljs-string">&apos;Internal Server Error&apos;</span>)
+        }
+      } <span class="hljs-keyword">else</span> {
+        res.end(html)
+      }
+    })
+  })
+})
+</code></pre>
+<h3 id="&#x4EE3;&#x7801;&#x5206;&#x79BB;">&#x4EE3;&#x7801;&#x5206;&#x79BB;</h3>
+<p>&#x4EE3;&#x7801;&#x5206;&#x9694;,&#x6216;&#x8005;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x4E00;&#x90E8;&#x5206;,&#x6709;&#x52A9;&#x4E8E;&#x51CF;&#x5C11;&#x9700;&#x8981;&#x4E0B;&#x8F7D;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x521D;&#x59CB;&#x6E32;&#x67D3;&#x8D44;&#x6E90;,&#x5E76;&#x80FD;&#x5927;&#x5927;&#x6539;&#x5584;&#x5927;&#x578B;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5305;<code>TTI (time-to-interactive)</code>&#x3002;&#x5BF9;&#x4E8E;&#x9996;&#x5C4F;&#x5173;&#x952E;&#x662F;<code>loading just what is needed</code>&#x3002;</p>
+<p>Vue&#x63D0;&#x4F9B;&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;,&#x7ED3;&#x5408;&#x4E0E;<a href="https://webpack.js.org/guides/code-splitting-async/" target="_blank">webpack 2&#x652F;&#x6301;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x5BFC;&#x5165;&#x4F5C;&#x4E3A;code-split&#x70B9;</a>,&#x60A8;&#x9700;&#x8981;&#x505A;&#x7684;&#x662F;:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// changing this...</span>
+<span class="hljs-keyword">import</span> Foo <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Foo.vue&apos;</span>
+
+<span class="hljs-comment">// to this:</span>
+<span class="hljs-keyword">const</span> Foo = () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">&apos;./Foo.vue&apos;</span>)
+</code></pre>
+<p>&#x8FD9;&#x5C06;&#x5DE5;&#x4F5C;&#x5728;&#x4EFB;&#x4F55;&#x60C5;&#x51B5;&#x4E0B;,&#x5982;&#x679C;&#x4F60;&#x6B63;&#x5728;&#x5EFA;&#x8BBE;&#x4E00;&#x4E2A;&#x7EAF;&#x5BA2;&#x6237;&#x7AEF;Vue&#x5E94;&#x7528;&#x3002;&#x7136;&#x800C;&#x5728;&#x4F7F;&#x7528;SSR&#x6709;&#x4E00;&#x4E9B;&#x9650;&#x5236;&#x3002;&#x9996;&#x5148;&#x60A8;&#x9700;&#x8981;&#x5168;&#x90E8;&#x53BB;&#x5B8C;&#x6210;&#x6240;&#x6709;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;&#x5728;&#x5F00;&#x59CB;&#x6E32;&#x67D3;&#x4E4B;&#x524D;,&#x5426;&#x5219;&#x4F60;&#x53EA;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;&#x5360;&#x4F4D;&#x7B26;&#x6807;&#x8BB0;&#x3002;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x8FD8;&#x9700;&#x8981;&#x5728;&#x5F00;&#x59CB;<code>hydration</code>&#x4E4B;&#x524D;&#x505A;&#x8FD9;&#x4E2A;,&#x5426;&#x5219;&#x5BA2;&#x6237;&#x4F1A;&#x9047;&#x5230;&#x5185;&#x5BB9;&#x4E0D;&#x5339;&#x914D;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4EFB;&#x610F;&#x5730;&#x70B9;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;&#x6709;&#x70B9;&#x68D8;&#x624B;(&#x6211;&#x4EEC;&#x5728;&#x672A;&#x6765;&#x53EF;&#x80FD;&#x4F1A;&#x6539;&#x5584;&#x8FD9;&#x79CD;)&#x3002;&#x7136;&#x800C;&#x5B83;&#x80FD;&#x591F;&#x5728;&#x8DEF;&#x7531;&#x5C42;&#x9762;&#x65E0;&#x7F1D;&#x5730;&#x4F7F;&#x7528;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x4E2D;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;&#x3002;&#x56E0;&#x4E3A;vue-router&#x4F1A;&#x81EA;&#x52A8;&#x89E3;&#x51B3;&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;&#x5339;&#x914D;&#x8DEF;&#x7531;&#x65F6;&#x3002;&#x4F60;&#x9700;&#x8981;&#x505A;&#x7684;&#x662F;&#x786E;&#x4FDD;&#x4F7F;&#x7528;&#xB7;<code>router.onReady</code>&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x505A;&#x4E86;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x5165;&#x53E3;,&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x66F4;&#x65B0;&#x5BA2;&#x6237;&#x7AEF;&#x5165;&#x53E3;:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// entry-client.js</span>
+
+<span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./app&apos;</span>
+
+<span class="hljs-keyword">const</span> { app, router } = createApp()
+
+router.onReady(() =&gt; {
+  app.$mount(<span class="hljs-string">&apos;#app&apos;</span>)
+})
+</code></pre>
+<p>&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// router.js</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>
+<span class="hljs-keyword">import</span> Router <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue-router&apos;</span>
+
+Vue.use(Router)
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createRouter</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Router({
+    mode: <span class="hljs-string">&apos;history&apos;</span>,
+    routes: [
+      { path: <span class="hljs-string">&apos;/&apos;</span>, component: () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">&apos;./components/Home.vue&apos;</span>) },
+      { path: <span class="hljs-string">&apos;/item/:id&apos;</span>, component: () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">&apos;./components/Item.vue&apos;</span>) }
+    ]
+  })
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="structure.html" class="navigation navigation-prev " aria-label="Previous page: 源码结构">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="data.html" class="navigation navigation-next " aria-label="Next page: D预加载数据和状态">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"路由和代码分离","level":"1.5","depth":1,"next":{"title":"D预加载数据和状态","level":"1.6","depth":1,"path":"data.md","ref":"data.md","articles":[]},"previous":{"title":"源码结构","level":"1.4","depth":1,"path":"structure.md","ref":"structure.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"routing.md","mtime":"2017-06-08T20:58:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-17T19:05:36.316Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

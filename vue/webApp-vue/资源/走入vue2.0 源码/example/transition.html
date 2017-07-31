@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>transition</h1>
+	<hr>
+	<div id="app">
+		<transition name="fade">
+		    <p v-if="show">{{message}}</p>
+		</transition>
+
+		<button v-on:click="hidden">
+		    hidden
+		</button>
+		  
+	</div>
+
+	<style>
+		.fade-enter-active, .fade-leave-active {
+		  transition: opacity .5s
+		}
+		.fade-enter, .fade-leave-active {
+		  opacity: 0
+		}
+	</style>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'hello vue',
+				show:true
+			},
+			methods:{
+				hidden:function(){
+					this.show = false
+					this.a++
+				}
+			}
+		})
+	</script>
+</body>
+</html>

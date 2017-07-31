@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-model</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>v-model</h2>
+	<div id="app">
+	   <p>原始文本：{{msg}}</p>
+	   <h3>文本框</h3>
+	   <p>v-model:<input type="text" v-model="msg"></p>
+	   <p>v-model.lazy:<input type="text" v-model.lazy="msg"></p>
+	   <p>v-model.number:<input type="text" v-model.number="msg"></p>
+	   <p>v-model.trim:<input type="text" v-model.trim="msg"></p>
+	   <hr>
+	   <h3>文本区域</h3>
+       <textarea cols="30" rows="10" v-model="msg"></textarea>
+       <textarea cols="30" rows="10" >大括号里面不能绑定数据{{msg}}</textarea>
+       <hr>
+	   <h3>复选框</h3>
+	   <p>
+	   	   <input type="checkbox" id="checkla" v-model ="cherckT"/>
+	   	   <label for="checkla">{{cherckT}}</label>
+	   </p>
+	   <hr>
+	   <h3>多个复选框绑定一个数组</h3>
+	    <p>
+	   	   <input type="checkbox" id="jack" value="jack" v-model ="xzArry"/>
+	   	   <label for="jack">jack</label>
+	   	   <br>
+	   	   <input type="checkbox" id="me"  value="me" v-model ="xzArry"/>
+	   	   <label for="me">me</label>
+	   </p>
+	   <p>{{xzArry}}</p>
+	   <hr>
+	   <h3>单选按钮</h3>
+	   <input type="radio" v-model="danxuan" id="man" value="男">
+	   <label for="man">男</label>
+	   <br>
+	   <input type="radio" v-model="danxuan" id="woman" value="女">
+	   <label for="woman">女</label>
+	   <p>你的性别是：<span v-text="danxuan"></span></p>
+	   <hr>
+	   <h3>选择列表</h3>
+	   <!-- 选择列表(单选) -->
+	   <span>选择列表(单选)：</span>
+       <select v-model="selectText">
+	       <option>A</option>
+	       <option>B</option>
+	       <option>C</option>
+	   </select>
+	   <p v-text="selectText"></p>
+	   <!-- 选择列表(多选) -->
+	   <span>选择列表(多选)：</span>
+	   <select v-model="selectArray" multiple>
+	       <option>A</option>
+	       <option>B</option>
+	       <option>C</option>
+	   </select>
+	   <p v-text="selectArray"></p>
+	   <!-- 以下是练习 -->
+	   <select>
+	   	<option v-for="item of forArray" v-text="item"></option>
+	   </select>
+	</div>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>v-model.lazy：文本框失去焦点时加载，或者请求后台，不用每次输入都请求，减少压力</li>
+		<li>v-model.number：自动将文本换成数字  方便运算，不然还得parseInt(value)</li>
+		<li>v-model.trim：去掉前后空格</li>
+		<li>textarea里面必须是v-model才能实现数据绑定，写成大括号的形式是不能够绑定数据的</li>
+		<li>多个复选框绑定到数组中是将其value值输出到数组中</li>
+		<li>选择列表(多选)需要输出到数组中</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+	var app=new Vue({
+		el:"#app",
+		data:{
+			msg:"hello vue2",
+			cherckT:true,
+			xzArry:[],
+			danxuan:'',
+			selectText:'',
+			selectArray:[],
+			forArray:["liaoli","caojingr"]
+		}
+	})
+</script>
+</html>

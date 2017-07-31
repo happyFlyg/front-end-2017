@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>watch</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <style>
+    button,
+    span {
+        margin-right: 10px;
+    }
+    
+    span {
+        margin-right: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <h2>watch</h2>
+    <div id="app">
+        <span>{{name}}</span><span>价格：{{price}}</span><span>数量：{{num}}</span>
+        <button @click="add">＋</button>
+        <button @click="reduce">—</button>
+        <p>总计：{{totalPrice}}</p>
+    </div>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+var app = new Vue({
+    el: '#app',
+    data: {
+        name: '苹果',
+        num: 1,
+        price: 50,
+        totalPrice: 50
+    },
+    methods: {
+        add: function() {
+            this.num++;
+            this.totalPrice = this.num * this.price
+        },
+        reduce: function() {
+            this.num--;
+            this.totalPrice = this.num * this.price
+        }
+    },
+    /*	watch:{
+    		num:function(){
+    			if(this.num<1){
+    				this.num=0
+    			}
+    		}
+    	}*/
+});
+app.$watch('num', function() {
+    app.num < 1 ? app.num = 0 : app.num = app.num
+});
+app.$watch('totalPrice', function() {
+    app.totalPrice < 0 ? app.totalPrice = 0 : app.totalPrice = app.totalPrice;
+})
+</script>
+
+</html>

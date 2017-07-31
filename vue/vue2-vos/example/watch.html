@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>watch</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>watch</h2>
+	<div id="app">
+	    <p>苹果</p>
+	    <p>购买数量：{{n}}</p>
+	    <p><button @click="add">+</button></p>
+	    <p><button @click="reduce">—</button></p>
+	</div>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>watch只能监控data里面的数据</li>
+		<li>watch中newVal和oldVal参数名称是可以随便改的</li>
+		<li>watch常用于检测数量和满减变化,促销活动改组件其实是改watch</li>
+		<li>watch接收第三个参数{deep:true,immediate:true}，deep代表监测对象时监测对象中的每个值，默认true。immediate适用于onload时启动一遍watch</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var app=new Vue({
+	el:'#app',
+	data:{
+        n:1
+	},
+	methods:{
+		add:function(){
+			this.n ++;
+			this.totalPrice=this.n*this.price
+		},
+		reduce:function(){
+			this.n --;
+			this.totalPrice=this.n*this.price
+		}
+	}
+	/*watch:{
+        n:function(newVal,oldVal){
+        	// console.log(newVal)
+        	// console.log(oldVal)
+        	newVal<0?this.n=0:this.n=this.n
+        }
+	}*/
+});
+// 实例属性
+app.$watch('n',function(newVal,oldVal){//一般做促销，形成前端模块化加载
+	if(newVal<1){
+       app.n=0
+	}
+},{deep:true,immediate:true})
+</script>
+</html>

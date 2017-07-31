@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>路由中传参</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>路由中传参——自动获取目录路径</h2>
+	<div id="app">
+	</div>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>通过路由传参 name {{$route.name}}</li>
+		<li>通过绑定to传参 :to="{name:'home-first',params:{id:123}}",之后可以在模板中显示,虚拟dom</li>
+	</ol>
+</body>
+<script src="../../assets/js/vue.js"></script>
+<script src="../../assets/js/vue-router.js"></script>
+<script>
+    const home={
+    	template:`<div>home内容</div>`
+    }
+    const firstView={
+    	template:`<div><h2>子菜单</h2><router-view></router-view></div>`
+    }
+    const first={
+    	template:`<div>first内容</div>`
+    }
+    const firstFir={
+    	template:`<div>firstFir内容{{$route.params.id}}</div>`
+    }
+    const firstSec={
+    	template:`<div>firstSec内容</div>`
+    }
+    const router = new VueRouter({
+    	// mode: 'history',
+    	// base: __dirname,
+    	routes: [{
+    		path: '/',
+    		name:'home',
+    		component: home
+    	}, {
+    		path: '/first',
+    		component: firstView,
+    		children:[
+    		    {path:'/',name:'first',component:first},
+    		    {path:'first',name:'firstFirst',component:firstFir},
+    		    {path:'second',component:firstSec}
+    		]
+    	}]
+    })
+    new Vue({
+    	router,
+    	template:`
+    	    <div id="div">
+    	        <p>{{ $route.name }}</p>
+    	        <ol>
+    	            <li><router-link to="/">/</router-link></li>
+    	            <li><router-link to="/first">/first</router-link></li>
+    	            <ol>
+    	                <li><router-link :to="{name:'firstFirst',params:{id:123}}">params:{id:123}</router-link></li>
+    	                <li><router-link to="/first/second">/first/second</router-link></li>
+    	            </ol>
+    	        </ol>
+    	        <router-view></router-view>
+    	    </div>
+    	`
+    }).$mount('#app')
+</script>
+</html>

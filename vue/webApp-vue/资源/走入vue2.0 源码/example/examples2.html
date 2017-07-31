@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>实例方法</h1>
+	<hr>
+	<p>
+		<button onclick="xiezai()">卸载</button>
+		<button onclick="shuaxin()">刷新</button>
+		<button onclick="xiugai()">修改</button>
+	</p>
+	<div id="app">
+	</div>
+
+	<script>
+		var header_aaaa = Vue.extend({
+			template:' <p>{{message}}</p> ',
+			data:function(){
+				return{
+					message:'Hello my is Header'
+				}
+			},
+			destroyed:function(){
+	            console.log('10-destroyed 销毁之后')
+	        },
+	        mounted:function(){
+	            console.log('4-mounted 被创建')
+	        },
+	        updated:function(){
+	            console.log('6-updated 被更新后')
+	        },
+		})
+
+		var vm = new header_aaaa().$mount('#app')
+
+		function xiezai(){
+			vm.$destroy()
+		}
+		function shuaxin(){
+			vm.$forceUpdate()
+		}
+		function xiugai(){
+			vm.message = '数据被修改了'
+			vm.$nextTick(function(){
+				console.log('更新完后我被调用')
+			})
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>v-on</h1>
+	<hr>
+	<div id="app">
+		<p>{{a}}</p>
+		<p>
+			<button v-on:click="jia">+1</button>
+			<button @click="jian">+1</button>
+		</p>
+		<p>
+			<input type="text" @keyup.enter="onEnter" v-model="b">
+			<input type="text" @keyup.113="onEnter" v-model="b">
+		</p>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				a:10,
+				b:0
+			},
+			methods:{
+				jia:function(){
+					this.a ++ 
+				},
+				jian:function(){
+					this.a --
+				},
+				onEnter:function(){
+					this.a = this.a + parseInt(this.b)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

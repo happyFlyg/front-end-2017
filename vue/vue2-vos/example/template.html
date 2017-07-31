@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模板</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <style>
+    .red {
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <h2>template 模板</h2>
+    <div id="app">
+    </div>
+    <template id="demo2">
+        <h1 class="red">我是template 标签模板</h1>
+    </template>
+    <hr>
+    <h2>注意：</h2>
+    <ol>
+        <li><span class="red">选项模板:</span>用感叹号旁边的点引起来，因为单双引号都可能用到，<span class="red">适合写简单的小组件嵌入到父框架中</span></li>
+        <li>标签模板需要在选项中引入，页面构造的时候模板化，通常应用于.vue文件中,template选项中引用template标签id,template标签里面必须嵌套标签</li>
+        <li>
+            <style scoped></style>scoped 作用域</li>
+        <li>script标签形式的模板：type="x-template"，一定要给个id名字。可以把整个模板用单独的script来写，适合外部引用,利用其src属性</li>
+    </ol>
+</body>
+<script type="x-template" id="demo3">
+    <h1 class="red">我是script 标签模板</h1>
+</script>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var app = new Vue({
+    el: '#app',
+    data: {
+        msg: 'hello flyg'
+    },
+    template: '#demo3'
+        /*template:`<h1 style="color:red">我是选项模板</h1>`*/
+})
+</script>
+
+</html>

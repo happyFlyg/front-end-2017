@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>Vue.extend</h1>
+	<hr>
+	<header></header>
+	<div id="footer"></div>
+	<script>
+
+		var header_aaaa = Vue.extend({
+			template:' <p>{{message}}</p> ',
+			data:function(){
+				return{
+					message:'Hello my is Header'
+				}
+			}
+		})
+
+		new header_aaaa().$mount('header')
+	</script>
+</body>
+</html>

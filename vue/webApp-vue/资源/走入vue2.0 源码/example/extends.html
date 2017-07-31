@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>extends</h1>
+	<hr>
+	<div id="app">
+		{{ message }}
+		<p> <button @click="jia">+</button></p>
+	</div>
+
+	<script>
+		Vue.mixin({
+			created:function(){
+				console.log('我是全局被混入的')
+			}
+		})
+		var aaa = {
+			created:function(){
+				console.log('我是被混入的')
+			}
+		}
+		var bbb = {
+			created:function(){
+				console.log('我是被扩展出来的')
+			}
+		}
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'hello Vue!'
+			},
+			methods:{
+				jia:function(){
+					console.log('我被加了')
+				}
+			},
+			created:function(){
+				console.log('我是构造器里原装的')
+			},
+			extends:bbb,
+			mixins:[aaa]
+		})
+	</script>
+</body>
+</html>

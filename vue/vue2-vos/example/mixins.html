@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>mixins</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>mixins</h2>
+    <div id="app">
+        <p>{{msg}}</p>
+        <button @click="add">点击我加</button>
+    </div>
+    <hr>
+    <h2>注意：</h2>
+    <ol>
+        <li>混入就是提前准备好相关需要的信息，准备成一个文件，等当Vue构造器需要的时候加进来，用到的时候直接调用</li>
+        <li>当混入的data和methods名称和原装一样时，会被原装的覆盖掉</li>
+        <li>混入常见的应用场景有：身份验证（是否登录，图像，登录信息传值），游戏等</li>
+        <li>mixins是数组形式</li>
+        <li>全局混入一般用于用户名的校验，全局css</li>
+        <li>全局混入慎用，易引起错误</li>
+        <li>最常用的是日志管理（模块是否加载正常，大家使用习惯）</li>
+    </ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+//全局混入
+Vue.mixin({
+	created:function(){
+    	console.log('全局混入的created')
+    }
+})
+//对象混入
+var a={
+    created:function(){
+    	console.log('混入的created')
+    },
+    methods:{
+    	add:function(){
+    		console.log('混入对象中的方法加')
+    	}
+    },
+    data:{
+    	msg: 'hello flyg'
+    }
+}
+// 构造器
+var app = new Vue({
+    el: '#app',
+    data: {
+        msg: 'hello vue'
+    },
+    created: function() {
+        console.log('原装的created')
+    },
+    methods:{
+    	add:function(){
+    		console.log('原装中的方法加')
+    	}
+    },
+    mixins: [a]
+});
+</script>
+
+</html>

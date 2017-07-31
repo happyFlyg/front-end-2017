@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <p> {{ message}}</p>
+    <input type="text" v-model="message"/>
+    <p>{{num}}</p>
+    <!-- -->
+    <p v-if="num>0.5">num＞0.5</p>
+    <p v-else="num<0.5">num＜0.5</p>
+    <button onclick="e();">點擊我</button>
+</div>
+<ol>
+    <li>* 表示只能加載一次</li>
+</ol>
+</body>
+<script src="vue.js"></script>
+<script src="jquery.min.js"></script>
+<script>
+    $(function(){
+        $("#app").css("color","blue")
+    })
+    var data={
+        message:"Hello Vue!",
+        num:Math.random()
+    };
+   var app = new Vue({
+       el:"#app",
+       data: data
+   })
+    function e(){
+        app.message="我被改變了"
+        console.log(data.message)
+    }
+</script>
+</html>

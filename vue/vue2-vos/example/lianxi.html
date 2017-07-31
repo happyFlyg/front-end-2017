@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>临时练习</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <style>
+    button,
+    span {
+        margin-right: 10px;
+    }
+    
+    span {
+        margin-right: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <h2>临时练习</h2>
+    <div id="app">
+       <goods v-for="a of goods">
+           <span slot="name" v-text="a.name"></span>
+           <span slot="num" v-text="a.num"></span>
+       </goods>
+       <ol>
+           <li v-for="b in goods">名称：{{b.name}}   数量：{{b.num}}</li>
+       </ol>
+    </div>
+    <template id="demo">
+        <p>名称：<slot name="name"></slot> 数量：<slot name="num"></slot></p>
+    </template>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+var goods={
+    template:'#demo'
+}
+ var vm = new Vue({
+    el:'#app',
+    data:{
+        goods:[
+            {name:'pen',num:'10'},
+            {name:'car',num:'1'}
+        ]
+    },
+    components:{
+        'goods':goods
+    }
+ })  
+</script>
+
+</html>

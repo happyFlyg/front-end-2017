@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>extends</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>extends</h2>
+	<div id="app">
+	   
+	</div>
+	<hr>
+	<ol>
+		<li>extends 值只能是对象，一次扩展一个</li>
+		<li>生命周期的顺序是：全局mixin,extends对象,mixins对象,原装</li>
+		<li>和mixins一样具有覆盖特性</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+Vue.mixin({
+	created:function(){
+			console.log('全局mixin的created')
+    }
+})
+var a={
+	created:function(){
+			console.log('mixins中的created')
+    }
+}
+var b={
+	created:function(){
+			console.log('extends中的created')
+    }
+}
+// 构造器
+var app=new Vue({
+	el:'#app',
+	data:{
+		msg:'hello Vue'
+	},
+	created:function(){
+			console.log('我是原装的created')
+	},
+	extends:b,
+	mixins:[a]
+})
+</script>
+</html>

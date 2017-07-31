@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>v-on</h2>
+    <div id="app">
+        <p>{{a}}</p>
+        <button v-on:click="jia">+1</button>
+        <button @click="jian">-1</button>
+        <p>
+        	<input type="text" @keyup.enter="onEnter" v-model="b"/>
+        </p>
+        <p>
+        	<input type="text" @keyup.13="onEnter" v-model="b"/>
+        </p>
+    </div>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var app = new Vue({
+    el: "#app",
+    data: {
+        msg: "hello world",
+        a: 10,
+        b:0
+    },
+    methods: {
+        jia: function() {
+            this.a ++;
+        },
+        jian:function(){
+        	this.a --;
+        },
+        onEnter:function(){
+        	this.a+=parseInt(this.b);//value值转化成数字
+        }
+    }
+})
+</script>
+
+</html>

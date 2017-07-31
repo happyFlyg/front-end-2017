@@ -1,0 +1,435 @@
+# 本文件修改的位置不多, 请不要改变这儿 Directory 的设置. 有需求可以在httpd-xampp.conf中处理. 
+
+# apache 的核心路径, 其它地方路径设置可以相对于这儿. 
+# 你的apache 服务器根目录
+ServerRoot "D:/qampp\apache"
+
+# 端口号配置
+#Listen 0.0.0.0:80
+#Listen [::]:80
+Listen 80
+
+# Default charset UTF8
+# AddDefaultCharset utf-8
+
+#
+# Dynamic Shared Object (DSO) Support
+#
+# To be able to use the functionality of a module which was built as a DSO you
+# have to place corresponding `LoadModule' lines at this location so the
+# directives contained in it are actually available _before_ they are used.
+# Statically compiled modules (those listed by `httpd -l') do not need
+# to be loaded here.
+#
+# Example:
+# LoadModule foo_module modules/mod_foo.so
+#
+
+LoadModule access_compat_module modules/mod_access_compat.so
+LoadModule actions_module modules/mod_actions.so
+LoadModule alias_module modules/mod_alias.so
+LoadModule allowmethods_module modules/mod_allowmethods.so
+LoadModule asis_module modules/mod_asis.so
+LoadModule auth_basic_module modules/mod_auth_basic.so
+#LoadModule auth_digest_module modules/mod_auth_digest.so
+#LoadModule authn_anon_module modules/mod_authn_anon.so
+LoadModule authn_core_module modules/mod_authn_core.so
+#LoadModule authn_dbd_module modules/mod_authn_dbd.so
+#LoadModule authn_dbm_module modules/mod_authn_dbm.so
+LoadModule authn_file_module modules/mod_authn_file.so
+LoadModule authn_socache_module modules/mod_authn_socache.so
+LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
+#LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
+LoadModule authz_core_module modules/mod_authz_core.so
+#LoadModule authz_dbd_module modules/mod_authz_dbd.so
+#LoadModule authz_dbm_module modules/mod_authz_dbm.so
+LoadModule authz_groupfile_module modules/mod_authz_groupfile.so
+LoadModule authz_host_module modules/mod_authz_host.so
+#LoadModule authz_owner_module modules/mod_authz_owner.so
+LoadModule authz_user_module modules/mod_authz_user.so
+LoadModule autoindex_module modules/mod_autoindex.so
+#LoadModule bucketeer_module modules/mod_bucketeer.so
+#LoadModule cache_module modules/mod_cache.so
+#LoadModule case_filter_module modules/mod_case_filter.so
+#LoadModule case_filter_in_module modules/mod_case_filter_in.so
+#LoadModule cern_meta_module modules/mod_cern_meta.so
+LoadModule cgi_module modules/mod_cgi.so
+#LoadModule charset_lite_module modules/mod_charset_lite.so
+LoadModule dav_module modules/mod_dav.so
+LoadModule dav_fs_module modules/mod_dav_fs.so
+LoadModule dav_lock_module modules/mod_dav_lock.so
+#LoadModule dbd_module modules/mod_dbd.so
+LoadModule deflate_module modules/mod_deflate.so
+LoadModule dir_module modules/mod_dir.so
+#LoadModule disk_cache_module modules/mod_disk_cache.so
+#LoadModule dumpio_module modules/mod_dumpio.so
+#LoadModule echo_module modules/mod_echo.so
+LoadModule env_module modules/mod_env.so
+#LoadModule example_module modules/mod_example.so
+#LoadModule expires_module modules/mod_expires.so
+#LoadModule ext_filter_module modules/mod_ext_filter.so
+LoadModule fcgid_module modules/mod_fcgid.so
+#LoadModule file_cache_module modules/mod_file_cache.so
+#LoadModule filter_module modules/mod_filter.so
+LoadModule headers_module modules/mod_headers.so
+#LoadModule ident_module modules/mod_ident.so
+#LoadModule imagemap_module modules/mod_imagemap.so
+LoadModule include_module modules/mod_include.so
+LoadModule info_module modules/mod_info.so
+LoadModule isapi_module modules/mod_isapi.so
+#LoadModule ldap_module modules/mod_ldap.so
+#LoadModule logio_module modules/mod_logio.so
+LoadModule log_config_module modules/mod_log_config.so
+#LoadModule log_forensic_module modules/mod_log_forensic.so
+LoadModule cache_disk_module modules/mod_cache_disk.so
+LoadModule mime_module modules/mod_mime.so
+#LoadModule mime_magic_module modules/mod_mime_magic.so
+LoadModule negotiation_module modules/mod_negotiation.so
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
+#LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
+#LoadModule proxy_connect_module modules/mod_proxy_connect.so
+#LoadModule proxy_ftp_module modules/mod_proxy_ftp.so
+#LoadModule proxy_http_module modules/mod_proxy_http.so
+LoadModule rewrite_module modules/mod_rewrite.so
+LoadModule setenvif_module modules/mod_setenvif.so
+#LoadModule speling_module modules/mod_speling.so
+LoadModule ssl_module modules/mod_ssl.so
+LoadModule status_module modules/mod_status.so
+#LoadModule substitute_module modules/mod_substitute.so
+LoadModule unique_id_module modules/mod_unique_id.so
+LoadModule userdir_module modules/mod_userdir.so
+#LoadModule usertrack_module modules/mod_usertrack.so
+LoadModule version_module modules/mod_version.so
+LoadModule vhost_alias_module modules/mod_vhost_alias.so
+#LoadModule http2_module modules/mod_http2.so
+
+#<IfModule http2_module> 
+#   ProtocolsHonorOrder On 
+#   Protocols h2 http/1.1 
+#</IfModule>
+
+<IfModule !mpm_netware_module>
+    <IfModule !mpm_winnt_module>
+        User daemon
+        Group daemon
+    </IfModule>
+</IfModule>
+
+# 管理员email地址, 服务器名字
+ServerAdmin postmaster@localhost
+ServerName localhost:80
+
+# 代码目录路径, php代码目录. 默认目录, 当VirtualHost中未指定目录时, 全部访问此目录.
+DocumentRoot "D:/qampp/htdocs"
+
+# 默认许可访问所有目录. 假如有权限需求限制访问默认主机, 请在httpd-xampp.conf中修改
+# 本配置文件已经无修改的可能性.
+ 
+<Directory />
+    Options Indexes FollowSymLinks Includes ExecCGI
+    indexOptions FancyIndexing ScanHTMLTitles DescriptionWidth=256 VersionSort FoldersFirst
+    indexOptions IconHeight=16 IconWidth=16
+    ServerSignature On
+    AllowOverride All
+    
+    order allow,deny
+    allow from all
+    
+    #Require all denied
+    Require all granted
+	Header set Access-Control-Allow-Origin *
+</Directory>
+
+#
+# 设置index文件.
+<IfModule dir_module>
+    DirectoryIndex index.php index.phpc index.phps index.pl index.cgi index.html index.htm default.php default.html default.htm
+</IfModule>
+
+<IfModule fcgid_module>
+    FcgidInitialEnv PHP_FCGI_MAX_REQUESTS 1000 
+    FcgidConnectTimeout 10 
+    FcgidMaxProcesses 300 
+    FcgidMaxProcessesPerClass 300 
+    FcgidOutputBufferSize 64 
+    ProcessLifeTime 0 
+    FcgidMaxRequestsPerProcess 0 
+    FcgidMinProcessesPerClass 0 
+    FcgidFixPathinfo 0 
+    FcgidProcessLifeTime 0 
+    FcgidZombieScanInterval 20 
+    FcgidMaxRequestLen 536870912 
+    FcgidIOTimeout 120 
+    FcgidTimeScore 3 
+</IfModule> 
+
+#
+# 禁止掉 . ~ 开头的文件访问, 比如伪静态等.
+<Filesmatch "^(\.|~).*$">
+    order allow,deny
+    deny from all
+    #Require all denied
+</Filesmatch>
+
+# 错误日志级别.
+LogLevel warn
+
+# 错误日志路径.
+ErrorLog "logs/error.log"
+ScriptLog "logs/cgi.log"
+
+# 可在每个vhost主机中独立设置错误信息内容
+# Some examples:
+#ErrorDocument 500 "The server made a boo boo."
+#ErrorDocument 404 /missing.html
+#ErrorDocument 404 "/cgi-bin/missing_handler.pl"
+#ErrorDocument 402 http://localhost/subscription_info.html
+#
+
+# 解决一些崩溃现现象, 请勿修改.
+AcceptFilter http none
+AcceptFilter https none
+
+# EnableMMAP 配置.
+EnableMMAP off
+EnableSendfile off
+
+TraceEnable off
+
+<IfModule log_config_module>
+    #
+    # The following directives define some format nicknames for use with
+    # a CustomLog directive (see below).
+    #
+    LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+    LogFormat "%h %l %u %t \"%r\" %>s %b" common
+
+    <IfModule logio_module>
+      # You need to enable mod_logio.c to use %I and %O
+      LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
+    </IfModule>
+    
+    # 访问日志路径. 有服务主机时, 会被主机替代.
+    CustomLog "logs/access.log" common
+</IfModule>
+
+# 设置文件类型配置.
+<IfModule mime_module>
+    #
+    # TypesConfig points to the file containing the list of mappings from
+    # filename extension to MIME-type.
+    #
+    TypesConfig "conf/mime.types"
+
+    #
+    # AddType allows you to add to or override the MIME configuration
+    # file specified in TypesConfig for specific file types.
+    #
+    #AddType application/x-gzip .tgz
+    #
+    # AddEncoding allows you to have certain browsers uncompress
+    # information on the fly. Note: Not all browsers support this.
+    #
+    #AddEncoding x-compress .Z
+    #AddEncoding x-gzip .gz .tgz
+    #
+    # If the AddEncoding directives above are commented-out, then you
+    # probably should define those extensions to indicate media types:
+    #
+    AddType application/x-compress .Z
+    AddType application/x-gzip .gz .tgz
+
+    #
+    # AddHandler allows you to map certain file extensions to "handlers":
+    # actions unrelated to filetype. These can be either built into the server
+    # or added with the Action directive (see below)
+    #
+    # To use CGI scripts outside of ScriptAliased directories:
+    # (You will also need to add "ExecCGI" to the "Options" directive.)
+    #
+    AddHandler cgi-script .cgi .pl .asp
+
+    # For type maps (negotiated resources):
+    #AddHandler type-map var
+
+    #
+    # Filters allow you to process content before it is sent to the client.
+    #
+    # To parse .shtml files for server-side includes (SSI):
+    # (You will also need to add "Includes" to the "Options" directive.)
+    #
+    AddType text/html .shtml
+    AddOutputFilter INCLUDES .shtml
+</IfModule>
+
+<IfModule mime_magic_module>
+    #
+    # The mod_mime_magic module allows the server to use various hints from the
+    # contents of the file itself to determine its type.  The MIMEMagicFile
+    # directive tells the module where the hint definitions are located.
+    #
+    MIMEMagicFile "conf/magic"
+</IfModule>
+
+# 以下是引入配置路径, 默认全部引入.
+# XAMPP specific settings
+Include "conf/extra/httpd-qampp.conf"
+
+# Server-pool management (MPM specific)
+Include "conf/extra/httpd-mpm.conf"
+
+# Multi-language error messages
+Include "conf/extra/httpd-multilang-errordoc.conf"
+
+# Fancy directory listings
+Include "conf/extra/httpd-autoindex.conf"
+
+# Language settings
+Include "conf/extra/httpd-languages.conf"
+
+# User home directories
+Include "conf/extra/httpd-userdir.conf"
+
+# Real-time info on requests and configuration
+Include "conf/extra/httpd-info.conf"
+
+# Virtual hosts
+Include "conf/extra/httpd-vhosts.conf"
+
+# Distributed authoring and versioning (WebDAV)
+# Attention! WEB_DAV is a security risk without a new userspecific configuration for a secure authentifcation 
+#Include "conf/extra/httpd-dav.conf"
+
+# Implements a proxy/gateway for Apache.
+Include "conf/extra/httpd-proxy.conf"
+
+# Various default settings
+Include "conf/extra/httpd-default.conf"
+
+# Secure (SSL/TLS) connections
+Include "conf/extra/httpd-ssl.conf"
+#
+# Note: The following must must be present to support
+#       starting without SSL on platforms with no /dev/random equivalent
+#       but a statically compiled-in mod_ssl.
+#
+<IfModule ssl_module>
+    SSLRandomSeed startup builtin
+    SSLRandomSeed connect builtin
+</IfModule>
+
+# Configure mod_proxy_html to understand HTML4/XHTML1
+#<IfModule proxy_html_module>
+#Include etc/extra/proxy-html.conf
+#</IfModule>
+
+# AJP13 Proxy
+#<IfModule mod_proxy.c>
+#    <IfModule mod_proxy_ajp.c>
+#    Include "conf/extra/httpd-ajp.conf"
+#    </IfModule>
+#</IfModule>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>标题</h1>
+	<hr>
+	<div id="app">
+		<span>{{message}}</span> = <span v-text="message"></span>
+		<hr>
+		 <span v-html="messageHtem"></span>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'hello Vue!',
+				messageHtem:'<h1>hello Vue!</h1>'
+			}
+		})
+	</script>
+</body>
+</html>

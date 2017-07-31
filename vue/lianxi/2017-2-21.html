@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>2017-2-21-vue</title>
+</head>
+
+<body>
+    <!-- view-->
+    <div id="app">
+       {{msg}}
+    </div>
+   <div id="app3" >
+   	   <p v-if="seen">{{msg}}</p>
+   </div>
+   <ol id="app4">
+   	<li v-for="item in msg">{{item.text}}</li>
+   </ol>
+</body>
+<script src="../jquery.min.js"></script>
+<script src="../vue.js"></script>
+<script>
+  var app=new Vue({
+  	el:'#app',
+  	data:{
+  		msg:"app===============caojingr"
+  	}
+  });
+  var app3Model={
+  	seen:true,
+  	msg:"app3=====================liaoli"
+  };
+  new Vue({
+  	el:"#app3",
+  	data:app3Model
+  });
+  var app4=new Vue({
+  	el:"#app4",
+  	data:{
+  		msg:[{text:"liaoli"},{text:'caojirongajdisa'},{text:'liaodoudouajds;lk'},{text:'fdlsakjdfl'}]
+  	}
+  })
+</script>
+<script>
+	$('#select').find('option').each(function(index,element){
+        if(index==2){
+        	element.selected=true;
+        }
+        if(index==3){
+        	return false;
+        }
+        console.log(index);
+	})
+</script>
+
+</html>

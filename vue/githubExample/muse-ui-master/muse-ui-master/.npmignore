@@ -1,0 +1,10 @@
+node_modules
+build
+config
+static
+docs
+src-docs
+.DS_Store
+.*
+index.html
+gulpfile.js

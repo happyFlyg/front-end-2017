@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>components-3 组件里面套组件</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>components-3 组件里面套组件</h2>
+	<div id="app">
+	   <flyg :name="msg"></flyg>
+	</div>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>template中一旦有空格回车，一定要用感叹号旁边的点，否则报错</li>
+		<li>只能父传子，不能传孙子</li>
+		<li>被套的子组件必须写在父组件之前，否则报错</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+var childComponent={
+	template:`<h3>this is child component template——{{title}}</h3>`,
+	props:['title']
+}
+var flygComponent={
+   template:`<div>
+   <p>this is parent component—— {{name}}</p>
+   <childcom title="my name is flyg"></childcom>
+   </div>`,
+   props:['name'],
+   components:{
+      'childcom':childComponent
+   }
+};
+// 构造器
+var app=new Vue({
+	el:'#app',
+	data:{
+		msg:'fly'
+	},
+	components:{//childComponent 写在这里的话会报错，只能父传子
+		'flyg':flygComponent
+	}
+})
+</script>
+</html>

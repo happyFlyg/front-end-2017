@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实例方法/事件</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>实例方法/事件</h2>
+	<div id="app">
+	   <p v-text='a'></p>
+	   <button @click='add'>点击加</button>
+	</div>
+	<button onclick="fnReduce()">减10 vm.$on vm.$emit</button>
+	<button onclick="FnVmOnce()">加10 vm.$once() vm.$emit()</button>
+	<button onclick="deleteFn()">移除'减'事件监听 vm.$off([event,callback])</button>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>vm.$on(event,callback)监听当前	实例上的自定义事件。事件可以有vm.$emit触发。回调函数会接收所有传入事件触发函数的额外参数</li>
+		<li>vm.$once(event,callback) 只触发一次</li>
+		<li>vm.$off([event,callback])
+			<ol>
+				<li>如果没有提供参数，则移除所有的事件监听器</li>
+				<li>如果只提供了事件，则移除该事件的所有监听器</li>
+				<li>如果同时提供了事件与回调，则只移除这个回调的监听器</li>
+			</ol>
+		</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+    var vm=new Vue({
+    	el:'#app',
+    	data:{
+    		msg:'hello Vue',
+    		a:1
+    	},
+    	methods:{
+    		add:function(){
+    			this.a ++
+    		}
+    	}
+    })
+    vm.$on('reduce',function(num){
+    	this.a-=num;
+    });
+    //vm.$emit('fn','argument')触发函数
+    function fnReduce() {
+    	vm.$emit('reduce','10')
+    }
+    //vm.$once(event,callback)只触发一次
+    vm.$once('addOnce',function(num){
+        this.a+=num;
+    });
+    function FnVmOnce(){
+    	vm.$emit('addOnce','10')
+    }
+    //vm.$off([event,callback]) 移除事件监听
+    function deleteFn(){
+    	vm.$off('reduce');
+    }
+</script>
+</html>

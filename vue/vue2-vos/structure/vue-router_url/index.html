@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>url传值 获取不固定的url</title>
+</head>
+<body>
+	<h2>url传值</h2>
+	<div id="app">
+	   
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+const routes=[
+    {path:'/'},
+    {path:'/params/:aaa/:bbb'},
+    {path:'/params/:id(\\d+)'}//匹配正则
+]
+const router = new VueRouter({
+    // mode:'history',
+    // base:__dirname,
+    routes
+})
+new Vue({
+	router,
+	template:`
+	    <div>
+	        <h1>good morning</h1>
+	        <ul>
+	            <li><router-link to="/">/</router-link></li>
+	            <li><router-link to="/params/111/222">/params/111/222</router-link></li>
+	            <li><router-link to="/params/222">/params/222</router-link></li>
+	        </ul>
+	        <p>show</p>
+	        <p>读取参数：{{$route.params.aaa}}</p>
+	        <pre>
+	            <code>{{ JSON.stringify($route,null,4)}}</code>
+	        </pre>
+	    </div>			
+	`
+}).$mount('#app')
+</script>
+</html>

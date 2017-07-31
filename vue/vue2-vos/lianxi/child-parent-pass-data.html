@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件之间传值</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>组件之间传值</h2>
+	<div id="app">
+	   <p v-text="msg"></p>
+	   <flyg name="hello flyg">{{}}</flyg>
+	   <gloable></gloable>
+	</div>
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>slot帮助我们把组件的内容传播出去,即标签里的内容传到组件模板</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+Vue.component('gloable',{
+	template:`<div>我是全局组件</div>`
+})
+var childComp={
+	template:`<h3>我是子组件____________{{this.$parent.name}}</h3>`
+}
+var componentLocal={
+	name:'localCompo',
+    template:`<div>我是局部的组件_____________{{this.$root.msg}}<childcom ></childcom></div>`,
+    props:['name'],
+    components:{
+    	'childcom':childComp
+    }
+}
+
+// 构造器
+var vm=new Vue({
+	el:'#app',
+	data:{
+		msg:'Vue实例中的data'
+	},
+	components:{
+		'flyg':componentLocal
+	}
+})
+</script>
+</html>

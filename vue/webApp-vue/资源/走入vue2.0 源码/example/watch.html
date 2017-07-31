@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>Watch</h1>
+	<hr>
+	<div id="app">
+		<p>苹果</p>
+		<p>购买数量:{{n}}</p>
+		<p> <button @click="jian">-</button> <button @click="jia">+</button></p>
+
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				n:'1'
+			},
+			methods:{
+				jia:function(){
+					this.n++
+				},
+				jian:function(){
+					this.n --
+				}
+			}
+		})
+		//促销
+		vm.$watch('n',function(newVal,oldVal){
+			if (newVal<1){
+				vm.n = 1
+			}
+		},{deep:true,immediate:true})
+	</script>
+</body>
+</html>

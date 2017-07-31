@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue-resource</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>vue-resource</h2>
+    <div id="app">
+    	{{msg}}
+    </div>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script src="../assets/js/vue-resource.min.js"></script>
+<script>
+// 构造器
+var app = new Vue({
+    el: '#app',
+    data:{
+    	msg:'flyg'
+    },ody;
+
+    beforeMount: function() {
+        console.log('加载之前'); 
+        {
+            // GET /someUrl
+            this.$http.get('1.txt').then(response => {
+                console.log(response)
+                // get body data
+                this.msg = response.b
+            }, response => {
+                // error callback
+            });
+        }
+    }
+});
+</script>
+
+</html>

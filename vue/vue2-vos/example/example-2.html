@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实例方法/生命周期</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>实例方法/生命周期</h2>
+	<div id="app">
+	</div>
+	<button onclick="fnRefresh()">$forceUpdate 刷新</button>
+	<button onclick="fnDestroy()">$destroyed 卸载</button>
+	<button onclick="fnNextTick()">$nextTick 更新后的回调</button>
+	<hr>
+	<ol>
+		<li>扩展的Vue.extend()必须有template</li>
+		<li>实例方法在作用域外部操作</li>
+		<li>Vue.extend()里面的data是带返回对象的函数</li>
+		<li>刷新构造器或者组件后的回调vm.$nextTick(function(){})</li>
+		<li>vm.$nextTick(callback),callback中this指向本Vue实例</li>
+		<li>谷歌浏览器可以安装vuex插件，方便调试</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+// 构造器
+var vmExtend=Vue.extend({
+	template:'<div>{{msg}}</div>',
+	data:function(){
+		return {
+			msg:'hello $mount'
+		}
+	},
+	updated:function(){
+		console.log('我被更新完毕')
+	},
+	destroyed:function(){
+		console.log('我被卸载了')
+	}
+
+});
+var vm =new vmExtend().$mount('#app');
+function fnRefresh(){
+    vm.$forceUpdate();
+}
+function fnDestroy(){
+	vm.$destroy();
+}
+function fnNextTick(){
+	vm.$nextTick(function(){
+		this.msg='我被nextTick';
+		console.log('我是更新后的回调')
+	})
+}
+</script>
+</html>

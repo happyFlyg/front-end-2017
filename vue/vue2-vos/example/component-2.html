@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>component-2 组件2</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+
+<body>
+    <h2>component-2 组件2</h2>
+    <div id="app">
+        <flyg here="China"></flyg>
+        <!-- v-bind 缩写形式 -->
+        <flyg :here="msg"></flyg>
+        <flyg v-bind:here="msg"></flyg>
+    </div>
+    <hr>
+    <h2>注意：</h2>
+    <ol>
+        <li>组件拥有属性和内容。只有属性可以传，内容是传不了的，只有通过template设置</li>
+        <li>在组件中，标签名称和属性名称都要用引号引起来</li>
+        <li>props 是数组或对象(props验证)的形式</li>
+        <li>假若属性名称是"my-here"则props里面应该写['myHere']——小驼峰式写法，不建议用“-”中杠</li>
+        <li>Vue只能父组件传值给子组件，属于单向数据流，要使用双向数据流的话，建议使用vuex</li>
+        <li>父组件传值子组件，通过v-bind（简写形式为:bind）</li>
+    </ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+var flygComponent = {
+    template: '<div>my here is {{here}}</div>',
+    props: ['here']
+}
+var flyComponent = {
+        template: '<h3>props验证</h3>',
+        props: {
+            // 基础类型检测 （`null` 意思是任何类型都可以）
+            propA: Number,
+            // 多种类型
+            propB: [String, Number],
+            // 必传且是字符串
+            propC: {
+                type: String,
+                required: true
+            },
+            // 数字，有默认值
+            propD: {
+                type: Number,
+                default: 100
+            },
+            // 数组／对象的默认值应当由一个工厂函数返回
+            propE: {
+                type: Object,
+                default: function() {
+                    return {
+                        message: 'hello'
+                    }
+                }
+            },
+            // 自定义验证函数
+            propF: {
+                validator: function(value) {
+                    return value > 10
+                }
+            }
+        }
+    };
+    // 构造器
+var app = new Vue({
+    el: '#app',
+    data: {
+        msg: 'USA'
+    },
+    components: {
+        'flyg': flygComponent
+    }
+});
+</script>
+
+</html>

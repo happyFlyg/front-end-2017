@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../assets/js/vue.js"></script>
+	<script src="/assets/js/jquery.js"></script>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>$ 实例</h1>
+	<hr>
+	<div id="app">
+		{{ message }}
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				message:'hello Vue!'
+			},
+			methods:{
+				jia:function(){
+					this.message="bye"
+				}
+			}
+		})
+		console.log(vm)
+
+	</script>
+</body>
+</html>

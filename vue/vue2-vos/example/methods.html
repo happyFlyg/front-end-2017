@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>methods</title>
+	<link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+	<h2>methods</h2>
+	<div id="app">
+	    <p v-text="a"></p>
+	    <p><button v-on:click="add">第一种写法</button></p>
+	    <p><button @click="a+=10">第二种写法</button></p>
+	    <p><button @click="carryOneParameter(2)">携带一个参数</button></p>
+	    <p><button @click="carryTwoParameter(2,$event)">携带两个参数</button></p>
+	    <p><commonbtn @click.native="add"></commonbtn></p>
+	    <p><button @click="outFun()">作用域内调用外部函数</button></p>
+	</div>
+	<p><button onclick="app.carryOneParameter(10)">外部访问构造器内部函数</button></p> 	
+	<hr>
+	<h2>注意：</h2>
+	<ol>
+		<li>第一种写法：直接在methods里面写</li>
+		<li>第二种写法：针对相对简单的，直接写@click="a ++"</li>
+		<li>第三种带参数的写法</li>
+		<li>外部组件调用构造器内部方法时，@click绑定到组件标签上，绑在模板上无效</li>
+	</ol>
+	<hr>
+	<h2>methods修饰符：</h2>
+	<ol>
+		<li>阻止单击事件冒泡：v-on:click.stop="func"</li>
+		<li>提交事件不再重载页面：v-on:submit.prevent="func"(针对form)</li>
+		<li>添加事件监听器时使用事件捕获模式：v-on:click.capture="func"</li>
+		<li>只当事件在该元素本身（而不是子元素）触发时触发回调：v-on:click.self="func"</li>
+		<li>修饰符可以串联：v-on:click.stop.prevent="func"</li>
+	</ol>
+</body>
+<script src="../assets/js/vue.js"></script>
+<script>
+function outFun(){
+	app.a ++
+}
+var btn={
+	template:'<button >外部组件</button>'
+}
+// 构造器
+var app=new Vue({
+	el:'#app',
+	data:{
+        a:1
+	},
+	components:{
+        'commonbtn':btn
+	},
+	methods:{
+		add:function(){//第一种写法,记得写this
+			this.a++
+		},
+		carryOneParameter:function(num){
+            this.a+=num
+		},
+		carryTwoParameter:function(num,event){
+			console.log(event)
+		}
+	}
+})
+</script>
+</html>
