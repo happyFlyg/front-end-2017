@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重</title>
+</head>
+
+<body>
+</body>
+<script>
+var testArr = ['aaa', 'bbb', 'ccc', 'aaa', 'bbb', 'ccc', 'aaab', 'bbbc', 'abc', 'abc'];
+// 1:遍历数组，indexOf 第i项首次出现的话存入新数组，否则扔掉
+function duplicate(arry) {
+    var aarr = [arry[0]];
+    for (var i = 1; i < arry.length; i++) {
+        if (arry.indexOf(arry[i]) == i) aarr.push(arry[i])
+    }
+    return aarr
+}
+duplicate(testArr);
+// 2:遍历数组，装入新数组，判断新数组，若没有则push
+function aduplicate(array) {
+    var a = [];
+    for (var i = 0; i < array.length; i++) {
+        if (a.indexOf(array[i]) == -1) a.push(array[i])
+    }
+    // alert(a)
+    return a
+}
+// 3.数组排序后  去重
+function bduplicate(array) {
+    array.sort();
+    var a = [array[0]];
+    for (var i = 1; i < array.length; i++) {
+        if (array[i] !== a[a.length - 1]) a.push(array[i])
+    }
+    // alert(a);
+    return a
+}
+bduplicate(testArr)
+    // 速度最快， 占空间最多（空间换时间）
+    // 实现思路：新建一js对象以及新数组，遍历传入数组时，判断值是否为js对象的键，不是的话给对象新增该键并放入新数组。注意 点： 判断是否为js对象键时，会自动对传入的键执行“toString()”，不同的键可能会被误认为一样；例如： a[1]、a["1"] 。解决上述问题还是得调用“indexOf”。 
+function unique2(array) {
+    var n = {},
+        r = [],
+        len = array.length,
+        val,
+        type;
+    for (var i = 0; i < array.length; i++) {
+        val = array[i];
+        type = typeof val;
+        if (!n[val]) {
+            n[val] = [type];
+            r.push(val);
+        } else if (n[val].indexOf(type) < 0) {
+            n[val].push(type);
+            r.push(val);
+        }
+    }
+    return r;
+}
+</script>
+
+</html>

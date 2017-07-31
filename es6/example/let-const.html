@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>let const声明变量</title>
+</head>
+<body>
+	<ol>
+		<li>ES5只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。</li>
+		<li>var带来的不合理场景就是用来计数的循环变量泄露为全局变量
+		    <pre>
+		    	var a = [];
+		    	for (var i = 0; i < 10; i++) {
+		    	  a[i] = function () {
+		    	    console.log(i);
+		    	  };
+		    	}
+		    	a[6](); // 10
+		    </pre>
+		</li>
+		<li>const也用来声明变量，但是声明的是常量。一旦声明，常量的值就不能改变。</li>
+		<li>const有一个很好的应用场景，就是当我们引用第三方库的时声明的变量，用const来声明可以避免未来不小心重命名而导致出现bug</li>
+	</ol>
+</body>
+</html>
