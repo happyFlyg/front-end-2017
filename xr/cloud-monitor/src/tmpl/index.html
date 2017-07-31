@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cloud Monitor</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/cloud.css">
+    <!-- <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script> -->
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/screenfull.js"></script>
+    <!-- Bootstrap -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+   <div class="main-box">
+    <include src="./includes/left-side.html"></include>
+    <div class="right-content">
+        <header>
+            <div class="left-bar"><span></span></div>
+            <div class="right-bar">
+                <div class="bar-box alert-message">
+                    <span class="alert-icon"></span>
+                    <i class="red-message"></i>
+                </div>
+                <div class="bar-box user-message">
+                    <a class="user-icon"></a>
+                </div>
+            </div>
+        </header>
+        <section>
+            <nav class="clear-float">
+                <div class="filter-search">
+                    <div class="search-icon">
+                    </div>
+                    <div class="filter-content">
+                        <input type="text" autofocus="true" placeholder="输入主机名称、服务">
+                        <ul class="filter-box">
+                            <!-- <li class="filter-item">
+                                <span class="item-name">windows 10</span>
+                                <i class="clear-item"></i>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <div class="clear-content">
+                    </div>
+                </div>
+                <div class="handle-bar">
+                    <div class="handle-box bg-1" data-handle="column"></div>
+                    <div class="handle-box bg-2" data-handle="grid"></div>
+                    <div class="handle-box bg-3" data-handle="fullscreen"></div>
+                    <div class="handle-box bg-4" data-handle="addpage"></div>
+                </div>
+            </nav>
+            <aside>
+                <div class="top-link">
+                    <a class="">平台</a>
+                    <a class="active">服务分类</a>
+                    <a class="">CPU利用率</a>
+                </div>
+                <div class="platform-select">
+                    <ul class="platform">
+                        <li>
+                            <span class="icon-arrow"></span>
+                            <span class="text">Windows 10</span>
+                            <span class="cm-badge">10</span>
+                            <span class="select"></span>
+                        </li>
+                        <li>
+                            <span class="icon-arrow"></span>
+                            <span class="text">Windows 10</span>
+                            <span class="cm-badge">10</span>
+                            <span class="select"></span>
+                        </li>
+                       
+                        <li>
+                            <span class="icon-arrow"></span>
+                            <span class="text">Windows 10</span>
+                            <span class="cm-badge">10</span>
+                            <span class="select active"></span>
+                        </li>
+                        <li>
+                            <span class="icon-arrow"></span>
+                            <span class="text">Windows 10</span>
+                            <span class="cm-badge">10</span>
+                            <span class="select active"></span>
+                        </li>
+                        <li>
+                            <span class="icon-arrow"></span>
+                            <span class="text">Windows 10</span>
+                            <span class="cm-badge">10</span>
+                            <span class="select"></span>
+                        </li>
+                        <li>
+                            <span class="icon-arrow"></span>
+                            <span class="text">Windows 10</span>
+                            <span class="cm-badge">10</span>
+                            <span class="select"></span>
+                        </li>
+                       
+                        <li>
+                            <span class="icon-arrow"></span>
+                            <span class="text">Windows 10</span>
+                            <span class="cm-badge">10</span>
+                            <span class="select active"></span>
+                        </li>
+                        <li>
+                            <span class="icon-arrow"></span>
+                            <span class="text">Windows 10</span>
+                            <span class="cm-badge">10</span>
+                            <span class="select active"></span>
+                        </li>
+                    </ul>
+                    <ul class="service no">
+                        <li>Unix</li>
+                        <li>Unix</li>
+                        <li>Unix</li>
+                        <li>Unix</li>
+                        <li>Unix</li>
+                        <li>Unix</li>
+                        <li>Unix</li>
+                        <li>Unix</li>
+                        <li>Unix</li>
+                    </ul>
+                    <ul class="cpu-usage no">
+                        <li>Linux</li>
+                        <li>Linux</li>
+                        <li>Linux</li>
+                        <li>Linux</li>
+                        <li>Linux</li>
+                        <li>Linux</li>
+                    </ul>
+                </div>
+            </aside>
+            <article>
+                <table class="table table-hover">
+                 <thead>
+                   <tr>
+                     <th>CPU利用率
+                     <span class="sort-icon"></span>
+                     </th>
+                     <th>状态
+                      <span class="sort-icon"></span>
+                      </th>
+                     <th>CPU
+                      <span class="sort-icon"></span>
+                      </th>
+                     <th>I/O Wait
+                      <span class="sort-icon"></span>
+                      </th>
+                     <th>服务平台
+                      <span class="sort-icon"></span>
+                      </th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
+                     <td>
+                         <div class="cpu-name">My Macbook-SQL</div>
+                         <div class="progress">
+                          <div class="progress-bar" style="width: 60%;">
+                          </div>
+                        </div>
+                        <div class="cpu-prompt">
+                            <div class="percent-number">60%</div>
+                            <div class="all-volume">600Gb</div>
+                        </div>
+                     </td>
+                     <td>
+                         <div class="state-trend trend-down">
+                             <i class="trend"></i>
+                             <span class="text">DOWN</span>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="link-service">
+                             <button class="btn btn-self">查看服务</button>
+                         </div>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                         <div class="cpu-name">My Macbook-SQL</div>
+                         <div class="progress">
+                          <div class="progress-bar" style="width: 60%;">
+                          </div>
+                        </div>
+                        <div class="cpu-prompt">
+                            <div class="percent-number">60%</div>
+                            <div class="all-volume">600Gb</div>
+                        </div>
+                     </td>
+                     <td>
+                         <div class="state-trend trend-up">
+                             <i class="trend"></i>
+                             <span class="text">UP</span>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="link-service">
+                             <button class="btn btn-self">查看服务</button>
+                         </div>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                         <div class="cpu-name">My Macbook-SQL</div>
+                         <div class="progress">
+                          <div class="progress-bar" style="width: 60%;">
+                          </div>
+                        </div>
+                        <div class="cpu-prompt">
+                            <div class="percent-number">60%</div>
+                            <div class="all-volume">600Gb</div>
+                        </div>
+                     </td>
+                     <td>
+                         <div class="state-trend trend-down">
+                             <i class="trend"></i>
+                             <span class="text">DOWN</span>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="link-service">
+                             <button class="btn btn-self">查看服务</button>
+                         </div>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                         <div class="cpu-name">My Macbook-SQL</div>
+                         <div class="progress">
+                          <div class="progress-bar" style="width: 60%;">
+                          </div>
+                        </div>
+                        <div class="cpu-prompt">
+                            <div class="percent-number">60%</div>
+                            <div class="all-volume">600Gb</div>
+                        </div>
+                     </td>
+                     <td>
+                         <div class="state-trend trend-down">
+                             <i class="trend"></i>
+                             <span class="text">DOWN</span>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="link-service">
+                             <button class="btn btn-self">查看服务</button>
+                         </div>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                         <div class="cpu-name">My Macbook-SQL</div>
+                         <div class="progress">
+                          <div class="progress-bar" style="width: 60%;">
+                          </div>
+                        </div>
+                        <div class="cpu-prompt">
+                            <div class="percent-number">60%</div>
+                            <div class="all-volume">600Gb</div>
+                        </div>
+                     </td>
+                     <td>
+                         <div class="state-trend trend-down">
+                             <i class="trend"></i>
+                             <span class="text">DOWN</span>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="progress-circle">
+                             <div class="progress-circle-bar"></div>
+                         </div>
+                     </td>
+                     <td>
+                         <div class="link-service">
+                             <button class="btn btn-self">查看服务</button>
+                         </div>
+                     </td>
+                   </tr>
+                 </tbody>
+               </table>
+
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </article>
+        </section>
+        <footer></footer>
+    </div>
+   </div>
+    <script>
+        // document.documentElement.style.fontSize = document.documentElement.clientWidth / 19.2 + 'px';
+    </script>
+    <script src="../js/index.js"></script>
+</body>
+</html>
